@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Clientes</h1>
+  </div>
+</div>
+
+<table id="customers_table" class="table table-hover" data-source="<%= customers_url(format: "json")%>" >
+  <thead>
+    <tr>
+      <th><%= link_to 'id', '#'           %></th>
+      <th><%= link_to 'Propietario', '#'  %></th>
+      <th><%= link_to 'Razon Social', '#' %></th>
+      <th><%= link_to 'Rut', '#'          %></th>
+      <th><%= link_to 'Tel/Cel', '#'      %></th>
+      <th><%= link_to 'Dirección', '#'    %></th>
+      <th><%= link_to 'Email', '#'        %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer|%>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= customer.owner %></td>
+        <td><%= customer.invoice_name %></td>
+        <td><%= customer.rut %></td>
+        <td><%= customer.phone %></td>
+        <td><%= customer.address %></td>
+        <td><%= customer.email %></td>
+        <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), customer_path(customer) %></td>
+        <td><%= link_to (image_tag 'edit.png', :class => "small-icon", :title => "Editar"), edit_customer_path(customer) %></td>
+        <td><%= link_to (image_tag 'delete.png', :class => "small-icon", :title => "Eliminar"), customer, method: :delete, data: { confirm: '¿Esta seguro que quiere eliminar el cliente?'} %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+<div class="option-links">
+  <%= link_to (image_tag 'new.png', :class => "medium-icon", :title => "Nuevo"), new_customer_path, :class => "new_customer" %>
+  <%= link_to 'Nuevo Cliente', new_customer_path, :class => "new_customer" %>
+</div>
+<div id="clients_modal" class="modal fade" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button id="btn_close_modal" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

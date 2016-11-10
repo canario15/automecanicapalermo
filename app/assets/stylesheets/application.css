@@ -1,0 +1,54 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+.small-icon {
+  width: 17px;
+}
+
+.medium-icon {
+  width: 24px;
+}
+
+.icon-title {
+  margin-right: 12px;
+  width: 36px;
+  float: left;
+}
+
+.icon-modal-title {
+  float: left;
+  margin-right: 5px;
+  margin-top: 3px;
+  width: 18px;
+}
+
+.field_with_errors label {
+  color: #a94442;
+}
+
+.field_with_errors .form-control {
+  border-color: #a94442;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+.field_with_errors .form-control:focus {
+  border-color: #843534;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;
+}
+.error_explanation {
+  color: #a94442;
+}

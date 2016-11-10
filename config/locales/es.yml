@@ -1,0 +1,91 @@
+es:
+  time:
+    formats:
+      default: "%d %B %Y - %H:%M"
+      long: "%y-%m-%d %H:%M"
+
+  date:
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - Domingo
+    - Lunes
+    - Martes
+    - Miércoles
+    - Jueves
+    - Viernes
+    - Sábado
+    formats:
+      default: '%d/%m/%Y'
+      long:  "%A, %d de %B de %Y"
+      short:  "%d de %b"
+    month_names:
+    -
+    - Enero
+    - Febrero
+    - Marzo
+    - Abril
+    - Mayo
+    - Junio
+    - Julio
+    - Agosto
+    - Septiembre
+    - Octubre
+    - Noviembre
+    - Diciembre
+    order:
+    - :day
+    - :month
+    - :year
+
+  activerecord:
+    models:
+      customer: "Cliente"
+      vehicle: "Vehículo"
+
+    errors:
+      models:
+        customer:
+          attributes:
+            owner:
+              taken: " pertenece a un cliente registrado."
+              blank: " no puede ser vacío."
+            phone:
+              blank: " no puede ser vacío."
+    attributes:
+      customer:
+        owner: "Propietario"
+        invoice_name: "Nómbre Factura"
+        address: "Dirección"
+        rut: " RUT"
+        email: "Email"
+        phone: "Tel/Cel"
+        vehicles: "Vehículos"
+      vehicle:
+        brand: "Marca"
+        model: "Modelo"
+        displacement: "Cilindrada"
+        year: "Año"
+        plate: "Matrícula"
+        color: "Color"
+        chassis_number: "Nº Chasis"
