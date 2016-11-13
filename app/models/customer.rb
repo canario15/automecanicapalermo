@@ -7,4 +7,8 @@ class Customer < ActiveRecord::Base
 
   accepts_nested_attributes_for :vehicles, reject_if: :all_blank, allow_destroy: true
 
+  def to_s
+    owner
+  end
+
 end

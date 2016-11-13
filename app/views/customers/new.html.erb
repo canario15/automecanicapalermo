@@ -7,12 +7,12 @@
   </div>
 </div>
 
-<%= form_for(@customer, :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
+<%= semantic_form_for(@customer, :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
   <div class="form-group">
     <%= f.label :owner, :class => "col-sm-2 control-label" %>
     <div class="col-xs-4">
       <%= f.text_field :owner, :class => "form-control" %>
-      <%= errors_for @customer, :owner %>
+      <%= f.semantic_errors :owner %>
     </div>
   </div>
   <div class="form-group">
@@ -31,7 +31,7 @@
     <%= f.label :phone, :class => "col-sm-2 control-label" %>
     <div class="col-xs-4">
       <%= f.text_field :phone, :class => "form-control" %>
-      <%= errors_for @customer, :phone %>
+      <%= f.semantic_errors :phone %>
     </div>
   </div>
   <div class="form-group">
@@ -46,58 +46,24 @@
       <%= f.text_field :email, :class => "form-control" %>
     </div>
   </div>
-
   <div class="form-group">
     <%= f.label :vehicles, :class => "col-sm-2 control-label" %>
     <div class="col-xs-4">
-      <table class="table table-hover" >
-        <thead>
-          <tr>
-           <th><%= link_to 'id', '#'         %></th>
-            <th><%= link_to 'Marca', '#'     %></th>
-            <th><%= link_to 'Modelo', '#'    %></th>
-            <th><%= link_to 'Cilindrada','#' %></th>
-            <th><%= link_to 'Año', '#'       %></th>
-            <th><%= link_to 'Matricula', '#' %></th>
-            <th><%= link_to 'Color', '#'     %></th>
-            <th><%= link_to 'Nº Chasis', '#' %></th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-      <div class="option-links">
-        <%= link_to (image_tag 'new.png', :class => "small-icon", :title => "Nuevo"), "#", :class => "new_vehicle" %>
-        <%= link_to 'Nuevo Veículo', new_vehicle_path, :class => "new_vehicle" %>
-      </div>
+      <fieldset id="vehicles-list">
+        <ol>
+          <%= f.fields_for :vehicles do |vehicle| %>
+            <%= render 'vehicle_fields', f: vehicle %>
+          <% end %>
+        </ol>
+        <%= link_to_add_association 'agregar vehículo', f, :vehicles, 'data-association-insertion-node' => "#vehicles-list ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|vehicle| vehicle; vehicle } %>
+      </fieldset>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="button" class="btn btn-outline btn-danger">Cancelar</button>
+      <%= link_to "Cancelar", customers_path(), class: "btn btn-outline btn-danger" %>
       <%= f.submit "Guardar ", :class =>  "btn btn-outline btn-success" %>
     </div>
   </div>
-  <div id="new-vehicle" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">
-            <%= image_tag 'new.png', :class => "icon-title" %>
-            Nuevo Vehículo
-          </h4>
-        </div>
-        <%= f.fields_for :vehicles do |vehicle| %>
-          <div class="modal-body">
-            <%= render "vehicle_fields" %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-outline btn-success">Guardar</button>
-          </div>
-        <% end -%>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+
 <% end %>

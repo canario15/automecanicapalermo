@@ -1,0 +1,7 @@
+<%= f.fields_for :vehicles do |vehicle| %>
+            <%= render 'vehicle_fields', f: vehicles %>
+          <% end %>
+
+
+
+https://www.iconfinder.com/iconsets/simplicio

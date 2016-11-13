@@ -1,9 +1,9 @@
 es:
+
   time:
     formats:
       default: "%d %B %Y - %H:%M"
       long: "%y-%m-%d %H:%M"
-
   date:
     abbr_day_names:
     - dom
@@ -62,6 +62,7 @@ es:
     models:
       customer: "Cliente"
       vehicle: "Vehículo"
+      work_order: "Orden de Trabajo"
 
     errors:
       models:
@@ -72,6 +73,32 @@ es:
               blank: " no puede ser vacío."
             phone:
               blank: " no puede ser vacío."
+              taken: " pertenece a un cliente registrado."
+        vehicle:
+          attributes:
+            brand:
+              blank: " no puede ser vacío."
+            model:
+              blank: " no puede ser vacío."
+            plate:
+              blank: " no puede ser vacío."
+            color:
+              blank: " no puede ser vacío."
+            plate:
+              taken: " pertenece a un cliente registrado."
+              blank: " no puede ser vacío."
+        work_in:
+          attributes:
+            work:
+              blank: " no puede ser vacío."
+        user:
+          attributes:
+            name:
+              taken: " pertenece a un empleado registrado."
+              blank: " no puede ser vacío."
+            user_type:
+              blank: " no puede ser vacío."
+
     attributes:
       customer:
         owner: "Propietario"
@@ -89,3 +116,26 @@ es:
         plate: "Matrícula"
         color: "Color"
         chassis_number: "Nº Chasis"
+      work_order:
+        date_in: "Fecha Ingreso"
+        number: "Número"
+        km: "km"
+        fuel: "Combustible"
+        coments: "Comentarios"
+        user: "Emlpeado"
+        customer: "Cliente"
+        vehicles: "Vehículo"
+        work_ins: "Ingreso"
+        work_dones: "Trabajos realizados"
+        replacements: "Repuestos"
+        status: "Estado"
+      work_in:
+        work: "Trabajo"
+      work_done:
+        work: "Trabajo"
+      replacement:
+        name: "Nombre"
+        price: "Precio"
+      user:
+        name: "Nombre"
+        user_type: "Tipo"

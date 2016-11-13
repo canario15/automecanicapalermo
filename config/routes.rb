@@ -4,9 +4,16 @@ Rails.application.routes.draw do
 
   #CUSTOMERS
   resources :customers
-
+  match '/customers/:id/vehicles/:vehicle_id', controller: 'customers', action: 'delete_vehicle', as: 'delete_vehicle', via: :get
+  match '/customers/:id/vehicles', controller: 'customers', action: 'vehicles', as: 'customer_vehicles', via: :get
   #CUSTOMERS
   resources :vehicles
+  match 'vehicles/:id/owner', controller: 'vehicles', action: 'owner', as: 'owner_vehicle', via: :get
+
+  resources :work_orders
+  match '/work_orders/:id/budget', controller: 'work_orders', action: 'budget', as: 'budget', via: :get
+
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

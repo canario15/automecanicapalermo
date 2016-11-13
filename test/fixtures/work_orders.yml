@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_in: 2016-11-11
+  number: 1
+  customer_id: 
+  vehicle_id: 
+  km: MyString
+  fuel: MyString
+  coments: MyText
+  user_id: 
+
+two:
+  date_in: 2016-11-11
+  number: 1
+  customer_id: 
+  vehicle_id: 
+  km: MyString
+  fuel: MyString
+  coments: MyText
+  user_id: 

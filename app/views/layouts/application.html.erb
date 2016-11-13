@@ -9,6 +9,7 @@
 <body>
   <%= render partial: "/layouts/menu" %>
   <div id="page-wrapper">
+    <%= flash_notifications -%>
     <%= yield %>
   </div>
   <%= render partial: "/layouts/footer" %>

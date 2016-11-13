@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      <%= image_tag 'show.png', :class => "icon-title" %>
+      <%= @customer.owner %>
+    </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Propietario:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @customer.owner %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Nómbre Factura:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @customer.invoice_name %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">RUT:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @customer.rut %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Tel/Cel:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @customer.phone %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Dirección:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @customer.address %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Email:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @customer.email %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Vehículos:</h4>
+    </div>
+    <div class="col-md-8 show-info">
+      <table class="table table-hover" >
+        <thead>
+          <tr>
+            <th><%= link_to 'Marca', '#'     %></th>
+            <th><%= link_to 'Modelo', '#'    %></th>
+            <th><%= link_to 'Cilindrada','#' %></th>
+            <th><%= link_to 'Año', '#'       %></th>
+            <th><%= link_to 'Matricula', '#' %></th>
+            <th><%= link_to 'Color', '#'     %></th>
+            <th><%= link_to 'Nº Chasis', '#' %></th>
+            <th><%= link_to 'Activo', '#' %></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customer.vehicles.each do |vehicle|%>
+            <tr>
+              <td><%= vehicle.brand %></td>
+              <td><%= vehicle.model %></td>
+              <td><%= vehicle.displacement %></td>
+              <td><%= vehicle.year %></td>
+              <td><%= vehicle.plate %></td>
+              <td><%= vehicle.color %></td>
+              <td><%= vehicle.chassis_number %></td>
+              <td><%= vehicle.active %></td>
+              <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), vehicle_path(vehicle) %></td>
+              <td><%= link_to (image_tag 'edit.png', :class => "small-icon", :title => "Editar"), edit_vehicle_path(vehicle) %></td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row  row-links">
+  <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Editar"), edit_customer_path(@customer)%>
+  <%= link_to 'Editar', edit_customer_path(@customer) %> |
+  <%= link_to (image_tag 'back.png', :class => "medium-icon", :title => "Editar"), customers_path %>
+  <%= link_to 'Atrás', customers_path %>
+</div>
+<div class="row">
+</div>

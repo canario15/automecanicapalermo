@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-before_action :set_customer, only: [:show, :edit, :update, :destroy, :activate, :works]
+before_action :set_customer, only: [:show, :edit, :update, :destroy, :delete_vehicle ]
 
   # GET /customers
   # GET /customers.json
@@ -14,50 +14,28 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :activate, 
   # GET /customers/1
   # GET /customers/1.json
   def show
-    respond_to do |format|
-      if request.xhr?
-        format.html { render partial: 'customers/show', :layout => false}
-      else
-        format.html
-      end
-    end
   end
 
   # GET /customers/new
   def new
     @customer = Customer.new
-    respond_to do |format|
-      if request.xhr?
-        format.html { render partial: 'customers/new', :layout => false}
-      else
-        format.html
-      end
-    end
   end
 
   # GET /customers/1/edit
   def edit
-    respond_to do |format|
-      if request.xhr?
-        format.html { render partial: 'customers/edit', :layout => false}
-      else
-        format.html
-      end
-    end
   end
 
   # POST /customers
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
-
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to customers_url, notice: 'Cliente creado con éxito.' }
-        format.json { render json: { :status =>  'OK', :message => 'Cliente creado con éxito.', :customer => @customer.to_json  } }
+        format.html { redirect_to @customer, notice: 'Cliente creado con éxito.' }
+        format.json { render :show, status: :created, location: @customer }
       else
-        format.html { render action: 'new' }
-        format.json { render json: { :status => 'ERROR', :errors => @customer.errors.messages } }
+        format.html { render :new }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -68,10 +46,10 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :activate, 
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: 'El cliente se ha actualizado correctamente.' }
-        format.json { render json: {:status =>  'OK', :message => 'El cliente se ha actualizado correctamente.' } }
+        format.json { render :show, status: :ok, location: @customer }
       else
-        format.html { render action: 'edit' }
-        format.json { render json: { :status => 'ERROR', :errors => @customer.errors.messages } }
+        format.html { render :edit }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -86,6 +64,34 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :activate, 
     end
   end
 
+  def delete_vehicle
+    vehicle = @customer.vehicles.find(params[:vehicle_id])
+    vehicle.active = false
+    respond_to do |format|
+      if vehicle.save
+        format.html { redirect_to @customer, notice: 'Se ha eliminado correctamente el vehículo.' }
+        format.json { render :show, status: :ok, location: @customer }
+      else
+        format.html { render :edit }
+        format.json { render json: vehicle.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def vehicles
+    if params[:id] == "0"
+      vehicles = Vehicle.all
+    else
+      vehicles = Customer.find(params[:id]).vehicles
+    end
+    respond_to do |format|
+      if request.xhr?
+        format.json { render json: vehicles }
+      else
+        format.html
+      end
+    end
+  end
 
 
   private

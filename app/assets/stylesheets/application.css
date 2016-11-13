@@ -14,6 +14,12 @@
  *= require_self
  */
 
+.logo-menu {
+  margin-bottom: 19px;
+  margin-left: 14px;
+  margin-top: 10px;
+  width: 247px;
+}
 
 .small-icon {
   width: 17px;
@@ -21,6 +27,17 @@
 
 .medium-icon {
   width: 24px;
+}
+
+.show-info {
+  color: #999999;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.show-label {
+  float:right !important;
+  text-align: right;
 }
 
 .icon-title {
@@ -51,4 +68,35 @@
 }
 .error_explanation {
   color: #a94442;
+}
+
+.errors li {
+  color: #a94442;
+}
+.row-links {
+  font-size: 20px;
+  margin-bottom: 26px;
+  margin-top: 26px;
+  text-align: center;
+}
+
+.remove_fields{
+
+}
+
+#work_ins-list {
+  margin: 6px 0 0;
+}
+
+#work_dones-list{
+  margin: 6px 0 0;
+}
+
+#replacements-list {
+  margin: 6px 0 0;
+}
+
+.budget-ul {
+    color:red;
+    font-size: 18px;
 }

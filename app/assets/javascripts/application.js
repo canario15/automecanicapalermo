@@ -12,17 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //
 //= require jquery.min.js
 //= require bootstrap.min.js
 //= require jquery.dataTables.js
 //= require dataTables.responsive.js
 //= require dataTables.bootstrap.js
-//= require metisMenu.js
+//= require bootstrap-datetimepicker
+//= require bootstrap-datetimepicker.es
 //= require raphael.js
-
-//= require sb-admin-2.js
-
-//= require customers.js
 //= require cocoon
+//= require chosen.jquery.js
+//= require metisMenu.js
+//= require sb-admin-2.js
+//= require customers.js
+//= require work_orders.js
+//= require users.js

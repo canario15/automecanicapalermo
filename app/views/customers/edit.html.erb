@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      <%= image_tag 'edit.png', :class => "icon-title" %>
+      Editar Cliente
+    </h1>
+  </div>
+</div>
+
+<%= semantic_form_for(@customer, :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
+  <div class="form-group">
+    <%= f.label :owner, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.text_field :owner, :class => "form-control" %>
+      <%= errors_for @customer, :owner %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :invoice_name, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.text_field :invoice_name, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :rut, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.text_field :rut, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.text_field :phone, :class => "form-control" %>
+      <%= errors_for @customer, :phone %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.text_field :address, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.text_field :email, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :vehicles, :class => "col-sm-2 control-label" %>
+    <div class="col-md-8 show-info">
+      <table class="table table-hover" >
+        <thead>
+          <tr>
+            <th><%= link_to 'Marca', '#'     %></th>
+            <th><%= link_to 'Modelo', '#'    %></th>
+            <th><%= link_to 'Cilindrada','#' %></th>
+            <th><%= link_to 'Año', '#'       %></th>
+            <th><%= link_to 'Matricula', '#' %></th>
+            <th><%= link_to 'Color', '#'     %></th>
+            <th><%= link_to 'Nº Chasis', '#' %></th>
+            <th><%= link_to 'Activo', '#' %></th>
+            <th colspan="3"> <%= link_to 'Acciones', '#' %> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customer.vehicles.each do |vehicle|%>
+            <tr>
+              <td><%= vehicle.brand %></td>
+              <td><%= vehicle.model %></td>
+              <td><%= vehicle.displacement %></td>
+              <td><%= vehicle.year %></td>
+              <td><%= vehicle.plate %></td>
+              <td><%= vehicle.color %></td>
+              <td><%= vehicle.chassis_number %></td>
+              <td><%= vehicle.active %></td>
+              <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), vehicle_path(vehicle) %></td>
+              <td><%= link_to (image_tag 'edit.png', :class => "small-icon", :title => "Editar"), edit_vehicle_path(vehicle) %></td>
+              <% if vehicle.active? %>
+                <td><%= link_to (image_tag 'delete.png', :class => "small-icon", :title => "Eliminar"), delete_vehicle_path(id: @customer.id, vehicle_id: vehicle.id ), data: { confirm: '¿Esta seguro que quiere eliminar el vehículo?'} %></td>
+              <% end -%>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+      <fieldset id="vehicles-list">
+        <ol>
+        </ol>
+        <%= link_to_add_association 'agregar vehículo', f, :vehicles, 'data-association-insertion-node' => "#vehicles-list ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|vehicle| vehicle; vehicle } %>
+      </fieldset>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= link_to 'Cancelar', customers_path, :class => "btn btn-outline btn-danger" %>
+      <%= f.submit "Guardar ", :class =>  "btn btn-outline btn-success" %>
+    </div>
+  </div>
+
+<% end %>

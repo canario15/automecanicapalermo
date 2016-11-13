@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      <%= image_tag 'new.png', :class => "icon-title" %>
+      Nueva Orden de Trabajo
+    </h1>
+  </div>
+</div>
+
+<%= semantic_form_for(@work_order, :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
+  <div class="form-group">
+    <%= f.label :date_in, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.text_field :date_in, :class => "form-control", :value => (I18n.l Time.now) %>
+      <%= f.semantic_errors :date_in %>
+    </div>
+    <%= f.label :number, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.text_field :number, :class => "form-control", :readonly => true, :value => @number  %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :customer, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= select("work_order", "customer_id", @customers.collect {|c| [ "#{c.owner} ", c.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+    </div>
+    <%= f.label :vehicle, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= select("work_order", "vehicle_id", @vehicles.collect {|v| [ "#{v.brand} #{v.model} - #{v.plate} ", v.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :user, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= select("work_order", "user_id", @users.collect {|u| [ "#{u.name}", u.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+      <%= f.semantic_errors :user_id %>
+    </div>
+    <%= f.label :km, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.text_field :km, :class => "form-control" %>
+      <%= f.semantic_errors :km %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-xs-4"></div>
+    <%= f.label :fuel, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= select("work_order", "fuel", FUEL_LEVELS, :prompt => "Seleccione..", :class => "form-control") %>
+      <%= f.semantic_errors :fuel %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :work_ins, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <fieldset id="work_ins-list">
+        <%= link_to_add_association 'agregar ingreso', f, :work_ins, 'data-association-insertion-node' => "#work_ins-list", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|work_in| work_in; work_in } %>
+      </fieldset>
+    </div>
+    <%= f.label :work_dones, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <fieldset id="work_dones-list">
+        <%= link_to_add_association 'agregar trabajo', f, :work_dones, 'data-association-insertion-node' => "#work_dones-list", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|work_done| work_done; work_done } %>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :replacements, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-10">
+      <fieldset id="replacements-list">
+        <%= link_to_add_association 'agregar repuesto', f, :replacements, 'data-association-insertion-node' => "#replacements-list", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|replacement| replacement; replacement } %>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :coments, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-10">
+      <%= f.text_area :coments, :class => "form-control" %>
+      <%= f.semantic_errors :coments %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= link_to "Cancelar", work_orders_path(), class: "btn btn-outline btn-danger" %>
+      <%= f.submit "Guardar ", :class =>  "btn btn-outline btn-success" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      <%= image_tag 'car.png', :class => "icon-title" %>
+      Vehículos
+    </h1>
+  </div>
+</div>
+
+<table id="vehicles_table" class="table table-hover" data-source="<%= customers_url(format: "json")%>" >
+  <thead>
+    <tr>
+      <th><%= link_to 'Id', '#'          %></th>
+      <th><%= link_to 'Propietario', '#' %></th>
+      <th><%= link_to 'Marca', '#'       %></th>
+      <th><%= link_to 'Modelo', '#'      %></th>
+      <th><%= link_to 'Cilindrada','#'   %></th>
+      <th><%= link_to 'Año', '#'         %></th>
+      <th><%= link_to 'Matricula', '#'   %></th>
+      <th><%= link_to 'Color', '#'       %></th>
+      <th><%= link_to 'Nº Chasis', '#'   %></th>
+      <th><%= link_to 'Activo', '#'   %></th>
+      <th colspan="3"><%= link_to 'Acciones', '#' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vehicles.each do |vehicle|%>
+      <tr>
+        <td><%= vehicle.id %></td>
+        <td><%= vehicle.customer %></td>
+        <td><%= vehicle.brand %></td>
+        <td><%= vehicle.model %></td>
+        <td><%= vehicle.displacement %></td>
+        <td><%= vehicle.year %></td>
+        <td><%= vehicle.plate %></td>
+        <td><%= vehicle.color %></td>
+        <td><%= vehicle.chassis_number %></td>
+        <td><%= vehicle.active %></td>
+        <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), vehicle_path(vehicle) %></td>
+        <td><%= link_to (image_tag 'edit.png', :class => "small-icon", :title => "Editar"), edit_vehicle_path(vehicle) %></td>
+        <% if vehicle.active? %>
+          <td><%= link_to (image_tag 'delete.png', :class => "small-icon", :title => "Eliminar"), vehicle, method: :delete, data: { confirm: '¿Esta seguro que quiere eliminar el vehículo?'} %></td>
+        <% end -%>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
