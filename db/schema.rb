@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111191620) do
+ActiveRecord::Schema.define(version: 20161114160436) do
 
   create_table "budgets", force: :cascade do |t|
     t.integer  "work_order_id"
     t.integer  "total"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "subtotal_rep"
+    t.integer  "subtotal_work_does"
   end
 
   add_index "budgets", ["work_order_id"], name: "index_budgets_on_work_order_id"
@@ -63,6 +65,7 @@ ActiveRecord::Schema.define(version: 20161111191620) do
     t.string   "work"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "price"
   end
 
   add_index "work_dones", ["work_order_id"], name: "index_work_dones_on_work_order_id"

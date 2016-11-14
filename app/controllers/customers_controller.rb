@@ -102,6 +102,6 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :delete_veh
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:owner, :invoice_name, :rut, :phone, :address, :email, vehicles_attributes: [:brand, :model, :displacement, :year, :plate, :color, :chassis_number, :_destroy   ] )
+      params.require(:customer).permit(:owner, :invoice_name, :rut, :phone, :address, :email, vehicles_attributes: [:id, :brand, :model, :displacement, :year, :plate, :color, :chassis_number, :_destroy] )
     end
 end

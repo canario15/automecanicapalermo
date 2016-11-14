@@ -29,8 +29,11 @@ gem 'jquery-datatables-rails'
 gem 'will_paginate'
 
 gem "cocoon"
+gem 'simple_form', '~> 3.1.0'
 
-gem 'formtastic', '~> 3.0'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

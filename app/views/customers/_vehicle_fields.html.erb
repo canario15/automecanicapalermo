@@ -1,51 +1,71 @@
-<div class="form-group">
-  <%= f.label :brand, :class => "col-sm-3 control-label" %>
-  <div class="col-xs-8">
-    <%= f.text_field :brand, :class => "form-control" %>
-    <%= f.semantic_errors :brand %>
+<div class="nested-fields nest-veh">
+  <div class="form-group <%= "has-error" if @customer.errors[:"vehicles.brand"].any? %>">
+    <%= f.label :brand, :class => "col-sm-3 control-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :brand, :class => "form-control" %>
+      <% @customer.errors[:"vehicles.brand"].each do |message| %>
+        <span class="span-err">
+          <i class="fa fa-exclamation-triangle"></i>
+          <%=  message %>
+        </span>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="form-group">
-  <%= f.label :model, :class => "col-sm-3 control-label" %>
-  <div class="col-xs-8">
-    <%= f.text_field :model, :class => "form-control" %>
-    <%= f.semantic_errors :model %>
+  <div class="form-group <%= "has-error" if @customer.errors[:"vehicles.model"].any? %>">
+    <%= f.label :model, :class => "col-sm-3 control-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :model, :class => "form-control" %>
+      <% @customer.errors[:"vehicles.model"].each do |message| %>
+        <span class="span-err">
+          <i class="fa fa-exclamation-triangle"></i>
+          <%=  message %>
+        </span>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="form-group">
-  <%= f.label :displacement, :class => "col-sm-3 control-label" %>
-  <div class="col-xs-8">
-    <%= f.text_field :displacement, :class => "form-control" %>
-    <%= f.semantic_errors :displacement %>
+  <div class="form-group">
+    <%= f.label :displacement, :class => "col-sm-3 control-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :displacement, :class => "form-control" %>
+    </div>
   </div>
-</div>
-<div class="form-group">
-  <%= f.label :year, :class => "col-sm-3 control-label" %>
-  <div class="col-xs-8">
-    <%= f.text_field :year, :class => "form-control" %>
-    <%= f.semantic_errors :year %>
+  <div class="form-group">
+    <%= f.label :year, :class => "col-sm-3 control-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :year, :class => "form-control" %>
+    </div>
   </div>
-</div>
-<div class="form-group">
-  <%= f.label :plate, :class => "col-sm-3 control-label" %>
-  <div class="col-xs-8">
-    <%= f.text_field :plate, :class => "form-control" %>
-    <%= f.semantic_errors :plate %>
+  <div class="form-group <%= "has-error" if @customer.errors[:"vehicles.plate"].any? %>">
+    <%= f.label :plate, :class => "col-sm-3 control-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :plate, :class => "form-control" %>
+      <% @customer.errors[:"vehicles.plate"].each do |message| %>
+        <span class="span-err">
+          <i class="fa fa-exclamation-triangle"></i>
+          <%=  message %>
+        </span>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="form-group">
-  <%= f.label :color, :class => "col-sm-3 control-label" %>
-  <div class="col-xs-8">
-    <%= f.text_field :color, :class => "form-control" %>
-    <%= f.semantic_errors :color %>
+  <div class="form-group <%= "has-error" if @customer.errors[:"vehicles.color"].any? %>">
+    <%= f.label :color, :class => "col-sm-3 control-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :color, :class => "form-control" %>
+      <% @customer.errors[:"vehicles.color"].each do |message| %>
+        <span class="span-err">
+          <i class="fa fa-exclamation-triangle"></i>
+          <%=  message %>
+        </span>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="form-group">
-  <%= f.label :chassis_number, :class => "col-sm-3 control-label" %>
-  <div class="col-xs-8">
-    <%= f.text_field :chassis_number, :class => "form-control" %>
-    <%= f.semantic_errors :chassis_number %>
+  <div class="form-group">
+    <%= f.label :chassis_number, :class => "col-sm-3 control-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :chassis_number, :class => "form-control" %>
+    </div>
   </div>
+  <%= link_to_remove_association f, data: {:confirm => 'seguro quiere borrar?'}, class: '' do %>
+    borrar
+  <% end -%>
 </div>
-<%= link_to_remove_association "borrar", f %>
-

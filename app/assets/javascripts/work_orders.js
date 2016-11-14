@@ -46,5 +46,29 @@ $(document).ready(function () {
     });
   });
 
+  $('.work-dones-field').blur(function () {
+    var sum = 0;
+    $('.work-dones-field').each(function() {
+        sum += Number($(this).val());
+    });
+    $('.subtot-wor-do').val(sum);
+  });
+
+  $('.rep-field').blur(function () {
+    var sum = 0;
+    $('.rep-field').each(function() {
+        sum += Number($(this).val());
+    });
+    $('.sub-tot-rep').val(sum);
+  });
+
+  $('.work-dones-field, .rep-field').blur(function () {
+    var sum = 0;
+    $('.sub-tot').each(function() {
+        sum += Number($(this).val());
+    });
+    $('.total-budget').val(sum);
+  });
+
 });
 

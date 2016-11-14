@@ -98,6 +98,26 @@ es:
               blank: " no puede ser vacío."
             user_type:
               blank: " no puede ser vacío."
+        work_order:
+          attributes:
+            date_in:
+              blank: " no puede ser vacío."
+            km:
+              blank: " no puede ser vacío."
+            fuel:
+              blank: " no puede ser vacío."
+            coments:
+              blank: " no puede ser vacío."
+            user:
+              blank: " no puede ser vacío."
+            customer:
+              blank: " no puede ser vacío."
+            vehicle:
+              blank: " no puede ser vacío."
+            work_ins:
+              blank: " no puede ser vacío."
+
+
 
     attributes:
       customer:
@@ -120,7 +140,7 @@ es:
         date_in: "Fecha Ingreso"
         number: "Número"
         km: "km"
-        fuel: "Combustible"
+        fuel: "Comb."
         coments: "Comentarios"
         user: "Emlpeado"
         customer: "Cliente"

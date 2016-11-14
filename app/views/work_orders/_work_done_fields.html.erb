@@ -1,7 +1,10 @@
-<div class="form-group">
-  <div class="col-xs-11">
-    <%= f.text_field :work, :class => "form-control" %>
-    <%= f.semantic_errors :work %>
-    <%= link_to_remove_association "borrar", f %>
+<div class="nested-fields">
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= f.text_field :work, :class => "form-control frm-con-nest" %>
+      <%= link_to_remove_association f, data: {:confirm => 'seguro quiere borrar?'}, class: 'btn-rm' do %>
+        <i class="fa fa-times fa-2"></i>
+      <% end -%>
+    </div>
   </div>
 </div>

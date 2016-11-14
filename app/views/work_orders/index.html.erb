@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-12">
     <h1 class="page-header">
-      <%= image_tag 'car.png', :class => "icon-title" %>
+      <%= image_tag 'folder.png', :class => "icon-title" %>
       Ordenes de Trabajo
     </h1>
   </div>
@@ -21,7 +21,7 @@
   <tbody>
     <% @work_orders.each do |work_order|%>
       <tr>
-        <td><%= work_order.number %></td>
+        <td><%= work_order.id %></td>
         <td><%= work_order.date_in %></td>
         <td><%= work_order.customer %></td>
         <td><%= work_order.vehicle %></td>
@@ -33,3 +33,9 @@
     <% end -%>
   </tbody>
 </table>
+<div class="option-links">
+  <%= link_to (image_tag 'new.png', :class => "medium-icon", :title => "Nuevo"), new_work_order_path, :class => "new_order" %>
+  <%= link_to 'Nueva Orden', new_work_order_path, :class => "new_customer" %>
+</div>
+<div class="row">
+</div>

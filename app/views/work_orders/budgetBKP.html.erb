@@ -169,16 +169,11 @@
         </div>
 
         <div class="row  row-links-work">
-          <%= link_to work_order_path(@work_order) do %>
-            <%= image_tag 'back.png', :class => "medium-icon", :title => "Editar" %>
-            Atrás
-          <% end -%> |
+          <%= link_to (image_tag 'back.png', :class => "medium-icon", :title => "Editar"), work_orders_path %>
+          <%= link_to 'Atrás', work_order_path(@work_order) %>   |
           <%= image_tag 'new.png', :class => "medium-icon", :title => "Guardar" %>
           <%= f.submit "Guardar ", :class =>  "btn-save-bud" %> |
-          <%= link_to "/work_orders/#{@work_order.id}/budget.pdf", target: "_blank" do %>
-            <%= image_tag 'print.png', :class => "medium-icon", :title => "Editar"%>
-            Imprimir
-          <% end -%>
+
         </div>
       </div>
     <% end -%>

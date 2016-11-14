@@ -2,162 +2,158 @@
   <div class="col-lg-12">
     <h1 class="page-header">
       <%= image_tag 'show.png', :class => "icon-title" %>
-      <%= @work_order.number %> - <%= @work_order.customer %> -<%= @work_order.vehicle %>
+      Oorden de Trabajo
     </h1>
   </div>
 </div>
-<div class="row">
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Número:</h4>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= @work_order.id %> - <%= @work_order.customer %> - <%= @work_order.vehicle %>
+  </div>
+  <div class="panel-body">
+    <div class="row row-top">
+      <div class="col-xs-4">
+        <div class="row">
+          <div class="col-md-5">
+            <h4 class="show-label">Número:</h4>
+          </div>
+          <div class="col-md-7 show-info">
+            <h4><%= @work_order.id %></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <h4 class="show-label">Fecha Ingreso:</h4>
+          </div>
+          <div class="col-md-7 show-info">
+            <h4><%= @work_order.date_in %></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <h4 class="show-label">Empleado:</h4>
+          </div>
+          <div class="col-md-7 show-info">
+            <h4><%= @work_order.user %></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <h4 class="show-label">Cliente:</h4>
+          </div>
+          <div class="col-md-7 show-info">
+            <h4><%= @work_order.customer %></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <h4 class="show-label">Tel/Cel:</h4>
+          </div>
+          <div class="col-md-7 show-info">
+            <h4><%= @work_order.customer.phone %></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="row">
+          <div class="col-md-5">
+            <h4 class="show-label">Vehículo:</h4>
+          </div>
+          <div class="col-md-6 show-info">
+            <h4><%= @work_order.vehicle %></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <h4 class="show-label">Kilómetros:</h4>
+          </div>
+          <div class="col-md-6 show-info">
+            <h4><%= @work_order.km %></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <h4 class="show-label">Combustible:</h4>
+          </div>
+          <div class="col-md-6 show-info">
+            <h4><%= @work_order.fuel %></h4>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-3 show-info">
-      <h4><%= @work_order.number %></h4>
+
+    <div class="row row-top">
+      <div class="my-col-tab">
+        <div class="row">
+          <h4 class="table-lab">Ingresos</h4>
+        </div>
+        <div class="row">
+          <table class="table table-hover" >
+            <tbody>
+              <% @work_order.work_ins.each do |work_in|%>
+                <tr>
+                  <td><%= work_in.work %></td>
+                </tr>
+              <% end -%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="my-col-tab">
+        <div class="row">
+          <h4 class="table-lab">Trabajos Realizados</h4>
+        </div>
+        <div class="row">
+          <table class="table table-hover" >
+            <tbody>
+              <% @work_order.work_dones.each do |work_done|%>
+                <tr>
+                  <td><%= work_done.work %></td>
+                </tr>
+              <% end -%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="my-col-tab">
+        <div class="row">
+          <h4 class="table-lab">Repuestos</h4>
+        </div>
+        <div class="row">
+          <table class="table table-hover" >
+            <tbody>
+              <% @work_order.replacements.each do |replacement|%>
+                <tr>
+                  <td><%= replacement.name %></td>
+                </tr>
+              <% end -%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row row-top">
+      <div class="col-xs-11">
+        <div class="row">
+          <div class="col-md-2">
+            <h4 class="show-label">Comentarios:</h4>
+          </div>
+          <div class="col-md-9 show-info">
+            <h4><%= @work_order.coments %></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row  row-links-work">
+      <%= link_to (image_tag 'back.png', :class => "medium-icon", :title => "Editar"), work_orders_path %>
+      <%= link_to 'Atrás', work_orders_path %> |
+      <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Editar"), edit_work_order_path(@work_order)%>
+      <%= link_to 'Editar', edit_work_order_path(@work_order) %> |
+      <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Presupuesto"), budget_path(@work_order)%>
+      <%= link_to 'Presupuesto', budget_path(@work_order) %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Estado:</h4>
-    </div>
-    <div class="col-md-3 show-info">
-      <h4><%= @work_order.status %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Fecha Ingreso:</h4>
-    </div>
-    <div class="col-md-3 show-info">
-      <h4><%= @work_order.date_in %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Cliente:</h4>
-    </div>
-    <div class="col-md-3 show-info">
-      <h4><%= @work_order.customer %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Tel/Cel:</h4>
-    </div>
-    <div class="col-md-3 show-info">
-      <h4><%= @work_order.customer.phone %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Vehículo:</h4>
-    </div>
-    <div class="col-md-3 show-info">
-      <h4><%= @work_order.vehicle %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Empleado:</h4>
-    </div>
-    <div class="col-md-3 show-info">
-      <h4><%= @work_order.user %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Kilómetros:</h4>
-    </div>
-    <div class="col-md-3 show-info">
-      <h4><%= @work_order.km %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Combustible:</h4>
-    </div>
-    <div class="col-md-3 show-info">
-      <h4><%= @work_order.fuel %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Ingreso:</h4>
-    </div>
-    <div class="col-md-8 show-info">
-      <table class="table table-hover" >
-        <thead>
-          <tr>
-            <th><%= link_to 'A realizar', '#'     %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @work_order.work_ins.each do |work_in|%>
-            <tr>
-              <td><%= work_in.work %></td>
-            </tr>
-          <% end -%>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Trabajos Realizados:</h4>
-    </div>
-    <div class="col-md-8 show-info">
-      <table class="table table-hover" >
-        <thead>
-          <tr>
-            <th><%= link_to 'Tarea', '#'     %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @work_order.work_dones.each do |work_done|%>
-            <tr>
-              <td><%= work_done.work %></td>
-            </tr>
-          <% end -%>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Repuestos:</h4>
-    </div>
-    <div class="col-md-8 show-info">
-      <table class="table table-hover" >
-        <thead>
-          <tr>
-            <th><%= link_to 'Pieza', '#'     %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @work_order.replacements.each do |replacement|%>
-            <tr>
-              <td><%= replacement.name %></td>
-            </tr>
-          <% end -%>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <h4 class="show-label">Comentarios:</h4>
-    </div>
-    <div class="col-md-3 show-info">
-      <h4><%= @work_order.coments %></h4>
-    </div>
-  </div>
-</div>
-<div class="row  row-links">
-  <%= link_to (image_tag 'back.png', :class => "medium-icon", :title => "Editar"), work_orders_path %>
-  <%= link_to 'Atrás', work_orders_path %> |
-  <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Editar"), edit_work_order_path(@work_order)%>
-  <%= link_to 'Editar', edit_work_order_path(@work_order) %> |
-  <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Presupuesto"), budget_path(@work_order)%>
-  <%= link_to 'Presupuesto', budget_path(@work_order) %>
 </div>
 <div class="row">
 </div>

@@ -7,12 +7,17 @@
   </div>
 </div>
 
-<%= semantic_form_for(@customer, :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
-  <div class="form-group">
+<%= simple_form_for(@customer, :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
+  <div class="form-group <%= "has-error" if @customer.errors[:owner].any? %>">
     <%= f.label :owner, :class => "col-sm-2 control-label" %>
     <div class="col-xs-4">
       <%= f.text_field :owner, :class => "form-control" %>
-      <%= f.semantic_errors :owner %>
+      <% @customer.errors[:owner].each do |message| %>
+        <span class="span-err">
+          <i class="fa fa-exclamation-triangle"></i>
+          <%=  message %>
+        </span>
+      <% end %>
     </div>
   </div>
   <div class="form-group">
@@ -27,11 +32,16 @@
       <%= f.text_field :rut, :class => "form-control" %>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group <%= "has-error" if @customer.errors[:phone].any? %>">
     <%= f.label :phone, :class => "col-sm-2 control-label" %>
     <div class="col-xs-4">
       <%= f.text_field :phone, :class => "form-control" %>
-      <%= f.semantic_errors :phone %>
+      <% @customer.errors[:phone].each do |message| %>
+        <span class="span-err">
+          <i class="fa fa-exclamation-triangle"></i>
+          <%=  message %>
+        </span>
+      <% end %>
     </div>
   </div>
   <div class="form-group">
@@ -49,14 +59,14 @@
   <div class="form-group">
     <%= f.label :vehicles, :class => "col-sm-2 control-label" %>
     <div class="col-xs-4">
-      <fieldset id="vehicles-list">
-        <ol>
-          <%= f.fields_for :vehicles do |vehicle| %>
-            <%= render 'vehicle_fields', f: vehicle %>
-          <% end %>
-        </ol>
-        <%= link_to_add_association 'agregar vehículo', f, :vehicles, 'data-association-insertion-node' => "#vehicles-list ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|vehicle| vehicle; vehicle } %>
-      </fieldset>
+      <div class="col-xs-11 no-padding">
+        <%= f.simple_fields_for :vehicles do |vehicle| %>
+          <%= render 'vehicle_fields', :f => vehicle %>
+        <% end %>
+        <%= link_to_add_association f, :vehicles, data: {}, class: '' do %>
+          Agregar Vehículo
+        <% end -%>
+      </div>
     </div>
   </div>
   <div class="form-group">
@@ -65,5 +75,6 @@
       <%= f.submit "Guardar ", :class =>  "btn btn-outline btn-success" %>
     </div>
   </div>
-
 <% end %>
+
+
