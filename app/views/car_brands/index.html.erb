@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      <%= image_tag 'car.png', :class => "icon-title" %>
+      Marcas de Vehículos
+    </h1>
+  </div>
+</div>
+
+<table id="car_brands_table" class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= link_to 'Id', '#'      %></th>
+      <th><%= link_to 'Nombre', '#' %></th>
+      <th colspan="2"><%= link_to 'Acciones', '#' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @car_brands.each do |car_brand|%>
+      <tr>
+        <td><%= car_brand.id %></td>
+        <td><%= car_brand.name %></td>
+        <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), car_brand_path(car_brand) %></td>
+        <td><%= link_to (image_tag 'edit.png', :class => "small-icon", :title => "Editar"), edit_car_brand_path(car_brand) %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+<div class="option-links">
+  <%= link_to new_car_brand_path do %>
+    <%= image_tag 'new.png', :class => "medium-icon", :title => "Nuevo" %>
+    Nueva Marca
+  <% end -%>
+</div>
+<div class="row">
+</div>

@@ -12,8 +12,10 @@ Rails.application.routes.draw do
 
   resources :work_orders
   match '/work_orders/:id/budget', controller: 'work_orders', action: 'budget', as: 'budget', via: :get
+  match '/work_orders/:id/finalize', controller: 'work_orders', action: 'finalize', as: 'work_order_finalize', via: :get
 
   resources :users
+  resources :car_brands
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

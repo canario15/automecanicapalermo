@@ -1,7 +1,11 @@
 $(document).ready(function () {
 
-  $('#customers_table').dataTable({
-    "aoColumnDefs": [{ "bSortable": false, "aTargets": [ 7,8 ] }],
+  $("#vehicle_car_brand_id").chosen({
+    width: "100%"
+  });
+
+  $('#vehicles_table').dataTable({
+    "aoColumnDefs": [{ "bSortable": false, "aTargets": [ 9,10 ] }],
     "bLengthChange": false,
     "bProcessing": true,
     "fnInitComplete": function(oSettings, json) {
@@ -24,9 +28,8 @@ $(document).ready(function () {
                                    "sPrevious": "Anterior",
                                    "sNext":     "Siguiente",
                                    "sLast":     "Último" }
-                  },
+                  }
   });
-
 
 });
 

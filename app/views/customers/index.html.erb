@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<table id="customers_table" class="table table-hover" data-source="<%= customers_url(format: "json")%>" >
+<table id="customers_table" class="table table-hover" >
   <thead>
     <tr>
       <th><%= link_to 'id', '#'           %></th>
@@ -17,7 +17,8 @@
       <th><%= link_to 'Tel/Cel', '#'      %></th>
       <th><%= link_to 'Dirección', '#'    %></th>
       <th><%= link_to 'Email', '#'        %></th>
-      <th colspan="3"><%= link_to 'Acciones', '#' %></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -32,7 +33,6 @@
         <td><%= customer.email %></td>
         <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), customer_path(customer) %></td>
         <td><%= link_to (image_tag 'edit.png', :class => "small-icon", :title => "Editar"), edit_customer_path(customer) %></td>
-        <td><%= link_to (image_tag 'delete.png', :class => "small-icon", :title => "Eliminar"), customer, method: :delete, data: { confirm: '¿Esta seguro que quiere eliminar el cliente?'} %></td>
       </tr>
     <% end -%>
   </tbody>

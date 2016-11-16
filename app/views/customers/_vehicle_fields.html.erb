@@ -1,9 +1,9 @@
 <div class="nested-fields nest-veh">
-  <div class="form-group <%= "has-error" if @customer.errors[:"vehicles.brand"].any? %>">
-    <%= f.label :brand, :class => "col-sm-3 control-label" %>
+  <div class="form-group <%= "has-error" if @customer.errors[:"vehicles.car_brand"].any? %>">
+    <%= f.label :car_brand, :class => "col-sm-3 control-label" %>
     <div class="col-xs-9">
-      <%= f.text_field :brand, :class => "form-control" %>
-      <% @customer.errors[:"vehicles.brand"].each do |message| %>
+      <%= f.collection_select(:car_brand_id, @car_brands, :id, :name, {:include_blank => 'Seleccione..'}, {:class => 'form-control collection-brand'} ) %>
+      <% @customer.errors[:"vehicles.car_brand"].each do |message| %>
         <span class="span-err">
           <i class="fa fa-exclamation-triangle"></i>
           <%=  message %>
@@ -69,3 +69,10 @@
     borrar
   <% end -%>
 </div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $(".collection-brand").chosen({
+     width: "100%"
+    });
+  });
+</script>

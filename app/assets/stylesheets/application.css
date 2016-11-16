@@ -83,13 +83,13 @@
 .btn-rm {
   float: left;
   font-size: 22px;
-  margin-left: 15px;
+  margin-left: 5px;
   margin-top: 2px;
 }
 
 .frm-con-nest {
   float: left;
-  width: 89%;
+  width: 90%;
 }
 
 .nested-fields-list {
@@ -124,7 +124,7 @@
   padding: 11px;
 }
 
-.nest-veh a {
+.rm-vh-btn {
   font-size: 22px;
   margin-bottom: 9px;
   margin-left: 15px;
@@ -205,4 +205,12 @@
 .btn-save-bud:hover{
   color: #23527c;
   text-decoration: underline;
+}
+
+.nest-form-group {
+  margin-bottom: 12px;
+}
+
+.option-links {
+  text-align: center;
 }

@@ -2,7 +2,7 @@
   <div class="col-lg-12">
     <h1 class="page-header">
       <%= image_tag 'show.png', :class => "icon-title" %>
-      <%= @vehicle.brand %> <%= @vehicle.model %>
+      <%= @vehicle.car_brand %> <%= @vehicle.model %>
     </h1>
   </div>
 </div>
@@ -20,7 +20,7 @@
       <h4 class="show-label">Marca:</h4>
     </div>
     <div class="col-md-2 show-info">
-      <h4><%= @vehicle.brand %></h4>
+      <h4><%= @vehicle.car_brand %></h4>
     </div>
   </div>
   <div class="row">
@@ -89,7 +89,7 @@
         <tbody>
           <% @vehicle.work_orders.each do |work_order|%>
             <tr>
-              <td><%= work_order.number %></td>
+              <td><%= work_order.id %></td>
               <td><%= work_order.date_in %></td>
               <td><%= work_order.customer %></td>
               <td><%= work_order.status %></td>

@@ -5,10 +5,6 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :delete_veh
   # GET /customers.json
   def index
     @customers = Customer.all
-    respond_to do |format|
-      format.html
-      format.json { render json: CustomersDatatable.new(view_context) }
-    end
   end
 
   # GET /customers/1
@@ -19,10 +15,12 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :delete_veh
   # GET /customers/new
   def new
     @customer = Customer.new
+    @car_brands = CarBrand.all
   end
 
   # GET /customers/1/edit
   def edit
+    @car_brands = CarBrand.all
   end
 
   # POST /customers
@@ -43,6 +41,7 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :delete_veh
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
+    @car_brands = CarBrand.all
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: 'El cliente se ha actualizado correctamente.' }
@@ -80,13 +79,13 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :delete_veh
 
   def vehicles
     if params[:id] == "0"
-      vehicles = Vehicle.all
+      @vehicles = Vehicle.all
     else
-      vehicles = Customer.find(params[:id]).vehicles
+      @vehicles = Customer.find(params[:id]).vehicles
     end
     respond_to do |format|
       if request.xhr?
-        format.json { render json: vehicles }
+        format.html { render partial: 'customers/vehicles', :layout => false}
       else
         format.html
       end
@@ -102,6 +101,6 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :delete_veh
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:owner, :invoice_name, :rut, :phone, :address, :email, vehicles_attributes: [:id, :brand, :model, :displacement, :year, :plate, :color, :chassis_number, :_destroy] )
+      params.require(:customer).permit(:owner, :invoice_name, :rut, :phone, :address, :email, vehicles_attributes: [:id, :car_brand_id, :model, :displacement, :year, :plate, :color, :chassis_number, :_destroy] )
     end
 end

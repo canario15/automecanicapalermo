@@ -7,10 +7,15 @@ $(document).ready(function () {
     width: "100%"
   });
 
-  $("#work_order_user_id").chosen({
+  $("#work_order_received_by_id").chosen({
     width: "100%"
   });
-
+  $("#work_order_worked_by_id").chosen({
+    width: "100%"
+  });
+  $("#work_order_delivered_by_id").chosen({
+    width: "100%"
+  });
 
   $("#work_order_fuel").chosen({
     width: "100%"
@@ -24,18 +29,47 @@ $(document).ready(function () {
     format: "dd MM yyyy - hh:ii"
   });
 
+  $('#work_order_table').dataTable({
+    "aoColumnDefs": [{ "bSortable": false, "aTargets": [ 8,9 ] }],
+    "bLengthChange": false,
+    "bProcessing": true,
+    "fnInitComplete": function(oSettings, json) {
+      var search_input = (this).closest('.dataTables_wrapper').find('div[id$=_filter] input');
+      search_input.attr('placeholder', 'Buscar');
+      search_input.addClass('form-control input-small');
+      search_input.css('width', '250px');
+    },
+    "oLanguage": {  "sProcessing": "Procesando...",
+                    "sLoadingRecords": "Cargando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sInfo": "Mostrando desde _START_ hasta _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "No existen registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ líneas)",
+                    "sInfoPostFix": "",
+                    "sSearch": "",
+                    "sUrl": "",
+                    "oPaginate": { "sFirst":    "Primero",
+                                   "sPrevious": "Anterior",
+                                   "sNext":     "Siguiente",
+                                   "sLast":     "Último" }
+                  },
+  });
+
+
+
+
   $("#work_order_customer_id").chosen().change( function () {
     var id = $(this).val();
     if(id == "" ) {
       id = 0;
     }
     $.get('/customers/' + id + '/vehicles', function (data) {
-      var select_vehicles = $("#work_order_vehicle_id");
-      select_vehicles.empty();
-      $.each(data, function (idx, obj) {
-        select_vehicles.append('<option value="' + obj.id + '">' + obj.brand + ' ' + obj.model + ' - ' + obj.plate + '  </option>');
-      });
-      select_vehicles.trigger("chosen:updated");
+      var select_vehicles = $(".collect-vehi select");
+      $(".collect-vehi select").remove();
+      $("#work_order_vehicle_id_chosen").remove();
+      $(".collect-vehi").append(data);
+      $(".collect-vehi select").chosen({ width: "100%" });;
     });
   });
 
@@ -68,6 +102,17 @@ $(document).ready(function () {
         sum += Number($(this).val());
     });
     $('.total-budget').val(sum);
+  });
+
+  $('.go-budget').click(function (e) {
+    e.preventDefault();
+    var rowCount = $('#work-done-table tr').length;
+    if (rowCount < 1 ){
+      alert("Ingrese los trabajos realizados y repuestos luego podra reliazar el presupuesto");
+    } else {
+      var id = $('#work_order_number').text();
+      window.location.replace("/work_orders/"+ id +"/budget");
+    }
   });
 
 });

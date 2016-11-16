@@ -11,7 +11,7 @@
         <%= wicked_pdf_image_tag 'logo.png', :class => "logo-budget"  %>
       </div>
       <div style="margin-bottom: 10px; text-decoration: underline;">
-        <h1 style="font-weight: 800;">PRESUPUESTO</h1>
+        <h1 style="font-weight: 800;">ORDEN DE TRABAJO </h1>
       </div>
     </div>
     <div style="background: #f9f9f9 none repeat scroll 0 0; border: 1px solid; border-radius: 10px; padding-left: 70px; margin-bottom: 25px; display:flex;">
@@ -47,10 +47,26 @@
           <%= @work_order.km %>
         </p>
         <p>
-          <strong>ENTREGADO POR:</strong>
-          <%= @work_order.delivered_by %>
+          <strong>COMB.</strong>
+          <%= @work_order.fuel %>
         </p>
       </div>
+    </div>
+    <div>
+      <strong>INGRESOS:</strong>
+      <table class="table table-striped" >
+        <thead>
+          <tr>
+          </tr>
+        </thead>
+        <tbody>
+          <% @work_order.work_ins.each do |wi| %>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <th style="font-weight: normal" width="75%"><%= wi.work %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
     <div>
       <strong>TRABAJOS REALIZADOS:</strong>
@@ -60,16 +76,11 @@
           </tr>
         </thead>
         <tbody>
-          <% @work_order.work_dones.each do |wd| %>
+          <% 6.times do |i| %>
             <tr style="border-bottom: 1px solid #ddd;">
-              <th style="font-weight: normal" width="75%"><%= wd.work %></th>
-              <th width="25%">$ <%= wd.price %></th>
+              <th style="font-weight: normal" width="75%"><%= i + 1 %>.</th>
             </tr>
           <% end %>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <th width="75%">Sub Total Mano de Obra:</th>
-            <th width="25%">$ <%= @work_order.budget.subtotal_work_does %> + IVA</th>
-          </tr>
         </tbody>
       </table>
     </div>
@@ -81,35 +92,34 @@
           </tr>
         </thead>
         <tbody>
-          <% @work_order.replacements.each do |r| %>
+          <% 6.times do |i| %>
             <tr style="border-bottom: 1px solid #ddd;">
-              <th style="font-weight: normal" width="75%"><%= r.name %></th>
-              <th width="25%">$ <%= r.price %></th>
+              <th style="font-weight: normal" width="75%"><%= i + 1 %>.</th>
             </tr>
           <% end %>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <th  width="75%">Sub Total Repuestos:</th>
-            <th width="25%">$ <%= @work_order.budget.subtotal_rep %> + IVA</th>
-          </tr>
         </tbody>
       </table>
     </div>
     <div>
-      <table class="table table-hover" >
+      <strong>OBSERVACIONES:</strong>
+      <table class="table table-striped" >
         <thead>
           <tr>
           </tr>
         </thead>
         <tbody>
-          <tr style="border: 1px solid #ddd; background-color: #f5f5f5">
-            <th  width="75%">TOTAL:</th>
-            <th width="25%">$ <%= @work_order.budget.total %> + IVA</th>
-          </tr>
+          <% 4.times do |i| %>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <th style="font-weight: normal" width="75%"><%= i + 1 %>.</th>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
-    <p style="text-align: center">
-      Gracias por confiar en nosotros.
-    </p>
+    <div style="text-align: center; margin-top: 70px;">
+      <p>
+        Firma: ______________________
+      </p>
+    </div>
   </body>
 </html>

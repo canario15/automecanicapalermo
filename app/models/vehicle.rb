@@ -1,11 +1,12 @@
 class Vehicle < ActiveRecord::Base
   belongs_to :customer
   has_many :work_orders
+  belongs_to :car_brand
 
-  validates :brand, :model, :plate, :color, presence: true
+  validates :car_brand, :model, :plate, :color, presence: true
   validates :plate, uniqueness: true
 
   def to_s
-    "#{brand} #{model} #{color}"
+    "#{car_brand} #{model} #{color}"
   end
 end

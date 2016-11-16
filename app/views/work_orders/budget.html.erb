@@ -36,22 +36,22 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            <h4 class="show-label">Empleado:</h4>
+            <h4 class="show-label">Recibido por:</h4>
           </div>
           <div class="col-md-6 show-info">
-            <h4><%= @work_order.user %></h4>
+            <h4><%= @work_order.received_by %></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="show-label">Asignado a:</h4>
+          </div>
+          <div class="col-md-6 show-info">
+            <h4><%= @work_order.worked_by %></h4>
           </div>
         </div>
       </div>
       <div class="col-xs-5">
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="show-label">Vehículo:</h4>
-          </div>
-          <div class="col-md-6 show-info">
-            <h4><%= @work_order.vehicle %></h4>
-          </div>
-        </div>
         <div class="row">
           <div class="col-md-6">
             <h4 class="show-label">Cliente:</h4>
@@ -68,6 +68,22 @@
             <h4><%= @work_order.customer.phone %></h4>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="show-label">Vehículo:</h4>
+          </div>
+          <div class="col-md-6 show-info">
+            <h4><%= @work_order.vehicle %></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="show-label">Entregdo por:</h4>
+          </div>
+          <div class="col-md-6 show-info">
+            <h4><%= @work_order.delivered_by %></h4>
+          </div>
+        </div>
       </div>
     </div>
     <div style="margin-left: 5%" class="row">
@@ -80,15 +96,15 @@
             <table class="table table-hover" style="border: 1px solid #ddd;" >
               <thead>
                 <tr>
-                  <th width="75%" class="th-tab-show" >Tarea</th>
-                  <th width="25%" class="th-tab-show">Costo</th>
+                  <th width="65%" class="th-tab-show" >Tarea</th>
+                  <th width="35%" class="th-tab-show">Costo</th>
                 </tr>
               </thead>
               <tbody>
                 <%= f.simple_fields_for :work_dones do |work_done| %>
                   <tr>
-                    <td width="75%"><%= work_done.text_field :work, :class => "tex-field-to-label", :disabled => true  %></td>
-                    <td width="25%">
+                    <td width="65%"><%= work_done.text_field :work, :class => "tex-field-to-label", :disabled => true  %></td>
+                    <td width="35%">
                       <div class="form-group input-group frm-no-marg-bot">
                         <span class="input-group-addon">$</span>
                         <%= work_done.text_field :price, :class => "tot-filed work-dones-field form-control" %>
@@ -98,12 +114,12 @@
                   </tr>
                 <% end -%>
                 <tr style="background-color: #f5f5f5;">
-                  <td width="75%"><h4 class="show-label">Sub Total Mano de Obra:</h4></td>
-                  <td width="25%">
+                  <td width="65%"><h4 class="show-label">Sub Total Mano de Obra:</h4></td>
+                  <td width="35%">
                     <div class="form-group input-group frm-no-marg-bot">
                       <span class="input-group-addon">$</span>
                       <%= f.simple_fields_for :budget do |budget| %>
-                        <%= budget.text_field :subtotal_work_does, :class => "subtot-wor-do form-control sub-tot" %>
+                        <%= budget.text_field :subtotal_work_does, :class => "subtot-wor-do form-control sub-tot",:readonly => true %>
                       <% end -%>
                       <span class="input-group-addon"> + IVA </span>
                     </div>
@@ -121,15 +137,15 @@
             <table class="table table-hover" style="border: 1px solid #ddd;" >
               <thead>
                 <tr>
-                  <th width="75%" class="th-tab-show">Pieza</th>
-                  <th width="25%" class="th-tab-show">Costo</th>
+                  <th width="65%" class="th-tab-show">Pieza</th>
+                  <th width="35%" class="th-tab-show">Costo</th>
                 </tr>
               </thead>
               <tbody>
                 <%= f.simple_fields_for :replacements do |replacement| %>
                   <tr>
-                    <td width="75%"><%= replacement.text_field :name, :class => "tex-field-to-label", :disabled => true %></td>
-                    <td width="25%">
+                    <td width="65%"><%= replacement.text_field :name, :class => "tex-field-to-label", :disabled => true %></td>
+                    <td width="35%">
                       <div class="form-group input-group frm-no-marg-bot">
                         <span class="input-group-addon">$</span>
                         <%= replacement.text_field :price, :class => "tot-filed rep-field form-control" %>
@@ -139,12 +155,12 @@
                   </tr>
                 <% end -%>
                 <tr  style="background-color: #f5f5f5;">
-                  <td width="75%"><h4 class="show-label">Sub Total Repuestos:</h4></td>
-                  <td width="25%">
+                  <td width="65%"><h4 class="show-label">Sub Total Repuestos:</h4></td>
+                  <td width="35%">
                     <div class="form-group input-group frm-no-marg-bot">
                       <span class="input-group-addon">$</span>
                       <%= f.simple_fields_for :budget do |budget| %>
-                        <%= budget.text_field :subtotal_rep, :class => "sub-tot-rep form-control sub-tot" %>
+                        <%= budget.text_field :subtotal_rep, :class => "sub-tot-rep form-control sub-tot", :readonly => true  %>
                       <% end -%>
                       <span class="input-group-addon"> + IVA </span>
                     </div>
@@ -162,7 +178,7 @@
           <div style="padding-left: 13px" class="col-md-3 form-group input-group">
             <span class="input-group-addon in-gr-ad-tot">$</span>
             <%= f.simple_fields_for :budget do |budget| %>
-              <%= budget.text_field :total, :class => "total-budget form-control" %>
+              <%= budget.text_field :total, :class => "total-budget form-control", :readonly => true  %>
             <% end -%>
             <span class="input-group-addon in-gr-ad-tot"> + IVA </span>
           </div>
@@ -176,7 +192,7 @@
           <%= image_tag 'new.png', :class => "medium-icon", :title => "Guardar" %>
           <%= f.submit "Guardar ", :class =>  "btn-save-bud" %> |
           <%= link_to "/work_orders/#{@work_order.id}/budget.pdf", target: "_blank" do %>
-            <%= image_tag 'print.png', :class => "medium-icon", :title => "Editar"%>
+            <%= image_tag 'print.png', :class => "medium-icon", :title => "Imprimir"%>
             Imprimir
           <% end -%>
         </div>

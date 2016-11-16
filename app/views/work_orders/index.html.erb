@@ -7,15 +7,19 @@
   </div>
 </div>
 
-<table id="vehicles_table" class="table table-hover" data-source="<%= customers_url(format: "json")%>" >
+<table id="work_order_table" class="table table-hover">
   <thead>
     <tr>
       <th><%= link_to 'Número', '#'    %></th>
       <th><%= link_to 'Fecha', '#'     %></th>
       <th><%= link_to 'Clinete', '#'   %></th>
       <th><%= link_to 'Vehículo', '#'  %></th>
+      <th><%= link_to 'Recibido', '#'  %></th>
+      <th><%= link_to 'Asignado', '#'  %></th>
+      <th><%= link_to 'Entregada', '#' %></th>
       <th><%= link_to 'Estado','#'     %></th>
-      <th colspan="3"><%= link_to 'Acciones', '#' %></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -25,10 +29,12 @@
         <td><%= work_order.date_in %></td>
         <td><%= work_order.customer %></td>
         <td><%= work_order.vehicle %></td>
+        <td><%= work_order.received_by %></td>
+        <td><%= work_order.worked_by %></td>
+        <td><%= work_order.delivered_by %></td>
         <td><%= work_order.status %></td>
         <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), work_order_path(work_order) %></td>
         <td><%= link_to (image_tag 'edit.png', :class => "small-icon", :title => "Editar"), edit_work_order_path(work_order) %></td>
-        <td><%= link_to (image_tag 'delete.png', :class => "small-icon", :title => "Eliminar"), work_order, method: :delete, data: { confirm: '¿Esta seguro que quiere eliminar la orden?'} %></td>
       </tr>
     <% end -%>
   </tbody>

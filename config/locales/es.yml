@@ -1,10 +1,13 @@
 es:
-
   time:
     formats:
-      default: "%d %B %Y - %H:%M"
+      default: "%d/%m/%Y - %H:%M"
       long: "%y-%m-%d %H:%M"
   date:
+    formats:
+      default: '%d/%m/%Y'
+      long:  "%A, %d de %B de %Y"
+      short:  "%d de %b"
     abbr_day_names:
     - dom
     - lun
@@ -35,10 +38,6 @@ es:
     - Jueves
     - Viernes
     - Sábado
-    formats:
-      default: '%d/%m/%Y'
-      long:  "%A, %d de %B de %Y"
-      short:  "%d de %b"
     month_names:
     -
     - Enero
@@ -76,7 +75,7 @@ es:
               taken: " pertenece a un cliente registrado."
         vehicle:
           attributes:
-            brand:
+            car_brand:
               blank: " no puede ser vacío."
             model:
               blank: " no puede ser vacío."
@@ -108,7 +107,9 @@ es:
               blank: " no puede ser vacío."
             coments:
               blank: " no puede ser vacío."
-            user:
+            received_by:
+              blank: " no puede ser vacío."
+            worked_by:
               blank: " no puede ser vacío."
             customer:
               blank: " no puede ser vacío."
@@ -116,6 +117,11 @@ es:
               blank: " no puede ser vacío."
             work_ins:
               blank: " no puede ser vacío."
+        car_brand:
+          attributes:
+            name:
+              blank: " no puede ser vacío."
+              taken: " pertenece a una marca registrada."
 
 
 
@@ -129,7 +135,7 @@ es:
         phone: "Tel/Cel"
         vehicles: "Vehículos"
       vehicle:
-        brand: "Marca"
+        car_brand: "Marca"
         model: "Modelo"
         displacement: "Cilindrada"
         year: "Año"
@@ -142,9 +148,11 @@ es:
         km: "km"
         fuel: "Comb."
         coments: "Comentarios"
-        user: "Emlpeado"
+        worked_by: "Asignado a"
+        received_by: "Recibido por"
+        delivered_by: "Entregado por"
         customer: "Cliente"
-        vehicles: "Vehículo"
+        vehicle: "Vehículo"
         work_ins: "Ingreso"
         work_dones: "Trabajos realizados"
         replacements: "Repuestos"
@@ -159,3 +167,5 @@ es:
       user:
         name: "Nombre"
         user_type: "Tipo"
+      car_brand:
+        name: "Nombre"

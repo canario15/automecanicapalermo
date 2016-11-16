@@ -8,11 +8,11 @@
 </div>
 
 <%= simple_form_for(@vehicle, :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
-  <div class="form-group <%= "has-error" if @vehicle.errors[:brand].any? %>">
-    <%= f.label :brand, :class => "col-sm-3 control-label" %>
+  <div class="form-group <%= "has-error" if @vehicle.errors[:car_brand].any? %>">
+    <%= f.label :car_brand, :class => "col-sm-3 control-label" %>
     <div class="col-xs-6">
-      <%= f.text_field :brand, :class => "form-control" %>
-      <% @vehicle.errors[:brand].each do |message| %>
+      <%= select("vehicle", "car_brand_id", @car_brands.collect {|cb| [ "#{cb.name}", cb.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+      <% @vehicle.errors[:car_brand].each do |message| %>
         <span class="span-err">
           <i class="fa fa-exclamation-triangle"></i>
           <%=  message %>

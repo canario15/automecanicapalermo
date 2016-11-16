@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114160436) do
+ActiveRecord::Schema.define(version: 20161115214800) do
 
   create_table "budgets", force: :cascade do |t|
     t.integer  "work_order_id"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 20161114160436) do
   end
 
   add_index "budgets", ["work_order_id"], name: "index_budgets_on_work_order_id"
+
+  create_table "car_brands", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "owner"
@@ -48,7 +54,6 @@ ActiveRecord::Schema.define(version: 20161114160436) do
 
   create_table "vehicles", force: :cascade do |t|
     t.integer  "customer_id"
-    t.string   "brand"
     t.string   "model"
     t.string   "displacement"
     t.string   "year"
@@ -58,6 +63,7 @@ ActiveRecord::Schema.define(version: 20161114160436) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.boolean  "active",         default: true
+    t.integer  "car_brand_id"
   end
 
   create_table "work_dones", force: :cascade do |t|
@@ -86,14 +92,15 @@ ActiveRecord::Schema.define(version: 20161114160436) do
     t.string   "km"
     t.string   "fuel"
     t.text     "coments"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "status"
+    t.integer  "received_by_id"
+    t.integer  "delivered_by_id"
+    t.integer  "worked_by_id"
   end
 
   add_index "work_orders", ["customer_id"], name: "index_work_orders_on_customer_id"
-  add_index "work_orders", ["user_id"], name: "index_work_orders_on_user_id"
   add_index "work_orders", ["vehicle_id"], name: "index_work_orders_on_vehicle_id"
 
 end
