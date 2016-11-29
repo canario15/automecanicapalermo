@@ -39,6 +39,7 @@ class WorkOrdersController < ApplicationController
     @work_order = WorkOrder.new(work_order_params)
     @customers = Customer.all
     @vehicles = Vehicle.all
+    @users = User.all
     respond_to do |format|
       if @work_order.save
         @work_order.status = WORK_ORDER_STATUS[0]
@@ -89,7 +90,7 @@ class WorkOrdersController < ApplicationController
       @work_order.status = WORK_ORDER_STATUS[2]
       @work_order.save
     else
-      err = "La orden de trabajo no tiene el presupuesto o no tiene el empleado que entrego el vehículo"
+      err = "La orden de trabajo no tiene la factura o no tiene el empleado que entrego el vehículo"
     end
     respond_to do |format|
       if err == ""
@@ -101,6 +102,7 @@ class WorkOrdersController < ApplicationController
   end
 
   def budget
+    @users = User.all
     respond_to do |format|
       format.html
       format.pdf  {render pdf: "budget" }
@@ -115,7 +117,7 @@ class WorkOrdersController < ApplicationController
 
     # Never trust parameters from the swork_ordery internet, only allow the white list through.
     def work_order_params
-      params.require(:work_order).permit(:date_in, :status, :number, :km, :fuel, :coments, :delivered_by_id, :worked_by_id, :received_by_id, :customer_id, :vehicle_id, budget_attributes: [:id, :subtotal_work_does, :subtotal_rep, :total ], work_ins_attributes: [:id, :work, :_destroy ], work_dones_attributes: [:id, :work, :price, :_destroy ], replacements_attributes: [:id, :name, :price, :_destroy])
+      params.require(:work_order).permit(:date_in, :status, :number, :km, :fuel, :coments, :observation, :delivered_by_id, :worked_by_id, :received_by_id, :customer_id, :vehicle_id, budget_attributes: [:id, :subtotal_work_does, :subtotal_rep, :total ], work_ins_attributes: [:id, :work, :_destroy ], work_dones_attributes: [:id, :work, :price, :_destroy ], replacements_attributes: [:id, :name, :price, :_destroy])
     end
 end
 

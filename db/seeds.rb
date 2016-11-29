@@ -59,3 +59,6 @@ CarBrand.create(name: 'Jaguar' )
 CarBrand.create(name: 'Lexus' )
 CarBrand.create(name: 'SMA' )
 CarBrand.create(name: 'Xinkai' )
+
+Currency.create(name: '$')
+Currency.create(name: 'U$S')

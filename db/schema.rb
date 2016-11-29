@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115214800) do
+ActiveRecord::Schema.define(version: 20161129122217) do
+
+  create_table "box_movements", force: :cascade do |t|
+    t.datetime "date"
+    t.string   "cost_center"
+    t.string   "desc"
+    t.integer  "value"
+    t.string   "box_movement_type"
+    t.integer  "user_id"
+    t.integer  "currency_id"
+  end
 
   create_table "budgets", force: :cascade do |t|
     t.integer  "work_order_id"
@@ -28,6 +38,10 @@ ActiveRecord::Schema.define(version: 20161115214800) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "currencies", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -98,6 +112,7 @@ ActiveRecord::Schema.define(version: 20161115214800) do
     t.integer  "received_by_id"
     t.integer  "delivered_by_id"
     t.integer  "worked_by_id"
+    t.text     "observation"
   end
 
   add_index "work_orders", ["customer_id"], name: "index_work_orders_on_customer_id"

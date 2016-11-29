@@ -108,7 +108,7 @@ $(document).ready(function () {
     e.preventDefault();
     var rowCount = $('#work-done-table tr').length;
     if (rowCount < 1 ){
-      alert("Ingrese los trabajos realizados y repuestos luego podra reliazar el presupuesto");
+      alert("Ingrese los trabajos realizados y repuestos luego podra reliazar la factura");
     } else {
       var id = $('#work_order_number').text();
       window.location.replace("/work_orders/"+ id +"/budget");

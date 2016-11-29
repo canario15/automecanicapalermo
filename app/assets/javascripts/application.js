@@ -20,8 +20,7 @@
 //= require dataTables.bootstrap
 //= require bootstrap-datetimepicker
 //= require bootstrap-datetimepicker.es
-//= require morris
-//= require morris-data
+
 //= require raphael
 //= require cocoon
 //= require chosen.jquery
@@ -31,3 +30,4 @@
 //= require work_orders
 //= require users
 //= require vehicles
+//= require box_movements

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :box_movements
   root 'pages#dashboard'
 
   #CUSTOMERS

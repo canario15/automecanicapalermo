@@ -62,6 +62,10 @@ es:
       customer: "Cliente"
       vehicle: "Vehículo"
       work_order: "Orden de Trabajo"
+      box_movement: "Movieminto de Caja"
+      work_in: "Ingreso de trabajo"
+      user: "Empleado"
+      car_brand: "Marca de vechículo"
 
     errors:
       models:
@@ -122,6 +126,22 @@ es:
             name:
               blank: " no puede ser vacío."
               taken: " pertenece a una marca registrada."
+        box_movement:
+          attributes:
+            date:
+              blank: " no puede ser vacío."
+            cost_center:
+              blank: " no puede ser vacío."
+            desc:
+              blank: " no puede ser vacío."
+            value:
+              blank: " no puede ser vacío."
+            user:
+              blank: " no puede ser vacío."
+            box_movement_type:
+              blank: " no puede ser vacío."
+            currency:
+              blank: " no puede ser vacío."
 
 
 
@@ -147,7 +167,7 @@ es:
         number: "Número"
         km: "km"
         fuel: "Comb."
-        coments: "Comentarios"
+        coments: "Detalles del auto"
         worked_by: "Asignado a"
         received_by: "Recibido por"
         delivered_by: "Entregado por"
@@ -157,6 +177,7 @@ es:
         work_dones: "Trabajos realizados"
         replacements: "Repuestos"
         status: "Estado"
+        observation: "Observaciones"
       work_in:
         work: "Trabajo"
       work_done:
@@ -169,3 +190,11 @@ es:
         user_type: "Tipo"
       car_brand:
         name: "Nombre"
+      box_movement:
+        date: "Fecha"
+        cost_center: "Centro de costo"
+        desc: "Detalle"
+        value: "Monto"
+        user: "Empleado"
+        box_movement_type: "Tipo de Movimiento"
+        currency: "Moneda"

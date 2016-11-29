@@ -13,81 +13,83 @@
         <%= image_tag 'logo.png', :class => "logo-budget" %>
       </div>
       <div class="title-budget">
-        <h1>PRESUPUESTO</h1>
+        <h1>FACTURA</h1>
       </div>
     </div>
-    <div class="row row-top">
-      <div style="margin-left: 9%;" class="col-xs-5">
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="show-label">Número:</h4>
+    <%= simple_form_for(@work_order, :html => { :class => "", :role => "form" }) do |f| %>
+      <div class="row row-top">
+        <div style="margin-left: 9%;" class="col-xs-5">
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="show-label">Número:</h4>
+            </div>
+            <div class="col-md-6 show-info">
+              <h4><%= @work_order.id %></h4>
+            </div>
           </div>
-          <div class="col-md-6 show-info">
-            <h4><%= @work_order.id %></h4>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="show-label">Fecha Ingreso:</h4>
+            </div>
+            <div class="col-md-6 show-info">
+              <h4><%= @work_order.date_in %></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="show-label">Recibido por:</h4>
+            </div>
+            <div class="col-md-6 show-info">
+              <h4><%= @work_order.received_by %></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="show-label">Asignado a:</h4>
+            </div>
+            <div class="col-md-6 show-info">
+              <h4><%= @work_order.worked_by %></h4>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="show-label">Fecha Ingreso:</h4>
+        <div class="col-xs-5">
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="show-label">Cliente:</h4>
+            </div>
+            <div class="col-md-6 show-info">
+              <h4><%= @work_order.customer %></h4>
+            </div>
           </div>
-          <div class="col-md-6 show-info">
-            <h4><%= @work_order.date_in %></h4>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="show-label">Tel/Cel:</h4>
+            </div>
+            <div class="col-md-6 show-info">
+              <h4><%= @work_order.customer.phone %></h4>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="show-label">Recibido por:</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="show-label">Vehículo:</h4>
+            </div>
+            <div class="col-md-6 show-info">
+              <h4><%= @work_order.vehicle %></h4>
+            </div>
           </div>
-          <div class="col-md-6 show-info">
-            <h4><%= @work_order.received_by %></h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="show-label">Asignado a:</h4>
-          </div>
-          <div class="col-md-6 show-info">
-            <h4><%= @work_order.worked_by %></h4>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="show-label">
+                <label class="budget-del-lab" for="work_order_delivered_by">Entregado por:</label>
+              </h4>
+            </div>
+            <div class="col-md-6 show-info">
+              <%= select("work_order", "delivered_by_id", @users.collect {|u| [ "#{u.name}", u.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-xs-5">
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="show-label">Cliente:</h4>
-          </div>
-          <div class="col-md-6 show-info">
-            <h4><%= @work_order.customer %></h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="show-label">Tel/Cel:</h4>
-          </div>
-          <div class="col-md-6 show-info">
-            <h4><%= @work_order.customer.phone %></h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="show-label">Vehículo:</h4>
-          </div>
-          <div class="col-md-6 show-info">
-            <h4><%= @work_order.vehicle %></h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="show-label">Entregdo por:</h4>
-          </div>
-          <div class="col-md-6 show-info">
-            <h4><%= @work_order.delivered_by %></h4>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="margin-left: 5%" class="row">
-      <%= simple_form_for(@work_order, :html => { :class => "", :role => "form" }) do |f| %>
+      <div style="margin-left: 5%" class="row">
         <div class="row row-top">
           <div class="col-md-2">
           <h4 class="show-label">Trabajos Realizados:</h4>
@@ -195,6 +197,7 @@
             <%= image_tag 'print.png', :class => "medium-icon", :title => "Imprimir"%>
             Imprimir
           <% end -%>
+          <p> RECUERDE que antes de imprimir debe guardar la factura.</p>
         </div>
       </div>
     <% end -%>

@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      <%= image_tag 'show.png', :class => "icon-title" %>
+      <%= @box_movement.date %> - <%= @box_movement.id %>
+    </h1>
+  </div>
+</div>
+
+<div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Fecha:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @box_movement.date %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Centro de Costo:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @box_movement.cost_center %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Detalle:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @box_movement.desc %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Monto:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @box_movement.value %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Moneda:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @box_movement.currency %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Tipo:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @box_movement.box_movement_type %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Empleado:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @box_movement.user %></h4>
+    </div>
+  </div>
+</div>
+<div class="row  row-links">
+  <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Editar"), edit_box_movement_path(@box_movement)%>
+  <%= link_to 'Editar', edit_box_movement_path(@box_movement) %> |
+  <%= link_to (image_tag 'back.png', :class => "medium-icon", :title => "Editar"), box_movements_path %>
+  <%= link_to 'Atrás', box_movements_path %>
+</div>
+<div class="row">
+</div>
+

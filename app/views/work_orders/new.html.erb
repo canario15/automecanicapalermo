@@ -71,17 +71,6 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
-        <%= f.label :replacements, :class => "col-sm-4 control-label" %>
-        <div class="col-xs-8">
-          <div class="">
-            <%= f.simple_fields_for :replacements do |replacement| %>
-              <%= render 'replacement_fields', :f => replacement %>
-            <% end %>
-            <%= link_to_add_association 'Agregar repuesto', f, :replacements %>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="col-xs-5" >
@@ -131,18 +120,36 @@
           <% end %>
         </div>
       </div>
-      <div class="form-group <%= "has-error" if @work_order.errors[:delivered_by].any? %>">
-        <%= f.label :delivered_by, :class => "col-sm-4 control-label" %>
+
+      <div class="form-group">
+        <%= f.label :coments, :class => "col-sm-4 control-label" %>
         <div class="col-xs-8">
-          <%= select("work_order", "delivered_by_id", @users.collect {|u| [ "#{u.name}", u.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
-          <% @work_order.errors[:delivered_by].each do |message| %>
-            <span class="span-err">
-              <i class="fa fa-exclamation-triangle"></i>
-              <%=  message %>
-            </span>
-          <% end %>
+          <%= f.text_area :coments, :class => "form-control" %>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="form-group border-sep">
+    <div class="col-xs-5" >
+      <div class="form-group">
+        <%= f.label :replacements, :class => "col-sm-4 control-label" %>
+        <div class="col-xs-8">
+          <div class="">
+            <%= f.simple_fields_for :replacements do |replacement| %>
+              <%= render 'replacement_fields', :f => replacement %>
+            <% end %>
+            <%= link_to_add_association 'Agregar repuesto', f, :replacements %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :observation, :class => "col-sm-4 control-label" %>
+        <div class="col-xs-8">
+          <%= f.text_area :observation, :class => "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-5" >
       <div class="form-group">
         <%= f.label :work_dones, :class => "col-sm-4 control-label" %>
         <div class="col-xs-8">
@@ -156,15 +163,8 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
-        <%= f.label :coments, :class => "col-sm-4 control-label" %>
-        <div class="col-xs-8">
-          <%= f.text_area :coments, :class => "form-control" %>
-        </div>
-      </div>
     </div>
   </div>
-
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= link_to "Cancelar", work_orders_path(), class: "btn btn-outline btn-danger" %>

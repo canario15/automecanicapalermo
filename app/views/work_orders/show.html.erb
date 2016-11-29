@@ -98,7 +98,26 @@
         </div>
       </div>
     </div>
-
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="my-col-coment">
+          <h4 class="show-label">Detalles del auto:</h4>
+        </div>
+        <div class="col-md-7 show-info">
+          <h4><%= @work_order.coments %></h4>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="my-col-coment">
+          <h4 class="show-label">Obs. durante el trabajo:</h4>
+        </div>
+        <div class="col-md-7 show-info">
+          <h4><%= @work_order.observation %></h4>
+        </div>
+      </div>
+    </div>
     <div class="row row-top">
       <div class="my-col-tab">
         <div class="row">
@@ -149,18 +168,6 @@
         </div>
       </div>
     </div>
-    <div class="row row-top">
-      <div class="col-xs-11">
-        <div class="row">
-          <div class="col-md-2">
-            <h4 class="show-label">Comentarios:</h4>
-          </div>
-          <div class="col-md-9 show-info">
-            <h4><%= @work_order.coments %></h4>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="row  row-links-work">
       <%= link_to work_orders_path do %>
         <%= image_tag 'back.png', :class => "medium-icon", :title => "Atrás" %>
@@ -175,8 +182,8 @@
         Imprimir
       <% end -%> |
       <%= link_to budget_path(@work_order), :class => "go-budget" do %>
-      <%= image_tag 'edit.png', :class => "medium-icon", :title => "Presupuesto" %>
-        Presupuesto
+      <%= image_tag 'edit.png', :class => "medium-icon", :title => "Factura" %>
+        Factura
       <% end -%> |
       <%= link_to work_order_finalize_path(@work_order) do %>
       <%= image_tag 'edit.png', :class => "medium-icon", :title => "Entregar" %>
