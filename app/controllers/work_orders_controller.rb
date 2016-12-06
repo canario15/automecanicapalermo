@@ -96,7 +96,7 @@ class WorkOrdersController < ApplicationController
       if err == ""
         format.html { redirect_to @work_order, notice: 'La orden se ha finalizado correctamente.' }
       else
-        format.html { redirect_to @work_order, notice: err }
+        format.html { redirect_to @work_order, error: err }
       end
     end
   end

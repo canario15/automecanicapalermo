@@ -2,6 +2,7 @@ class BoxMovement < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :currency
+  belongs_to :work_order
 
   validates :date, :cost_center, :desc, :value, :user, :currency, :box_movement_type, presence: true
   validates :value, numericality: true

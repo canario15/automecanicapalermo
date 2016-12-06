@@ -26,6 +26,16 @@ class BoxMovementsController < ApplicationController
     @currencies = Currency.all
   end
 
+  def extra_data
+    @work_orders = WorkOrder.where(status: WORK_ORDER_STATUS[0] )
+    respond_to do |format|
+      if request.xhr?
+        format.html { render partial: 'extra_data', :layout => false}
+      else
+        format.html { render partial: 'extra_data', :layout => false}
+      end
+    end
+  end
   # GET /box_movements/1/edit
   def edit
     @users = User.all
@@ -83,6 +93,6 @@ class BoxMovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def box_movement_params
-      params.require(:box_movement).permit(:date, :cost_center, :desc, :value, :currency_id, :user_id, :box_movement_type)
+      params.require(:box_movement).permit(:date, :cost_center, :desc, :value, :currency_id, :user_id, :work_order_id, :box_movement_type)
     end
 end

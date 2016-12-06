@@ -40,7 +40,17 @@ $(document).ready(function () {
     balance($("tr.comp"), "comp");
   });
 
-
+  $("#box_movement_cost_center").chosen().change( function () {
+    var value = $(this).val();
+    if (value == 'Taller' || value == 'Chapa y Pintura') {
+      $.get('/box_movements/extra_data/', function (data) {
+        $(data).insertAfter(".cost-center-fields");
+        $("#box_movement_work_order_id").chosen({ width: "100%" });
+      });
+    }else{
+      $(".work-ord-data").remove();
+    }
+  });
 
 
 

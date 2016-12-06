@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201114340) do
+ActiveRecord::Schema.define(version: 20161206192923) do
 
   create_table "box_movements", force: :cascade do |t|
     t.datetime "date"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20161201114340) do
     t.string   "box_movement_type"
     t.integer  "user_id"
     t.integer  "currency_id"
+    t.integer  "work_order_id"
   end
 
   create_table "budgets", force: :cascade do |t|
