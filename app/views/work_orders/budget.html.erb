@@ -13,7 +13,7 @@
         <%= image_tag 'logo.png', :class => "logo-budget" %>
       </div>
       <div class="title-budget">
-        <h1>FACTURA</h1>
+        <h1>DETALLE</h1>
       </div>
     </div>
     <%= simple_form_for(@work_order, :html => { :class => "", :role => "form" }) do |f| %>
@@ -108,7 +108,9 @@
                     <td width="65%"><%= work_done.text_field :work, :class => "tex-field-to-label", :disabled => true  %></td>
                     <td width="35%">
                       <div class="form-group input-group frm-no-marg-bot">
-                        <span class="input-group-addon">$</span>
+                        <span class="input-group-addon">
+                        $
+                        </span>
                         <%= work_done.text_field :price, :class => "tot-filed work-dones-field form-control" %>
                         <span class="input-group-addon"> + IVA </span>
                       </div>

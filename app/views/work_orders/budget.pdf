@@ -11,7 +11,7 @@
         <%= wicked_pdf_image_tag 'logo.png', :class => "logo-budget"  %>
       </div>
       <div style="margin-bottom: 10px; text-decoration: underline;">
-        <h1 style="font-weight: 800;">FACTURA</h1>
+        <h1 style="font-size:20px;font-weight: 800;">DETALLE</h1>
       </div>
     </div>
     <div style="background: #f9f9f9 none repeat scroll 0 0; border: 1px solid; border-radius: 10px; padding-left: 70px; margin-bottom: 25px; display:flex;">
@@ -24,14 +24,6 @@
           <strong>FECHA INGRESO:</strong>
           <%= @work_order.date_in  %>
         </p>
-        <p>
-          <strong>RECIBIDO POR:</strong>
-          <%= @work_order.received_by %>
-        </p>
-        <p>
-          <strong>ASIGNADO A:</strong>
-          <%= @work_order.worked_by %>
-        </p>
       </div>
       <div style="display: inline-block; width: 40%">
         <p>
@@ -41,14 +33,6 @@
         <p>
           <strong>VEHICULO:</strong>
           <%= @work_order.vehicle %>
-        </p>
-        <p>
-          <strong>KM:</strong>
-          <%= @work_order.km %>
-        </p>
-        <p>
-          <strong>ENTREGADO POR:</strong>
-          <%= @work_order.delivered_by %>
         </p>
       </div>
     </div>

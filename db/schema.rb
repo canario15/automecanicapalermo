@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129122217) do
+ActiveRecord::Schema.define(version: 20161201114340) do
 
   create_table "box_movements", force: :cascade do |t|
     t.datetime "date"
@@ -64,6 +64,9 @@ ActiveRecord::Schema.define(version: 20161129122217) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "user_type"
+    t.string "password",           limit: 128, default: "", null: false
+    t.string "username"
+    t.string "encrypted_password"
   end
 
   create_table "vehicles", force: :cascade do |t|

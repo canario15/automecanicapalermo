@@ -96,10 +96,9 @@
   </div>
 </div>
 <div class="row  row-links">
-  <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Editar"), edit_customer_path(@customer)%>
-  <%= link_to 'Editar', edit_customer_path(@customer) %> |
   <%= link_to (image_tag 'back.png', :class => "medium-icon", :title => "Editar"), customers_path %>
-  <%= link_to 'Atrás', customers_path %>
-</div>
+  <%= link_to 'Atrás', customers_path %> |
+  <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Editar"), edit_customer_path(@customer)%>
+  <%= link_to 'Editar', edit_customer_path(@customer) %>
 <div class="row">
 </div>

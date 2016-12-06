@@ -1,0 +1,442 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/******************* MY THEME ***************/
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: white;
+}
+body {
+  color: white;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857;
+  background: url(asset-path("2.png"));
+}
+.form-control {
+  background: none;
+  color:white;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background: none;
+}
+
+.chosen-container-single .chosen-single {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: white;
+    font-size: 14px;
+}
+
+.navbar-background {
+  background: url(asset-path("background_footer.jpg"));
+}
+.navbar-background2 {
+  background: none;
+}
+
+#page-wrapper {
+ background: none;
+ border-left: 1px solid black;
+}
+
+.navbar-default {
+  border-color: black;
+}
+
+
+.sidebar-nav a{
+  color: white;
+}
+.sidebar ul li a.active {
+  background-color: black;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: black;
+  text-decoration: none;
+  color:red;
+}
+.sidebar ul li {
+  border-bottom: none;
+}
+
+
+.table-hover > tbody > tr:hover {
+  background-color: #f5f5f5;
+  color: black;
+}
+
+.remove_fields {
+  color:red;
+}
+ .add_fields {
+  color:#04B404;
+ }
+
+
+.panel {
+  background: none;
+  border: 1px solid white;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background: none;
+}
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background: none;
+}
+
+.option-links .row-links-work {
+  font-size: 34px;
+}
+
+.success {
+  color:#04B404;
+  background:none!important ;
+}
+.danger {
+  color: red;
+  background:none!important;
+}
+
+
+.table > thead > tr > td.success, .table > tbody > tr > td.success, .table > tfoot > tr > td.success, .table > thead > tr > th.success, .table > tbody > tr > th.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > tbody > tr.success > td, .table > tfoot > tr.success > td, .table > thead > tr.success > th, .table > tbody > tr.success > th, .table > tfoot > tr.success > th {
+    background: none;
+}
+.table > thead > tr > td.danger, .table > tbody > tr > td.danger, .table > tfoot > tr > td.danger, .table > thead > tr > th.danger, .table > tbody > tr > th.danger, .table > tfoot > tr > th.danger, .table > thead > tr.danger > td, .table > tbody > tr.danger > td, .table > tfoot > tr.danger > td, .table > thead > tr.danger > th, .table > tbody > tr.danger > th, .table > tfoot > tr.danger > th {
+    background: none;
+}
+
+.btn-info.btn-outline {
+    color: white;
+}
+.btn-info {
+  border-color: white;
+}
+
+.btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info {
+  background-color: white!important;
+  border-color: white!important;
+  color: black!important;
+}
+
+.btn-info:hover {
+  background-color: white!important;
+  border-color: white!important;
+  color: black!important;
+}
+
+.nest-veh {
+  background: none!important;
+}
+.nested-fields .nest-veh label{
+  color: black!important;
+}
+
+/****************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.logo-menu {
+  height: 44px;
+  margin-bottom: 20px;
+  margin-left: 45px;
+  margin-top: 15px;
+}
+
+.navbar-top-links li a {
+  color: #b40404;
+  min-height: 50px;
+  padding: 15px;
+}
+
+a {
+  color: #b40404;
+}
+
+a:hover, a:focus {
+  color: #8A0808;
+}
+
+.add_fields{
+  color:#04B404;
+}
+
+.small-icon {
+  width: 17px;
+}
+
+.medium-icon {
+  width: 24px;
+}
+
+.show-info {
+  color: #999999;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.show-label {
+  float:right !important;
+  text-align: right;
+}
+
+.icon-title {
+  margin-right: 12px;
+  width: 36px;
+  float: left;
+}
+
+.icon-modal-title {
+  float: left;
+  margin-right: 5px;
+  margin-top: 3px;
+  width: 18px;
+}
+
+
+.field_with_errors label {
+  color: #a94442;
+}
+
+.field_with_errors .form-control {
+  border-color: #a94442;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+.field_with_errors .form-control:focus {
+  border-color: #843534;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;
+}
+.error_explanation {
+  color: #a94442;
+}
+
+.errors li {
+  color: #a94442;
+}
+.row-links {
+  font-size: 20px;
+  margin-bottom: 26px;
+  margin-top: 26px;
+  text-align: center;
+}
+
+.btn-rm {
+  float: left;
+  font-size: 22px;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+.frm-con-nest {
+  float: left;
+  width: 90%;
+}
+
+.nested-fields-list {
+  margin: 6px 0 0;
+}
+
+.budget-ul {
+  color:red;
+  font-size: 18px;
+}
+
+.no-padding {
+  padding: 0;
+  margin-top: 7px;
+}
+
+.fa-2 {
+  font-size: 22px;
+}
+
+.show-tb {
+  width: 38%;
+}
+
+.nest-veh {
+  background-color: whitesmoke;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-bottom: 10px;
+  min-height: 20px;
+  padding: 11px;
+}
+
+.rm-vh-btn {
+  font-size: 22px;
+  margin-bottom: 9px;
+  margin-left: 15px;
+}
+
+.span-err {
+  color: #a94442;
+  display: block;
+}
+
+.label-error{
+  color: #a94442;
+}
+
+.my-col-tab {
+  width: 33.3333%;
+  padding-left: 36px;
+  padding-right: 36px;
+  float: left;
+}
+.table-lab {
+  text-align: center;
+}
+.row-top {
+  margin-top: 30px;
+}
+.row-links-work {
+  font-size: 20px;
+  margin-bottom: 28px;
+  margin-top: 39px;
+  text-align: center;
+}
+.row-links-work p {
+  color: red;
+  font-size: 15px;
+  margin-top: 10px;
+}
+.th-tab-show {
+  color: #337ab7;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+}
+
+.frm-no-marg-bot{
+  margin-bottom: 0;
+}
+
+.total-budget{
+  font-size: 20px;
+  height: 41px;
+}
+.in-gr-ad-tot {
+  font-size: 20px;
+}
+.logo-budget {
+  margin-bottom: 19px;
+  width: 455px;
+}
+
+.tex-field-to-label {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  width: 100%;
+}
+
+.budget-del-lab {
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.title-budget  {
+  text-align: center;
+}
+.title-budget h1 {
+  font-weight: 800;
+}
+
+.panel-top{
+  margin-top: 10px;
+}
+
+
+.btn-save-bud {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #337ab7;
+  padding:0;
+}
+.btn-save-bud:hover{
+  color: #23527c;
+  text-decoration: underline;
+}
+
+.nest-form-group {
+  margin-bottom: 12px;
+}
+
+.option-links {
+  text-align: center;
+  margin-bottom: 31px;
+}
+
+
+.has-error a.chosen-single {
+  border: 1px solid #a94442;
+  color: #a94442;
+}
+
+.tr-months button{
+  margin-left: 5px;
+}
+
+.r-calendar {
+  text-align: center;
+  margin-bottom:10px;
+}
+
+.btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+  color: #fff;
+}

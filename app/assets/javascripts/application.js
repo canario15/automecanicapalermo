@@ -31,3 +31,43 @@
 //= require users
 //= require vehicles
 //= require box_movements
+//= require notify
+
+$(document).ready(function () {
+
+  if ($('#have_alert').text() != 0 ){
+    var type    = $('#have_alert').data('type');
+    var message = $('#have_alert').text();
+    $.notify(
+      message,
+      { position:"top center",
+        className: type
+      }
+    );
+    $('#have_alert').remove();
+  };
+
+
+});
+
+function show_alert(type, message){
+  switch (type){
+    case 'error':
+      title = "Error!";
+      if (message == ""){
+        message = "Algo no esta del todo bien intente nuevamente";
+      }
+      break;
+    case 'info':
+      title = "Atención!";
+      break;
+    case 'success':
+      title = "Ok!";
+      if (message == ""){
+        message = "La transacción se ha completado con éxito";
+      }
+      break;
+  }
+}
+
+

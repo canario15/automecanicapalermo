@@ -136,14 +136,21 @@ es:
               blank: " no puede ser vacío."
             value:
               blank: " no puede ser vacío."
+              not_a_number: " no es un número"
             user:
               blank: " no puede ser vacío."
             box_movement_type:
               blank: " no puede ser vacío."
             currency:
               blank: " no puede ser vacío."
-
-
+        budget:
+          attributes:
+            total:
+              not_a_number: " no es un número"
+            subtotal_rep:
+              not_a_number: " no es un número"
+            subtotal_work_does:
+              not_a_number: " no es un número"
 
     attributes:
       customer:
@@ -188,6 +195,8 @@ es:
       user:
         name: "Nombre"
         user_type: "Tipo"
+        username: "Username"
+        password: "Contraseña"
       car_brand:
         name: "Nombre"
       box_movement:

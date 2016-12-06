@@ -13,6 +13,7 @@
       <th><%= link_to 'Id', '#'      %></th>
       <th><%= link_to 'Nombre', '#' %></th>
       <th><%= link_to 'Cargo', '#'  %></th>
+      <th><%= link_to 'Usuario', '#'  %></th>
       <th colspan="2"><%= link_to 'Acciones', '#' %></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= user.id %></td>
         <td><%= user.name %></td>
         <td><%= user.user_type %></td>
+        <td><%= user.username %></td>
         <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), user_path(user) %></td>
         <td><%= link_to (image_tag 'edit.png', :class => "small-icon", :title => "Editar"), edit_user_path(user) %></td>
       </tr>

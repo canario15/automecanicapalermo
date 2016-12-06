@@ -9,7 +9,7 @@
 
 <%= simple_form_for(@work_order, :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
   <div class="form-group">
-    <div class="col-xs-5">
+    <div class="col-xs-6">
       <div class="form-group">
         <%= f.label :number, :class => "col-sm-4 control-label" %>
         <div class="col-xs-8">
@@ -72,8 +72,7 @@
         </div>
       </div>
     </div>
-
-    <div class="col-xs-5" >
+    <div class="col-xs-6" >
       <div class="form-group <%= "has-error" if @work_order.errors[:customer].any? %>">
         <%= f.label :customer, :class => "col-sm-4 control-label" %>
         <div class="col-xs-8">
@@ -130,7 +129,7 @@
     </div>
   </div>
   <div class="form-group border-sep">
-    <div class="col-xs-5" >
+    <div class="col-xs-6" >
       <div class="form-group">
         <%= f.label :replacements, :class => "col-sm-4 control-label" %>
         <div class="col-xs-8">
@@ -149,7 +148,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-5" >
+    <div class="col-xs-6" >
       <div class="form-group">
         <%= f.label :work_dones, :class => "col-sm-4 control-label" %>
         <div class="col-xs-8">

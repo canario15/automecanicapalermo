@@ -4,7 +4,7 @@ class BoxMovement < ActiveRecord::Base
   belongs_to :currency
 
   validates :date, :cost_center, :desc, :value, :user, :currency, :box_movement_type, presence: true
-
+  validates :value, numericality: true
 
   def self.by_month_year(days,months)
     days = days.blank? ? DAYS : days.split(",")

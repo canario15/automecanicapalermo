@@ -62,3 +62,5 @@ CarBrand.create(name: 'Xinkai' )
 
 Currency.create(name: '$')
 Currency.create(name: 'U$S')
+
+User.create(name: 'Maecelo', encrypted_password: "123456789")

@@ -30,6 +30,20 @@ $(document).ready(function () {
     filterMovement();
   });
 
+  $('.elboton').on("click", function (e) {
+    balance($("tr.park"), "parking");
+    balance($("tr.tall"), "taller");
+    balance($("tr.lava"), "lava");
+    balance($("tr.cyp"), "cyp");
+    balance($("tr.vent"), "ventauto");
+    balance($("tr.adm"), "admin");
+    balance($("tr.comp"), "comp");
+  });
+
+
+
+
+
   setDefaultMonth();
 
 });
@@ -60,6 +74,7 @@ function filterMovement() {
 function setDataTable(){
   $('#box_movement_table').dataTable({
     "aoColumnDefs": [{ "bSortable": false, "aTargets": [ 7,8 ] }],
+    "pageLength": 50,
     "bLengthChange": false,
     "bProcessing": true,
     "fnInitComplete": function(oSettings, json) {
@@ -84,7 +99,65 @@ function setDataTable(){
                                    "sLast":     "Último" }
     },
     "footerCallback": function ( row, data, start, end, display ) {
+      $(".tot-data").each(function(){
+        $(this).text(0);
+      });
+      balance($("tr.park"), "parking");
+      balance($("tr.tall"), "taller");
+      balance($("tr.lava"), "lava");
+      balance($("tr.cyp"), "cyp");
+      balance($("tr.vent"), "vent");
+      balance($("tr.adm"), "adm");
+      balance($("tr.comp"), "comp");
+      }
+  });
+}
 
+
+function balance(selector, name ) {
+  var total_in_pesos = 0
+  var total_out_pesos = 0
+  var total_in_dollar = 0
+  var total_out_dollar = 0
+  selector.each(function(i){
+    if ($($(this).children()[4]).text() ==  'Entrada') {
+      if ($($(this).children()[6]).text() ==  '$') {
+        total_in_pesos = total_in_pesos + parseInt($($(this).children()[5]).text())
+      }else{
+        if ($($(this).children()[6]).text() ==  'U$S') {
+          total_in_dollar = total_in_dollar + parseInt($($(this).children()[5]).text())
+        }
+      }
+    }else{
+      if ($($(this).children()[4]).text() ==  'Salida') {
+        if ($($(this).children()[6]).text() ==  '$') {
+          total_out_pesos = total_out_pesos+ parseInt($($(this).children()[5]).text())
+        }else{
+          if ($($(this).children()[6]).text() ==  'U$S') {
+            total_out_dollar = total_out_dollar + parseInt($($(this).children()[5]).text())
+          }
+        }
+      }
     }
   });
+  var total_pesos = total_in_pesos - total_out_pesos;
+  var total_dollar = total_in_dollar - total_out_dollar;
+
+  $("#in_"+name+"_pesos").text(total_in_pesos);
+  $("#out_"+name+"_pesos").text(total_out_pesos);
+  $("#tot_"+name+"_pesos").text(total_pesos);
+  $("#in_"+name+"_dollar").text(total_in_dollar);
+  $("#out_"+name+"_dollar").text(total_out_dollar);
+  $("#tot_"+name+"_dollar").text(total_dollar);
+  sumTotals(total_in_pesos, total_out_pesos, total_pesos, total_in_dollar,total_out_dollar,total_dollar);
+}
+
+
+function sumTotals(total_in_pesos, total_out_pesos, total_pesos, total_in_dollar,total_out_dollar,total_dollar) {
+  $("#in_pesos_tot").text( parseInt($("#in_pesos_tot").text()) + total_in_pesos );
+  $("#out_pesos_tot").text( parseInt($("#out_pesos_tot").text()) + total_out_pesos);
+  $("#tot_pesos").text( parseInt($("#tot_pesos").text()) + total_pesos);
+  $("#in_dollar_tot").text( parseInt($("#in_dollar_tot").text()) + total_in_dollar);
+  $("#out_dollar_tot").text( parseInt($("#out_dollar_tot").text()) +  total_out_dollar);
+  $("#tot_dollar").text( parseInt($("#tot_dollar").text()) + total_dollar);
 }

@@ -12,15 +12,9 @@
       <th></th>
     </tr>
   </thead>
-  <tfoot>
-    <tr>
-      <th colspan="6" style="text-align:right">Total:</th>
-      <th></th>
-    </tr>
-  </tfoot>
   <tbody>
     <% @box_movements.each do |box_movement| %>
-      <tr class="<%=box_movement.box_movement_type == BOX_MOVEMENT_TYPE[0] ? 'success' : "danger" %>">
+      <tr class="<%= COST_CENTER_CODE.key(box_movement.cost_center).to_s %> <%=box_movement.box_movement_type == BOX_MOVEMENT_TYPE[0] ? 'success' : "danger" %>">
         <td><%= box_movement.id %></td>
         <td><%= box_movement.date %></td>
         <td><%= box_movement.cost_center %></td>

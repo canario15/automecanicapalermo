@@ -15,12 +15,12 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :delete_veh
   # GET /customers/new
   def new
     @customer = Customer.new
-    @car_brands = CarBrand.all
+    @car_brands = CarBrand.all.order(:name)
   end
 
   # GET /customers/1/edit
   def edit
-    @car_brands = CarBrand.all
+    @car_brands = CarBrand.all.order(:name)
   end
 
   # POST /customers
@@ -41,7 +41,7 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :delete_veh
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
-    @car_brands = CarBrand.all
+    @car_brands = CarBrand.all.order(:name)
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: 'El cliente se ha actualizado correctamente.' }

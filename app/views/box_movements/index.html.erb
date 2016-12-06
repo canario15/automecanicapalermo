@@ -153,11 +153,15 @@
 </div>
 <div id="tab_box_cont">
 </div>
+<div class="option-links">
+  <%= link_to (image_tag 'new.png', :class => "medium-icon", :title => "Nuevo"), new_box_movement_path, :class => "new_box_movement" %>
+  <%= link_to 'Nuevo Movimiento', new_box_movement_path, :class => "new_box_movement" %>
+</div>
 <div class="row" style="text-align: center">
   <h2>BALANCE</h2>
 </div>
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table id="balance_table" class="table table-hover">
     <thead>
       <tr>
         <th><%= link_to 'Centro de costo' %></th>
@@ -172,82 +176,78 @@
     <tbody>
       <tr>
         <td>Parking</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
+        <td class="tot-data" id="in_parking_pesos">0</td>
+        <td class="tot-data" id="out_parking_pesos">0</td>
+        <td class="tot-data" id="tot_parking_pesos">0</td>
+        <td class="tot-data" id="in_parking_dollar">0</td>
+        <td class="tot-data" id="out_parking_dollar">0</td>
+        <td class="tot-data" id="tot_parking_dollar">0</td>
       </tr>
       <tr>
         <td>Taller</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
+        <td class="tot-data" id="in_taller_pesos">0</td>
+        <td class="tot-data" id="out_taller_pesos">0</td>
+        <td class="tot-data" id="tot_taller_pesos">0</td>
+        <td class="tot-data" id="in_taller_dollar">0</td>
+        <td class="tot-data" id="out_taller_dollar">0</td>
+        <td class="tot-data" id="tot_taller_dollar">0</td>
       </tr>
       <tr>
         <td>Lavadero</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
+        <td class="tot-data" id="in_lava_pesos">0</td>
+        <td class="tot-data" id="out_lava_pesos">0</td>
+        <td class="tot-data" id="tot_lava_pesos">0</td>
+        <td class="tot-data" id="in_lava_dollar">0</td>
+        <td class="tot-data" id="out_lava_dollar">0</td>
+        <td class="tot-data" id="tot_lava_dollar">0</td>
       </tr>
       <tr>
         <td>Chapa y Pintura</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
+        <td class="tot-data" id="in_cyp_pesos">0</td>
+        <td class="tot-data" id="out_cyp_pesos">0</td>
+        <td class="tot-data" id="tot_cyp_pesos">0</td>
+        <td class="tot-data" id="in_cyp_dollar">0</td>
+        <td class="tot-data" id="out_cyp_dollar">0</td>
+        <td class="tot-data" id="tot_cyp_dollar">0</td>
       </tr>
       <tr>
         <td>Ventas Autos</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
+        <td class="tot-data" id="in_vent_pesos">0</td>
+        <td class="tot-data" id="out_vent_pesos">0</td>
+        <td class="tot-data" id="tot_vent_pesos">0</td>
+        <td class="tot-data" id="in_vent_dollar">0</td>
+        <td class="tot-data" id="out_vent_dollar">0</td>
+        <td class="tot-data" id="tot_vent_dollar">0</td>
       </tr>
       <tr>
         <td>Administración</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
+        <td class="tot-data" id="in_adm_pesos">0</td>
+        <td class="tot-data" id="out_adm_pesos">0</td>
+        <td class="tot-data" id="tot_adm_pesos">0</td>
+        <td class="tot-data" id="in_adm_dollar">0</td>
+        <td class="tot-data" id="out_adm_dollar">0</td>
+        <td class="tot-data" id="tot_adm_dollar">0</td>
       </tr>
       <tr>
         <td>Competición</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
+        <td class="tot-data" id="in_comp_pesos">0</td>
+        <td class="tot-data" id="out_comp_pesos">0</td>
+        <td class="tot-data" id="tot_comp_pesos">0</td>
+        <td class="tot-data" id="in_comp_dollar">0</td>
+        <td class="tot-data" id="out_comp_dollar">0</td>
+        <td class="tot-data" id="tot_comp_dollar">0</td>
       </tr>
-      <tr >
+      <tr style="font-weight:bold;background-color: #fcf8e3;color:black">
         <td>TOTALES:</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
+        <td class="tot-data" id="in_pesos_tot">0</td>
+        <td class="tot-data" id="out_pesos_tot">0</td>
+        <td class="tot-data" id="tot_pesos">0</td>
+        <td class="tot-data" id="in_dollar_tot">0</td>
+        <td class="tot-data" id="out_dollar_tot">0</td>
+        <td class="tot-data" id="tot_dollar">0</td>
       </tr>
     </tbody>
   </table>
-</div>
-<div class="option-links">
-  <%= link_to (image_tag 'new.png', :class => "medium-icon", :title => "Nuevo"), new_box_movement_path, :class => "new_box_movement" %>
-  <%= link_to 'Nuevo Movimiento', new_box_movement_path, :class => "new_box_movement" %>
 </div>
 <div class="row">
 </div>

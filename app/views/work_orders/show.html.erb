@@ -182,12 +182,12 @@
         Imprimir
       <% end -%> |
       <%= link_to budget_path(@work_order), :class => "go-budget" do %>
-      <%= image_tag 'edit.png', :class => "medium-icon", :title => "Factura" %>
+      <%= image_tag 'calculator.png', :class => "medium-icon", :title => "Factura" %>
         Factura
       <% end -%> |
       <%= link_to work_order_finalize_path(@work_order) do %>
-      <%= image_tag 'edit.png', :class => "medium-icon", :title => "Entregar" %>
         Entregar
+        <%= image_tag 'rigth.png', :class => "medium-icon", :title => "Entregar" %>
       <% end -%>
     </div>
   </div>

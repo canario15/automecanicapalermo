@@ -1,0 +1,36 @@
+<table id="box_movement_table" class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= link_to 'Id'              %></th>
+      <th><%= link_to 'Fecha'           %></th>
+      <th><%= link_to 'Centro de Costo' %></th>
+      <th><%= link_to 'Detalle'         %></th>
+      <th><%= link_to 'Tipo'            %></th>
+      <th><%= link_to 'Monto'           %></th>
+      <th><%= link_to 'Moneda'          %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th colspan="6" style="text-align:right">Total:</th>
+      <th></th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @box_movements.each do |box_movement| %>
+      <tr class="<%=box_movement.box_movement_type == BOX_MOVEMENT_TYPE[0] ? 'success' : "danger" %>">
+        <td><%= box_movement.id %></td>
+        <td><%= box_movement.date %></td>
+        <td><%= box_movement.cost_center %></td>
+        <td><%= box_movement.desc %></td>
+        <td><%= box_movement.box_movement_type %></td>
+        <td><%= box_movement.value %></td>
+        <td><%= box_movement.currency %></td>
+        <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), box_movement_path(box_movement) %></td>
+        <td><%= link_to (image_tag 'edit.png', :class => "small-icon", :title => "Editar"), edit_box_movement_path(box_movement) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -23,6 +23,14 @@
       <h4><%= @user.user_type %></h4>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h4 class="show-label">Usuario:</h4>
+    </div>
+    <div class="col-md-2 show-info">
+      <h4><%= @user.username %></h4>
+    </div>
+  </div>
 </div>
 <div class="row  row-links">
   <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Editar"), edit_user_path(@user)%>

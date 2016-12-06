@@ -32,6 +32,30 @@
       <% end %>
     </div>
   </div>
+  <div class="form-group <%= "has-error" if @user.errors[:username].any? %> ">
+    <%= f.label :username, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.text_field :username, :class => "form-control" %>
+      <% @user.errors[:username].each do |message| %>
+        <span class="span-err">
+          <i class="fa fa-exclamation-triangle"></i>
+          <%=  message %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group <%= "has-error" if @user.errors[:password].any? %> ">
+    <%= f.label :password, :class => "col-sm-2 control-label" %>
+    <div class="col-xs-4">
+      <%= f.password_field :password, :class => "form-control" %>
+      <% @user.errors[:password].each do |message| %>
+        <span class="span-err">
+          <i class="fa fa-exclamation-triangle"></i>
+          <%=  message %>
+        </span>
+      <% end %>
+    </div>
+  </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= link_to "Cancelar", users_path(), class: "btn btn-outline btn-danger" %>
