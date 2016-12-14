@@ -3,6 +3,7 @@
     <h1 class="page-header">
       <%= image_tag 'folder.png', :class => "icon-title" %>
       Movimiento diario de caja
+      <%= image_tag 'folder.png', :class => "icon-title", :style =>"float:right" %>
     </h1>
   </div>
 </div>
@@ -154,14 +155,20 @@
 <div id="tab_box_cont">
 </div>
 <div class="option-links">
-  <%= link_to (image_tag 'new.png', :class => "medium-icon", :title => "Nuevo"), new_box_movement_path, :class => "new_box_movement" %>
-  <%= link_to 'Nuevo Movimiento', new_box_movement_path, :class => "new_box_movement" %>
+  <%= link_to  new_box_movement_path, :class => "link-to-btn" do %>
+    <%= image_tag 'new.png', :class => "medium-icon", :title => "Nuevo" %>
+    Nuevo Movimiento
+  <% end -%>
 </div>
 <div class="row" style="text-align: center">
-  <h2>BALANCE</h2>
+  <div class="col-lg-12">
+    <h2 class="page-header">
+      BALANCE
+    </h2>
+  </div>
 </div>
-<div class="table-responsive">
-  <table id="balance_table" class="table table-hover">
+<div class="table-responsive ">
+  <table id="balance_table" class="table table-hover table-index">
     <thead>
       <tr>
         <th><%= link_to 'Centro de costo' %></th>
@@ -251,3 +258,9 @@
 </div>
 <div class="row">
 </div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    setDefaultMonth();
+    driveChosenWorkOrders();
+  });
+</script>

@@ -8,27 +8,43 @@
   <body onload='number_pages'>
     <div style="text-align:center; width: 100%">
       <div>
-        <%= wicked_pdf_image_tag 'logo.png', :class => "logo-budget"  %>
+        <%= wicked_pdf_image_tag 'logo_rojo.png', :class => "logo-budget"  %>
       </div>
       <div style="margin-bottom: 10px; text-decoration: underline;">
-        <h1 style="font-size:20px;font-weight: 800;">DETALLE</h1>
+        <h1 style="font-size:20px;font-weight: 800;">DETALLE ORDEN Nº <%= @work_order.id %> </h1>
       </div>
     </div>
-    <div style="background: #f9f9f9 none repeat scroll 0 0; border: 1px solid; border-radius: 10px; padding-left: 70px; margin-bottom: 25px; display:flex;">
-      <div style="display: inline-block; width: 40%">
-        <p>
-          <strong>NUMERO:</strong>
-          <%= @work_order.id %>
-        </p>
+    <div style="background: #f9f9f9 none repeat scroll 0 0; border: 1px solid; border-radius: 10px; padding-left: 40px; margin-bottom: 25px; display:flex;">
+      <div style="display: inline-block; width: 49%">
         <p>
           <strong>FECHA INGRESO:</strong>
           <%= @work_order.date_in  %>
         </p>
+        <p>
+          <strong>FECHA ENTREGA:</strong>
+          <%= @work_order.deliver_date  %>
+        </p>
+        <p>
+          <strong>ENTREGADO POR:</strong>
+          <%= @work_order.delivered_by  %>
+        </p>
+        <p>
+          <strong>REVISADO POR: </strong>
+          <%= @work_order.delivered_by  %>
+        </p>
       </div>
-      <div style="display: inline-block; width: 40%">
+      <div style="display: inline-block; width: 49%">
         <p>
           <strong>CLIENTE:</strong>
           <%= @work_order.customer %>
+        </p>
+        <p>
+          <strong>NOM. FACT.:</strong>
+          <%= @work_order.customer.invoice_name %>
+        </p>
+        <p>
+          <strong>RUT:</strong>
+          <%= @work_order.customer.rut %>
         </p>
         <p>
           <strong>VEHICULO:</strong>
@@ -47,12 +63,14 @@
           <% @work_order.work_dones.each do |wd| %>
             <tr style="border-bottom: 1px solid #ddd;">
               <th style="font-weight: normal" width="75%"><%= wd.work %></th>
-              <th width="25%">$ <%= wd.price %></th>
+              <th width="5%" style="text-align: right;">$</th>
+              <th width="20%"><%= wd.price %></th>
             </tr>
           <% end %>
           <tr style="border-bottom: 1px solid #ddd;">
             <th width="75%">Sub Total Mano de Obra:</th>
-            <th width="25%">$ <%= @work_order.budget.subtotal_work_does %> + IVA</th>
+            <th width="5%" style="text-align: right;">$</th>
+            <th width="20%"> <%= @work_order.budget.subtotal_work_does %> + IVA</th>
           </tr>
         </tbody>
       </table>
@@ -68,13 +86,38 @@
           <% @work_order.replacements.each do |r| %>
             <tr style="border-bottom: 1px solid #ddd;">
               <th style="font-weight: normal" width="75%"><%= r.name %></th>
-              <th width="25%">$ <%= r.price %></th>
+              <th width="5%" style="text-align: right;"><%= r.currency %></th>
+              <th width="20%"><%= r.price %></th>
             </tr>
           <% end %>
           <tr style="border-bottom: 1px solid #ddd;">
-            <th  width="75%">Sub Total Repuestos:</th>
-            <th width="25%">$ <%= @work_order.budget.subtotal_rep %> + IVA</th>
+            <th width="75%">Sub Total Repuestos $:</th>
+            <th width="5%" style="text-align: right;">$</th>
+            <th width="20%"><%= @work_order.budget.subtotal_rep %> + IVA</th>
           </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <th  width="75%">Sub Total Repuestos U$S:</th>
+            <th width="5%" style="text-align: right;">U$S</th>
+            <th width="20%"><%= @work_order.budget.subtotal_rep_dol %> + IVA</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <strong>PAGOS PREVIOS:</strong>
+      <table class="table table-striped" >
+        <thead>
+          <tr>
+          </tr>
+        </thead>
+        <tbody>
+          <% @box_movements.each do |box_movement| %>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <th style="font-weight: normal" width="75%"><%= box_movement.date %></th>
+              <th width="5%" style="text-align: right;"><%= box_movement.currency %></th>
+              <th width="20%"><%= box_movement.value %></th>
+            </tr>
+          <% end -%>
         </tbody>
       </table>
     </div>
@@ -86,8 +129,14 @@
         </thead>
         <tbody>
           <tr style="border: 1px solid #ddd; background-color: #f5f5f5">
-            <th  width="75%">TOTAL:</th>
-            <th width="25%">$ <%= @work_order.budget.total %> + IVA</th>
+            <th  width="75%">TOTAL $:</th>
+            <th width="5%" style="text-align: right;">$</th>
+            <th width="20%"><%= @work_order.budget.total %> + IVA</th>
+          </tr>
+          <tr style="border: 1px solid #ddd; background-color: #f5f5f5">
+            <th  width="75%">TOTAL U$S:</th>
+            <th width="5%" style="text-align: right;">U$S</th>
+            <th width="20%"><%= @work_order.budget.total_dol %> + IVA</th>
           </tr>
         </tbody>
       </table>

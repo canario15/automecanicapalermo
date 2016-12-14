@@ -1,10 +1,115 @@
 <div class="row">
   <div class="col-lg-12">
     <h1 class="page-header">
-      <%= image_tag 'folder.png', :class => "icon-title" %>
+      <%= image_tag 'new.png', :class => "icon-title" %>
       Nuevo Movimiento de Caja
+      <%= image_tag 'new.png', :class => "icon-title", :style =>"float:right" %>
     </h1>
   </div>
 </div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="form-cust">
+      <%= simple_form_for(@box_movement, :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
+        <div class="form-group <%= "has-error" if @box_movement.errors[:date].any? %>">
+        <%= f.label :date, :class => "col-sm-4 control-label" %>
+        <div class="col-xs-4">
+          <%= f.text_field :date, :class => "form-control", :value => @box_movement.id.blank?  ? (I18n.l Time.now) : @box_movement.date %>
+          <% @box_movement.errors[:date].each do |message| %>
+            <span class="span-err">
+              <i class="fa fa-exclamation-triangle"></i>
+              <%=  message %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group cost-center-fields <%= "has-error" if @box_movement.errors[:cost_center].any? %>">
+        <%= f.label :cost_center, :class => "col-sm-4 control-label" %>
+        <div class="col-xs-4">
+          <%= select("box_movement", "cost_center", COST_CENTER, :prompt => "Seleccione..", :class => "form-control") %>
+          <% @box_movement.errors[:cost_center].each do |message| %>
+            <span class="span-err">
+              <i class="fa fa-exclamation-triangle"></i>
+              <%=  message %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group work-ord-data">
+        <%= f.label :work_order, :class => "col-sm-4 control-label" %>
+        </label>
+        <div class="col-xs-4">
+          <%= select("box_movement", "work_order_id", @work_orders.collect {|wo| [ "#{wo.id} - #{wo.customer} - #{wo.vehicle}", wo.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+        </div>
+      </div>
+      <div class="form-group <%= "has-error" if @box_movement.errors[:desc].any? %>">
+        <%= f.label :desc, :class => "col-sm-4 control-label" %>
+        <div class="col-xs-4">
+          <%= f.text_field :desc, :class => "form-control" %>
+          <% @box_movement.errors[:desc].each do |message| %>
+            <span class="span-err">
+              <i class="fa fa-exclamation-triangle"></i>
+              <%=  message %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group <%= "has-error" if @box_movement.errors[:value].any? %>">
+        <%= f.label :value, :class => "col-sm-4 control-label" %>
+        <div class="col-xs-4">
+          <%= f.text_field :value, :class => "form-control" %>
+          <% @box_movement.errors[:value].each do |message| %>
+            <span class="span-err">
+              <i class="fa fa-exclamation-triangle"></i>
+              <%=  message %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group <%= "has-error" if @box_movement.errors[:currency].any? %>">
+        <%= f.label :currency, :class => "col-sm-4 control-label" %>
+        <div class="col-xs-4">
+          <%= select("box_movement", "currency_id", @currencies.collect {|c| [ "#{c.name}", c.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+          <% @box_movement.errors[:currency].each do |message| %>
+            <span class="span-err">
+              <i class="fa fa-exclamation-triangle"></i>
+              <%=  message %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group <%= "has-error" if @box_movement.errors[:box_movement_type].any? %>">
+        <%= f.label :box_movement_type, :class => "col-sm-4 control-label" %>
+        <div class="col-xs-4">
+          <%= select("box_movement", "box_movement_type", BOX_MOVEMENT_TYPES, :prompt => "Seleccione..", :class => "form-control") %>
+          <% @box_movement.errors[:box_movement_type].each do |message| %>
+            <span class="span-err">
+              <i class="fa fa-exclamation-triangle"></i>
+              <%=  message %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group <%= "has-error" if @box_movement.errors[:user].any? %>">
+        <%= f.label :user, :class => "col-sm-4 control-label" %>
+        <div class="col-xs-4">
+          <%= select("box_movement", "user_id", @users.collect {|u| [ "#{u.name}", u.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+          <% @box_movement.errors[:user].each do |message| %>
+            <span class="span-err">
+              <i class="fa fa-exclamation-triangle"></i>
+              <%=  message %>
+            </span>
+          <% end %>
+        </div>
+      </div>
 
-<%= render 'form' %>
+      <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-10">
+          <%= link_to "Cancelar", box_movements_path(), class: "btn btn-outline btn-danger" %>
+          <%= f.submit "Guardar ", :class =>  "btn btn-success" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

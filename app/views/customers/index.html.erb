@@ -3,11 +3,12 @@
     <h1 class="page-header">
       <%= image_tag 'customers.png', :class => "icon-title" %>
       Clientes
+      <%= image_tag 'customers.png', :class => "icon-title", :style =>"float:right" %>
     </h1>
   </div>
 </div>
 
-<table id="customers_table" class="table table-hover" >
+<table id="customers_table" class="table table-hover table-index" >
   <thead>
     <tr>
       <th><%= link_to 'id', '#'           %></th>
@@ -38,8 +39,10 @@
   </tbody>
 </table>
 <div class="option-links">
-  <%= link_to (image_tag 'new.png', :class => "medium-icon", :title => "Nuevo"), new_customer_path, :class => "new_customer" %>
-  <%= link_to 'Nuevo Cliente', new_customer_path, :class => "new_customer" %>
+  <%= link_to  new_customer_path, :class => "link-to-btn" do %>
+    <%= image_tag 'new.png', :class => "medium-icon", :title => "Nuevo" %>
+    Nuevo Cliente
+  <% end -%>
 </div>
 <div class="row">
 </div>

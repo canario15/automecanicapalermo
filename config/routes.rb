@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   root 'pages#dashboard'
 
-  match 'box_movements/extra_data', controller: 'box_movements', action: 'extra_data', as: 'extra_data', via: :get
   resources :box_movements
   #CUSTOMERS
   resources :customers

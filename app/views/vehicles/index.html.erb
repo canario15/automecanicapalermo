@@ -3,11 +3,12 @@
     <h1 class="page-header">
       <%= image_tag 'car.png', :class => "icon-title" %>
       Vehículos
+      <%= image_tag 'car.png', :class => "icon-title", :style =>"float:right" %>
     </h1>
   </div>
 </div>
 
-<table id="vehicles_table" class="table table-hover">
+<table id="vehicles_table" class="table table-hover table-index">
   <thead>
     <tr>
       <th><%= link_to 'Id', '#'          %></th>

@@ -1,20 +1,85 @@
-/******************* MY THEME ***************
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    color: white;
-}
+/*
 body {
-  color: white;
+  color: black;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 1.42857;
-  background: url(asset-path("2.png"));
+  background: #2E64FE;
 }
+
+a {
+  color: #2E64FE;
+}
+a:hover, a:focus {
+  color: #08088A;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: #2E64FE;
+}
+
+.navbar-background {
+  background-color: #2E64FE;
+}
+
+.navbar-top-links li a {
+  color: white;
+  min-height: 50px;
+  padding: 15px;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: white;
+  color: #2E64FE;
+  text-decoration: none;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: white;
+    border-color: none;
+}
+
+.navbar-top-links .dropdown-menu li a {
+  min-height: 0;
+  padding: 3px 20px;
+  color: #2E64FE;
+}
+
+.navbar-top-links .dropdown-menu li a:hover {
+  background-color: #2E64FE;
+  color: white;
+}
+
+.navbar-default {
+  border-color: white;
+}
+.navbar-background2 {
+  background: #2E64FE;
+}
+
+.sidebar-nav a{
+  color: white;
+}
+.sidebar ul li a.active {
+  background-color: white;
+  color:#2E64FE;
+}
+.sidebar ul li {
+  border-bottom: none;
+}
+
+#page-wrapper {
+ background-color: white;
+ border-left: 1px solid white;
+}
+
+
 .form-control {
   background: none;
-  color:white;
+  color:black;
 }
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
-  background: none;
+  background-color: #D8D8D8;
 }
 
 .chosen-container-single .chosen-single {
@@ -22,46 +87,12 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-    color: white;
+    color: black;
     font-size: 14px;
 }
 
-.navbar-background {
-  background: url(asset-path("background_footer.jpg"));
-}
-.navbar-background2 {
-  background: none;
-}
-
-#page-wrapper {
- background: none;
- border-left: 1px solid black;
-}
-
-.navbar-default {
-  border-color: black;
-}
-
-
-.sidebar-nav a{
-  color: white;
-}
-.sidebar ul li a.active {
-  background-color: black;
-}
-.nav > li > a:hover, .nav > li > a:focus {
-  background-color: black;
-  text-decoration: none;
-  color:red;
-}
-.sidebar ul li {
-  border-bottom: none;
-}
-
-
 .table-hover > tbody > tr:hover {
   background-color: #f5f5f5;
-  color: black;
 }
 
 .remove_fields {
@@ -71,20 +102,30 @@ body {
   color:#04B404;
  }
 
+.show-label {
+  float: right !important;
+  text-align: right;
+  color: black;
+}
+.show-info h4{
+  color: #A4A4A4;
+}
 
 .panel {
   background: none;
-  border: 1px solid white;
+  border: 1px solid black;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   margin-bottom: 20px;
 }
 
-.table-striped > tbody > tr:nth-of-type(2n+1) {
-    background: none;
+.panel-default > .panel-heading {
+  border-color: black;
 }
+
+
 .table-striped > tbody > tr:nth-of-type(2n+1) {
-    background: none;
+  background-color: #E6E6E6;
 }
 
 .option-links .row-links-work {
@@ -108,24 +149,6 @@ body {
     background: none;
 }
 
-.btn-info.btn-outline {
-    color: white;
-}
-.btn-info {
-  border-color: white;
-}
-
-.btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info {
-  background-color: white!important;
-  border-color: white!important;
-  color: black!important;
-}
-
-.btn-info:hover {
-  background-color: white!important;
-  border-color: white!important;
-  color: black!important;
-}
 
 .nest-veh {
   background: none!important;
@@ -134,4 +157,4 @@ body {
   color: black!important;
 }
 
-****************************************************/
+***************************************************/

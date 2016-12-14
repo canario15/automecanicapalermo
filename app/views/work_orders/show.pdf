@@ -8,21 +8,21 @@
   <body onload='number_pages'>
     <div style="text-align:center; width: 100%">
       <div>
-        <%= wicked_pdf_image_tag 'logo.png', :class => "logo-budget"  %>
+        <%= wicked_pdf_image_tag 'logo_rojo.png', :class => "logo-budget"  %>
       </div>
       <div style="margin-bottom: 10px; text-decoration: underline;">
-        <h1 style="font-weight: 800;">ORDEN DE TRABAJO </h1>
+        <h1 style="font-weight: 800;">ORDEN DE TRABAJO Nº <%= @work_order.id %></h1>
       </div>
     </div>
-    <div style="background: #f9f9f9 none repeat scroll 0 0; border: 1px solid; border-radius: 10px; padding-left: 70px; margin-bottom: 25px; display:flex;">
-      <div style="display: inline-block; width: 40%">
-        <p>
-          <strong>NUMERO:</strong>
-          <%= @work_order.id %>
-        </p>
+    <div style="background: #f9f9f9 none repeat scroll 0 0; border: 1px solid; border-radius: 10px; padding-left: 10px; margin-bottom: 25px; display:flex;">
+      <div style="display: inline-block; width: 49%">
         <p>
           <strong>FECHA INGRESO:</strong>
           <%= @work_order.date_in  %>
+        </p>
+        <p>
+          <strong>FECHA ENTREGA:</strong>
+          <%= @work_order.deliver_date %>
         </p>
         <p>
           <strong>RECIBIDO POR:</strong>
@@ -33,14 +33,14 @@
           <%= @work_order.worked_by %>
         </p>
       </div>
-      <div style="display: inline-block; width: 40%">
+      <div style="display: inline-block; width: 49%">
         <p>
           <strong>CLIENTE:</strong>
           <%= @work_order.customer %>
         </p>
         <p>
           <strong>VEHICULO:</strong>
-          <%= @work_order.vehicle %>
+          <%= @work_order.vehicle %> - <%= @work_order.vehicle.year %>
         </p>
         <p>
           <strong>KM:</strong>
@@ -76,11 +76,19 @@
           </tr>
         </thead>
         <tbody>
-          <% 6.times do |i| %>
-            <tr style="border-bottom: 1px solid #ddd;">
-              <th style="font-weight: normal" width="75%"><%= i + 1 %>.</th>
-            </tr>
-          <% end %>
+          <% if @work_order.work_dones.blank? %>
+            <% 4.times do |i| %>
+              <tr style="border-bottom: 1px solid #ddd;">
+                <th style="font-weight: normal" width="75%"><%= i + 1 %>.</th>
+              </tr>
+            <% end %>
+          <% else %>
+            <% @work_order.work_dones.each do |work_done|%>
+              <tr>
+                <td><%= work_done.work %></td>
+              </tr>
+            <% end -%>
+          <% end -%>
         </tbody>
       </table>
     </div>
@@ -92,11 +100,19 @@
           </tr>
         </thead>
         <tbody>
-          <% 6.times do |i| %>
-            <tr style="border-bottom: 1px solid #ddd;">
-              <th style="font-weight: normal" width="75%"><%= i + 1 %>.</th>
-            </tr>
-          <% end %>
+          <% if @work_order.replacements.blank? %>
+            <% 4.times do |i| %>
+              <tr style="border-bottom: 1px solid #ddd;">
+                <th style="font-weight: normal" width="75%"><%= i + 1 %>.</th>
+              </tr>
+            <% end %>
+          <% else %>
+            <% @work_order.replacements.each do |replacement|%>
+              <tr>
+                <td><%= replacement.name %></td>
+              </tr>
+            <% end -%>
+          <% end -%>
         </tbody>
       </table>
     </div>
@@ -108,11 +124,15 @@
           </tr>
         </thead>
         <tbody>
-          <% 4.times do |i| %>
-            <tr style="border-bottom: 1px solid #ddd;">
-              <th style="font-weight: normal" width="75%"><%= i + 1 %>.</th>
-            </tr>
-          <% end %>
+          <% if @work_order.observation.blank? %>
+            <% 4.times do |i| %>
+              <tr style="border-bottom: 1px solid #ddd;">
+                <th style="font-weight: normal" width="75%"><%= i + 1 %>.</th>
+              </tr>
+            <% end %>
+          <% else %>
+            <p><%= @work_order.observation %></p>
+          <% end -%>
         </tbody>
       </table>
     </div>

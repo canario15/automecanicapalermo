@@ -20,7 +20,7 @@
 //= require dataTables.bootstrap
 //= require bootstrap-datetimepicker
 //= require bootstrap-datetimepicker.es
-
+//= require car_brands
 //= require raphael
 //= require cocoon
 //= require chosen.jquery
@@ -49,6 +49,16 @@ $(document).ready(function () {
 
 
 });
+
+function noty_alert(message, status) {
+  $.notify(
+    message,
+    { position:"top center",
+      className: status
+    }
+  );
+}
+
 
 function show_alert(type, message){
   switch (type){

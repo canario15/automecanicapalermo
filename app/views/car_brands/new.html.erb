@@ -3,8 +3,15 @@
     <h1 class="page-header">
       <%= image_tag 'new.png', :class => "icon-title" %>
       Nueva Marca de Vehículo
+      <%= image_tag 'new.png', :class => "icon-title", :style =>"float:right" %>
     </h1>
   </div>
 </div>
-<%= render 'form' %>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="form-cust">
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>
 

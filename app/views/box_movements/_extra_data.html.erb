@@ -1,9 +1,9 @@
 <div class="form-group work-ord-data">
-  <label for="box_movement_work_order" class="col-sm-2 control-label">
+  <label for="box_movement_work_order" class="col-sm-4 control-label">
     Orden de Trabajo
   </label>
   <div class="col-xs-4">
-    <%= select("box_movement", "work_order_id", @work_orders.collect {|wo| [ "#{wo.number} - #{wo.customer} - #{wo.vehicle}", wo.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+    <%= select("box_movement", "work_order_id", @work_orders.collect {|wo| [ "#{wo.id} - #{wo.customer} - #{wo.vehicle}", wo.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
   </div>
 </div>
 

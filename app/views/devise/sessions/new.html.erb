@@ -5,38 +5,40 @@
     </h1>
   </div>
 </div>
-
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
-  <div class="form-group <%= "has-error" if @user.errors[:username].any? %> ">
-    <%= f.label :username, :class => "col-sm-2 control-label" %>
-    <div class="col-xs-4">
-      <%= f.text_field :username, :class => "form-control" %>
-      <% @user.errors[:username].each do |message| %>
-        <span class="span-err">
-          <i class="fa fa-exclamation-triangle"></i>
-          <%=  message %>
-        </span>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="form-cust">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "form-horizontal my-form", :role => "form" }) do |f| %>
+        <div class="form-group <%= "has-error" if @user.errors[:username].any? %> ">
+          <%= f.label :username, :class => "col-sm-2 control-label" %>
+          <div class="col-xs-4">
+            <%= f.text_field :username, :class => "form-control" %>
+            <% @user.errors[:username].each do |message| %>
+              <span class="span-err">
+                <i class="fa fa-exclamation-triangle"></i>
+                <%=  message %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group <%= "has-error" if @user.errors[:password].any? %> ">
+          <%= f.label :password, :class => "col-sm-2 control-label" %>
+          <div class="col-xs-4">
+            <%= f.password_field :password, :class => "form-control" %>
+            <% @user.errors[:password].each do |message| %>
+              <span class="span-err">
+                <i class="fa fa-exclamation-triangle"></i>
+                <%=  message %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit "Ingresar ", :class =>  "btn btn-success" %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
-  <div class="form-group <%= "has-error" if @user.errors[:password].any? %> ">
-    <%= f.label :password, :class => "col-sm-2 control-label" %>
-    <div class="col-xs-4">
-      <%= f.password_field :password, :class => "form-control" %>
-      <% @user.errors[:password].each do |message| %>
-        <span class="span-err">
-          <i class="fa fa-exclamation-triangle"></i>
-          <%=  message %>
-        </span>
-      <% end %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Ingresar ", :class =>  "btn btn-outline btn-success" %>
-    </div>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

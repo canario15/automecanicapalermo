@@ -23,7 +23,11 @@ class WorkOrdersController < ApplicationController
     @customers = Customer.all
     @vehicles = Vehicle.all
     @users = User.all
+    @customer = Customer.new
+    @customer.vehicles.build
+    @car_brands = CarBrand.all
     3.times { @work_order.work_ins.build }
+    @next_number = WorkOrder.maximum(:id).next
   end
 
   # GET /work_orders/1/edit
@@ -40,6 +44,10 @@ class WorkOrdersController < ApplicationController
     @customers = Customer.all
     @vehicles = Vehicle.all
     @users = User.all
+    @customer = Customer.new
+    @customer.vehicles.build
+    @next_number = WorkOrder.maximum(:id).next
+    @car_brands = CarBrand.all
     respond_to do |format|
       if @work_order.save
         @work_order.status = WORK_ORDER_STATUS[0]
@@ -65,11 +73,11 @@ class WorkOrdersController < ApplicationController
           @work_order.status = WORK_ORDER_STATUS[1]
           @work_order.save
         end
-        format.html { redirect_to @work_order, notice: 'La orden se ha actualizada   correctamente.' }
-        format.json { render :show, status: :ok, location: @work_order }
+        format.html { redirect_to @work_order, notice: 'La orden se ha actualizada correctamente.' }
+        format.json { render json: { :status =>  'success', :message => 'El presupuesto se ha guardado correctamente.' } }
       else
         format.html { render :edit }
-        format.json { render json: @work_order.errors, status: :unprocessable_entity }
+        format.json { render json: { :status => 'error', :message => @work_order.errors.messages } }
       end
     end
   end
@@ -86,7 +94,7 @@ class WorkOrdersController < ApplicationController
 
   def finalize
     err = ""
-    if !@work_order.budget.total.blank? && !@work_order.delivered_by.blank? && @work_order.status == WORK_ORDER_STATUS[1]
+    if (!@work_order.budget.total.blank? || !@work_order.budget.total_dol.blank?) && !@work_order.delivered_by.blank? && @work_order.status == WORK_ORDER_STATUS[1]
       @work_order.status = WORK_ORDER_STATUS[2]
       @work_order.save
     else
@@ -96,13 +104,14 @@ class WorkOrdersController < ApplicationController
       if err == ""
         format.html { redirect_to @work_order, notice: 'La orden se ha finalizado correctamente.' }
       else
-        format.html { redirect_to @work_order, error: err }
+        format.html { redirect_to @work_order, alert: err }
       end
     end
   end
 
   def budget
     @users = User.all
+    @box_movements = @work_order.box_movements
     respond_to do |format|
       format.html
       format.pdf  {render pdf: "budget" }
@@ -117,7 +126,7 @@ class WorkOrdersController < ApplicationController
 
     # Never trust parameters from the swork_ordery internet, only allow the white list through.
     def work_order_params
-      params.require(:work_order).permit(:date_in, :status, :number, :km, :fuel, :coments, :observation, :delivered_by_id, :worked_by_id, :received_by_id, :customer_id, :vehicle_id, budget_attributes: [:id, :subtotal_work_does, :subtotal_rep, :total ], work_ins_attributes: [:id, :work, :_destroy ], work_dones_attributes: [:id, :work, :price, :_destroy ], replacements_attributes: [:id, :name, :price, :_destroy])
+      params.require(:work_order).permit(:date_in, :deliver_date, :status, :number, :km, :fuel, :coments, :observation, :delivered_by_id, :worked_by_id, :received_by_id, :customer_id, :vehicle_id, budget_attributes: [:id, :subtotal_rep_dol, :total_dol, :subtotal_work_does, :subtotal_rep, :total ], work_ins_attributes: [:id, :work, :_destroy ], work_dones_attributes: [:id, :work, :price, :_destroy ], replacements_attributes: [:id, :name, :price, :currency, :_destroy])
     end
 end
 

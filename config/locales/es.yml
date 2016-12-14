@@ -90,6 +90,8 @@ es:
             plate:
               taken: " pertenece a un cliente registrado."
               blank: " no puede ser vacío."
+            year:
+              blank: " no puede ser vacío."
         work_in:
           attributes:
             work:
@@ -171,7 +173,6 @@ es:
         chassis_number: "Nº Chasis"
       work_order:
         date_in: "Fecha Ingreso"
-        number: "Número"
         km: "km"
         fuel: "Comb."
         coments: "Detalles del auto"
@@ -185,6 +186,7 @@ es:
         replacements: "Repuestos"
         status: "Estado"
         observation: "Observaciones"
+        deliver_date: "Fecha Entrega"
       work_in:
         work: "Trabajo"
       work_done:
@@ -195,7 +197,7 @@ es:
       user:
         name: "Nombre"
         user_type: "Tipo"
-        username: "Username"
+        username: "Usuario"
         password: "Contraseña"
       car_brand:
         name: "Nombre"
@@ -207,3 +209,4 @@ es:
         user: "Empleado"
         box_movement_type: "Tipo de Movimiento"
         currency: "Moneda"
+        work_order: "Orden de Trabajo"

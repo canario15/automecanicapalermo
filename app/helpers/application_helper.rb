@@ -16,7 +16,7 @@ module ApplicationHelper
         "<p id='have_alert' data-type='error'>#{flash[:alert]}</p>".html_safe
       else
         if type == 'notice'
-          "<p id='have_alert' data-type='info'>#{flash[:notice]}</p>".html_safe
+          "<p id='have_alert' data-type='success'>#{flash[:notice]}</p>".html_safe
         end
       end
     end

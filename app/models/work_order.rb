@@ -10,6 +10,8 @@ class WorkOrder < ActiveRecord::Base
   has_many :work_ins
   has_many :work_dones
   has_many :replacements
+  has_many :box_movements
+
 
   accepts_nested_attributes_for :work_ins, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :work_dones, reject_if: :all_blank, allow_destroy: true
@@ -25,6 +27,6 @@ class WorkOrder < ActiveRecord::Base
   private
 
   def build_budget
-    self.budget = Budget.new(total: 0, subtotal_rep: 0, subtotal_work_does: 0)
+    self.budget = Budget.new(total: 0, subtotal_rep: 0, subtotal_work_does: 0, subtotal_rep_dol: 0, total_dol: 0 )
   end
 end

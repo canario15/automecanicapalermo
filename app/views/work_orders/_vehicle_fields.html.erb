@@ -1,0 +1,51 @@
+<div class="nested-fields nest-veh">
+  <div class="form-group">
+    <%= f.label :car_brand, :class => "col-sm-4 control-label" %>
+    <div class="col-xs-8">
+      <%= f.collection_select(:car_brand_id, @car_brands, :id, :name, {:include_blank => 'Seleccione..'}, {:class => 'form-control collection-brand'} ) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :model, :class => "col-sm-4 control-label" %>
+    <div class="col-xs-8">
+      <%= f.text_field :model, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :displacement, :class => "col-sm-4 control-label" %>
+    <div class="col-xs-8">
+      <%= f.text_field :displacement, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group ">
+    <%= f.label :year, :class => "col-sm-4 control-label" %>
+    <div class="col-xs-8">
+      <%= f.text_field :year, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :plate, :class => "col-sm-4 control-label" %>
+    <div class="col-xs-8">
+      <%= f.text_field :plate, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :color, :class => "col-sm-4 control-label" %>
+    <div class="col-xs-8">
+      <%= f.text_field :color, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :chassis_number, :class => "col-sm-4 control-label" %>
+    <div class="col-xs-8">
+      <%= f.text_field :chassis_number, :class => "form-control" %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $(".collection-brand").chosen({
+     width: "100%"
+    });
+  });
+</script>

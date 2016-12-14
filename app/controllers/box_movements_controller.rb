@@ -24,22 +24,14 @@ class BoxMovementsController < ApplicationController
     @box_movement = BoxMovement.new
     @users = User.all
     @currencies = Currency.all
+    @work_orders = WorkOrder.all
   end
 
-  def extra_data
-    @work_orders = WorkOrder.where(status: WORK_ORDER_STATUS[0] )
-    respond_to do |format|
-      if request.xhr?
-        format.html { render partial: 'extra_data', :layout => false}
-      else
-        format.html { render partial: 'extra_data', :layout => false}
-      end
-    end
-  end
   # GET /box_movements/1/edit
   def edit
     @users = User.all
     @currencies = Currency.all
+    @work_orders = WorkOrder.all
   end
 
   # POST /box_movements
@@ -48,9 +40,10 @@ class BoxMovementsController < ApplicationController
     @box_movement = BoxMovement.new(box_movement_params)
     @users = User.all
     @currencies = Currency.all
+    @work_orders = WorkOrder.all
     respond_to do |format|
       if @box_movement.save
-        format.html { redirect_to @box_movement, notice: 'Box movement was successfully created.' }
+        format.html { redirect_to @box_movement, notice: 'Movimiento creado con éxito.' }
         format.json { render :show, status: :created, location: @box_movement }
       else
         format.html { render :new }
@@ -64,9 +57,10 @@ class BoxMovementsController < ApplicationController
   def update
     @users = User.all
     @currencies = Currency.all
+    @work_orders = WorkOrder.all
     respond_to do |format|
       if @box_movement.update(box_movement_params)
-        format.html { redirect_to @box_movement, notice: 'Box movement was successfully updated.' }
+        format.html { redirect_to @box_movement, notice: 'El movimiento se ha actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @box_movement }
       else
         format.html { render :edit }

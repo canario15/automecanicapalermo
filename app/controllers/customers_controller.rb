@@ -27,13 +27,14 @@ before_action :set_customer, only: [:show, :edit, :update, :destroy, :delete_veh
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
+    @car_brands = CarBrand.all.order(:name)
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Cliente creado con éxito.' }
-        format.json { render :show, status: :created, location: @customer }
+        format.json { render json: { :status =>  'OK', :message => 'Cliente creado con éxito.', :customer => @customer.to_json } }
       else
         format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
+        format.json { render json: { :status => 'ERROR', :errors => @customer.errors.messages } }
       end
     end
   end

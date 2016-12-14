@@ -3,16 +3,18 @@
     <h1 class="page-header">
       <%= image_tag 'car.png', :class => "icon-title" %>
       Marcas de Vehículos
+      <%= image_tag 'car.png', :class => "icon-title", :style =>"float:right" %>
     </h1>
   </div>
 </div>
 
-<table id="car_brands_table" class="table table-hover">
+<table id="car_brands_table" class="table table-hover table-index">
   <thead>
     <tr>
       <th><%= link_to 'Id', '#'      %></th>
       <th><%= link_to 'Nombre', '#' %></th>
-      <th colspan="2"><%= link_to 'Acciones', '#' %></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -27,7 +29,7 @@
   </tbody>
 </table>
 <div class="option-links">
-  <%= link_to new_car_brand_path do %>
+  <%= link_to new_car_brand_path, :class => "link-to-btn" do %>
     <%= image_tag 'new.png', :class => "medium-icon", :title => "Nuevo" %>
     Nueva Marca
   <% end -%>

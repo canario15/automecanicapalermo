@@ -1,2 +1,2 @@
-<%= select("work_order", "vehicle_id", @vehicles.collect {|v| [ "#{v.car_brand.name} #{v.model} - #{v.plate} ", v.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+<%= select("work_order", "vehicle_id", @vehicles.collect {|v| [ "#{v.car_brand.name} #{v.model} - #{v.plate} ", v.id ] }, :class => "form-control") %>
 

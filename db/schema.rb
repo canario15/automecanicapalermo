@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206192923) do
+ActiveRecord::Schema.define(version: 20161213232307) do
 
   create_table "box_movements", force: :cascade do |t|
     t.datetime "date"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20161206192923) do
     t.datetime "updated_at",         null: false
     t.integer  "subtotal_rep"
     t.integer  "subtotal_work_does"
+    t.integer  "subtotal_rep_dol"
+    t.integer  "total_dol"
   end
 
   add_index "budgets", ["work_order_id"], name: "index_budgets_on_work_order_id"
@@ -58,6 +60,7 @@ ActiveRecord::Schema.define(version: 20161206192923) do
     t.string  "name"
     t.string  "price"
     t.integer "work_order_id"
+    t.string  "currency"
   end
 
   add_index "replacements", ["work_order_id"], name: "index_replacements_on_work_order_id"
@@ -103,7 +106,6 @@ ActiveRecord::Schema.define(version: 20161206192923) do
   add_index "work_ins", ["work_order_id"], name: "index_work_ins_on_work_order_id"
 
   create_table "work_orders", force: :cascade do |t|
-    t.date     "date_in"
     t.integer  "number"
     t.integer  "customer_id"
     t.integer  "vehicle_id"
@@ -117,6 +119,8 @@ ActiveRecord::Schema.define(version: 20161206192923) do
     t.integer  "delivered_by_id"
     t.integer  "worked_by_id"
     t.text     "observation"
+    t.datetime "deliver_date"
+    t.datetime "date_in"
   end
 
   add_index "work_orders", ["customer_id"], name: "index_work_orders_on_customer_id"

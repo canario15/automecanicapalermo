@@ -16,6 +16,13 @@ $(document).ready(function () {
       width: "100%"
   });
 
+  $("#box_movement_work_order_id").chosen({
+    width: "100%"
+  });
+
+  $('#box_movement_work_order_id').prop('disabled', true).trigger("chosen:updated");
+
+
   $('#box_movement_date').datetimepicker({
     language:  'es',
     weekStart: 1,
@@ -41,20 +48,11 @@ $(document).ready(function () {
   });
 
   $("#box_movement_cost_center").chosen().change( function () {
-    var value = $(this).val();
-    if (value == 'Taller' || value == 'Chapa y Pintura') {
-      $.get('/box_movements/extra_data/', function (data) {
-        $(data).insertAfter(".cost-center-fields");
-        $("#box_movement_work_order_id").chosen({ width: "100%" });
-      });
-    }else{
-      $(".work-ord-data").remove();
-    }
+    driveChosenWorkOrders();
   });
 
-
-
-  setDefaultMonth();
+  //setDefaultMonth();
+  //driveChosenWorkOrders();
 
 });
 
@@ -66,6 +64,7 @@ function setDefaultMonth() {
   chbox.prop("checked","true");
   chbox.parent().addClass("active");
   filterMovement();
+
 }
 
 function filterMovement() {
@@ -170,4 +169,15 @@ function sumTotals(total_in_pesos, total_out_pesos, total_pesos, total_in_dollar
   $("#in_dollar_tot").text( parseInt($("#in_dollar_tot").text()) + total_in_dollar);
   $("#out_dollar_tot").text( parseInt($("#out_dollar_tot").text()) +  total_out_dollar);
   $("#tot_dollar").text( parseInt($("#tot_dollar").text()) + total_dollar);
+}
+
+
+function driveChosenWorkOrders() {
+  var value = $("#box_movement_cost_center").val();
+  if (value == 'Taller' || value == 'Chapa y Pintura') {
+    $('#box_movement_work_order_id').prop('disabled', false).trigger("chosen:updated");
+  }else{
+    $('#box_movement_work_order_id').val(0);
+    $('#box_movement_work_order_id').prop('disabled', true).trigger("chosen:updated");
+  }
 }
