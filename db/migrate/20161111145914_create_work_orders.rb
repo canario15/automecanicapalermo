@@ -8,7 +8,6 @@ class CreateWorkOrders < ActiveRecord::Migration
       t.string :km
       t.string :fuel
       t.text :coments
-      t.belongs_to :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

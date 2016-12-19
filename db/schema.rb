@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161219183748) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "box_movements", force: :cascade do |t|
     t.datetime "date"
     t.string   "cost_center"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20161219183748) do
     t.integer  "total_budget_pay_dol"
   end
 
-  add_index "budgets", ["work_order_id"], name: "index_budgets_on_work_order_id"
+  add_index "budgets", ["work_order_id"], name: "index_budgets_on_work_order_id", using: :btree
 
   create_table "car_brands", force: :cascade do |t|
     t.string   "name"
@@ -71,7 +74,7 @@ ActiveRecord::Schema.define(version: 20161219183748) do
     t.string  "currency"
   end
 
-  add_index "replacements", ["work_order_id"], name: "index_replacements_on_work_order_id"
+  add_index "replacements", ["work_order_id"], name: "index_replacements_on_work_order_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -104,7 +107,7 @@ ActiveRecord::Schema.define(version: 20161219183748) do
     t.string   "currency"
   end
 
-  add_index "work_dones", ["work_order_id"], name: "index_work_dones_on_work_order_id"
+  add_index "work_dones", ["work_order_id"], name: "index_work_dones_on_work_order_id", using: :btree
 
   create_table "work_ins", force: :cascade do |t|
     t.integer "work_order_id"
@@ -112,7 +115,7 @@ ActiveRecord::Schema.define(version: 20161219183748) do
     t.boolean "done"
   end
 
-  add_index "work_ins", ["work_order_id"], name: "index_work_ins_on_work_order_id"
+  add_index "work_ins", ["work_order_id"], name: "index_work_ins_on_work_order_id", using: :btree
 
   create_table "work_orders", force: :cascade do |t|
     t.integer  "number"
@@ -132,7 +135,13 @@ ActiveRecord::Schema.define(version: 20161219183748) do
     t.datetime "date_in"
   end
 
-  add_index "work_orders", ["customer_id"], name: "index_work_orders_on_customer_id"
-  add_index "work_orders", ["vehicle_id"], name: "index_work_orders_on_vehicle_id"
+  add_index "work_orders", ["customer_id"], name: "index_work_orders_on_customer_id", using: :btree
+  add_index "work_orders", ["vehicle_id"], name: "index_work_orders_on_vehicle_id", using: :btree
 
+  add_foreign_key "budgets", "work_orders"
+  add_foreign_key "replacements", "work_orders"
+  add_foreign_key "work_dones", "work_orders"
+  add_foreign_key "work_ins", "work_orders"
+  add_foreign_key "work_orders", "customers"
+  add_foreign_key "work_orders", "vehicles"
 end
