@@ -202,7 +202,7 @@
       <%= image_tag 'calculator.png', :class => "medium-icon", :title => "Presupuesto" %>
         Presupuesto
       <% end -%> |
-      <%= link_to work_order_finalize_path(@work_order) do %>
+      <%= link_to "#", data: { toggle:"modal" ,target: "#deliver_modal"} do %>
         Entregar
         <%= image_tag 'rigth.png', :class => "medium-icon", :title => "Entregar" %>
       <% end -%>
@@ -211,3 +211,39 @@
 </div>
 <div class="row">
 </div>
+
+
+<div class="modal fade" id="deliver_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Entregar Vehículo</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag({},{:class => 'form-horizontal my-form deli-form'}) do %>
+          <%= hidden_field_tag "work_order_id", @work_order.id %>
+          <div class="form-group">
+            <label for="work_order_delivered_by" class="string optional col-sm-4 control-label">Entregado por</label>
+            <div class="col-xs-4">
+              <%= select("work_order", "delivered_by_id", @users.collect {|u| [ "#{u.name}", u.id ] }, :prompt => "Seleccione..", :class => "form-control") %>
+            </div>
+          </div>
+          <%= csrf_meta_tag %>
+          <script type="text/javascript">
+            $(document).ready(function () {
+              $("#work_order_delivered_by_id").chosen({
+               width: "100%"
+              });
+            });
+          </script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+        <button id="deliver_wo" type="button" class="btn btn-success">Guardar</button>
+      </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+

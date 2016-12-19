@@ -200,6 +200,21 @@ a:hover, a:focus {
   font-size: 20px;
   height: 41px;
 }
+
+.total-budget-pay{
+  font-size: 20px;
+  height: 41px;
+}
+.total-budget-dol-pay{
+  font-size: 20px;
+  height: 41px;
+}
+
+.discount-budget{
+  font-size: 20px;
+  height: 41px;
+}
+
 .in-gr-ad-tot {
   font-size: 20px;
 }
@@ -293,6 +308,60 @@ a:hover, a:focus {
   margin-left: 5px;
   color: #04b404;
 }
+.clickable-row {
+  cursor: pointer;
+}
+
+.my-panel {
+  margin-bottom: 20px;
+}
+
+.my-panel > .panel-heading  {
+  border:2px solid white;
+  border-radius: 5px;
+}
+
+.panel-primary:hover > .panel-heading  {
+  border:2px solid #337ab7 !important;
+  background-color: white;
+  color: #337ab7;
+}
+
+.panel-green:hover > .panel-heading{
+  border:2px solid #5cb85c !important;
+  background-color: white;
+  color: #5cb85c;
+}
+
+.panel-info:hover > .panel-heading {
+  border:2px solid #5bc0de !important;
+  background-color: white;
+  color: #5bc0de;
+}
+
+.panel-yellow:hover > .panel-heading {
+  border:2px solid #f0ad4e !important;
+  background-color: white;
+  color: #f0ad4e;
+}
+
+.panel-red:hover > .panel-heading{
+  border:2px solid #d9534f !important;
+  background-color: white;
+  color: #d9534f;
+}
+
+.marquee {
+  color: white;
+  font-size: 20px;
+  left: 389px;
+  margin-top: 28px;
+  overflow: hidden;
+  position: absolute;
+  width: 56%;
+}
+
+
 
 
 
@@ -545,6 +614,7 @@ div.dataTables_info {
   border-radius: 5px;
   border: 1px solid #000000;
   padding-top: 30px;
+  padding-left: 30px;
 }
 
 .panel-body {

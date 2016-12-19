@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Buscar y Ver un Cliente
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+  <h3>Paso 1 - Ingresar a la Lista de clientes </h3>
+  <p>Para ver la lista de clientes diríjase al menú sobre la izquierda bajo el titulo de Cliente se encuentra un sub ítem <%= link_to "Lista", customers_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'client_list_menu.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Identificar el cliente  e ingresar</h3>
+  <p>Al ingresar a la lista de Cliente, se desplegara una tabla con los datos:
+  <div class="col-lg-12">
+    <%= image_tag 'vehi_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Identifique el cliente o búsquelo mediante el campo situado arriba a la derecha.</p>
+    <p>En la última columna de la tabla aparecerán dos iconos <%= image_tag 'show.png', :class => "small-icon" %> y <%= image_tag 'edit.png', :class => "small-icon" %></p>
+    <p> Presionando el botón Ver <%= image_tag 'show.png', :class => "small-icon" %> se mostrarán los  datos del cliente.</p>
+    <%= image_tag 'show_client.png', class: "image-help-15" %>
+  </div>
+
+  <h3>Paso 3 - Acciones </h3>
+  <p> Abajo del los datos del Cliente se puede observar dos acciones. Atrás y Editar</p>
+  <%= image_tag 'show_accion_client.png', class: "image-help-14" %>
+  <p>Atrás: Retrocede a la lista de clientes</p>
+  <p>Editar: Ingresa al formulario para editar el cliente. <%= link_to help_edit_customer_path() do %> <i>(léase: Editar cliente)</i> <% end -%> </p>
+
+
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

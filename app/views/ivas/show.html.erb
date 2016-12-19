@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      <%= image_tag 'show.png', :class => "icon-title" %>
+      IVA
+      <%= image_tag 'show.png', :class => "icon-title", :style =>"float:right" %>
+    </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12" >
+    <div class="show-container">
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="show-label">Valor:</h4>
+        </div>
+        <div class="col-md-2 show-info">
+          <h4><%= @iva.value %></h4>
+        </div>
+      </div>
+      <div class="row  row-links">
+        <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Editar"), edit_iva_path(@iva)%>
+        <%= link_to 'Editar', edit_iva_path(@iva) %>
+      </div>
+    </div>
+  </div>
+</div>

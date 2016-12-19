@@ -32,6 +32,7 @@
 //= require vehicles
 //= require box_movements
 //= require notify
+//= require jquery.marquee.min
 
 $(document).ready(function () {
 
@@ -46,6 +47,8 @@ $(document).ready(function () {
     );
     $('#have_alert').remove();
   };
+
+  $('.marquee').marquee();
 
 
 });

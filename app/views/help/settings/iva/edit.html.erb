@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Editar IVA
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+  <h3>Paso 1 - Ingresar a ver el IVA </h3>
+  <p>Para ver el valor del IVA diríjase al menú sobre la izquierda bajo el titulo Configuración se encuentra un sub ítem <%= link_to "IVA", iva_path(1) %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'iva_menu.png', class: "image-help-25" %>
+    </div>
+  </div>
+
+  <p>Al ingresar al IVA, se desplegara los datos y acciones:
+  <div class="col-lg-12">
+    <%= image_tag 'show_iva.png', class: "image-help-10" %>
+  </div>
+  <p></p>
+  <h3>Paso 3 - Acciones </h3>
+  <p> Abajo del los datos del IVA se puede observar una acciones. Editar </p>
+  <%= image_tag 'show_iva_actions.png', class: "image-help-14" %>
+  <p>Al presionar Editar, se despliega el formulario del IVA con los datos ya cargados</p>
+  <%= image_tag 'iva_form.png', class: "image-help-25" %>
+
+  <h3>Paso 4 - Editar los datos</h3>
+  <p>Se podrá editar el único dato del IVA siendo este obligatorio. </p>
+
+  <h3>Paso 5 - Guardar </h3>
+  <p>Luego de modificar el valor del IVA haciendo clic en el botón Guardar situado abajo del formulario se guardará los datos. Si no desea guardar, puede cancelar la operación haciendo clic en el botón Cancelar.</p>
+  <%= image_tag 'cancel_save_buttons.png', class: "image-help-6" %>
+  <div class="col-lg-12">
+    <p>Se presiona el botón guardar y se realizarán las validaciones correspondiente. En caso de que faltara el valor del IVA o no sea un numero se marcara con rojo y se mostrara una breve explicación del problema sobre el campo en cuestión.</p>
+    <%= image_tag 'iva_form_fail.png', class: "image-help-25" %>
+    <p>Se procede a corregir el error y se presiona nuevamente Guardar.</p>
+  </div>
+  <div style="text-align: center; margin-top: 20px;" class="col-lg-12">
+    <p>Si esta todo correctamente ingresado se guardara el valor del IVA y se mostrara los datos en pantalla con un aviso que fue guardado con éxito</p>
+    <%= image_tag 'edited_iva_message.png', class: "image-help-13" %>
+  </div>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>
+
+
+

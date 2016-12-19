@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Editar una Orden
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+  <h3>Paso 1 - Ingresar a la Lista de Ordenes </h3>
+  <p>Para ver la lista de ordenes diríjase al menú sobre la izquierda bajo el titulo de Ordenes de trabajo se encuentra un sub ítem <%= link_to "Lista", work_orders_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'wo_list_menu.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Ingresar a editar la Orden </h3>
+  <p>Al ingresar a la lista de Ordenes, se desplegara una tabla con los datos y las acciones:
+  <div class="col-lg-12">
+    <%= image_tag 'wo_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Identifique la orden o búsquelo mediante el campo de situado arriba a la derecha.</p>
+    <p>En la última columna de la tabla aparecerán dos iconos <%= image_tag 'show.png', :class => "small-icon" %> y <%= image_tag 'edit.png', :class => "small-icon" %></p>
+    <p> Presionando el botón Editar <%= image_tag 'show.png', :class => "small-icon" %> se desplegara el formulario de la orden con sus datos cargados</p>
+    <%= image_tag 'edit_wo.png', class: "image-help-44" %>
+  </div>
+
+  <h3>Paso 3 - Editar los datos</h3>
+  <p>Se podrá editar cualquier dato de la marca menos el numero. Siempre respetando los campos obligatorios: Fecha Ingreso, Fecha Entrega, Recibido por, asignado a, Ingreso, Cliente, vehículo, Kilómetros, Combustible, Detalles del auto.
+  </p>
+  <p>Además aparecerán los campos Repuestos, Trabajo Realizado y observaciones. Dichos campos se completaran luego que el empleado(mecánico) finaliza el trabajo.</p>
+
+  <h3>Paso 4 - Guardar </h3>
+  <p>Luego de modificar los datos de la Orden o agregando los campos: Repuestos, Trabajos haciendo y/o observaciones haciendo clic en el botón Guardar situado abajo del formulario se guardará los datos. Si no desea guardar las modificaciones puede cancelar la operación haciendo clic en el botón Cancelar.</p>
+  <%= image_tag 'cancel_save_buttons.png', class: "image-help-6" %>
+  <div class="col-lg-12">
+    <p>Se presiona el botón guardar y se realizarán las validaciones correspondiente. En caso de que faltara algún dato obligatorio se marcara con rojo y se mostrara una breve explicación del problema sobre el campo en cuestión.</p>
+    <%= image_tag 'fail_form_wo.png', class: "image-help-44" %>
+    <p>Se procede a corregir el error y se presiona nuevamente Guardar.</p>
+  </div>
+  <div style="text-align: center; margin-top: 20px;" class="col-lg-12">
+    <p>Si esta todo correctamente ingresado se guardara la marca y se mostrara los datos en pantalla con un aviso que fue guardado con éxito</p>
+    <%= image_tag 'edited_wo_message.png', class: "image-help-13" %>
+  </div>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

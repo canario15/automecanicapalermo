@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Presupuesto de una Orden de Trabajo
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+   <h3>Paso 1 - Ingresar a la Lista de Ordenes </h3>
+  <p>Para ver la lista de ordenes diríjase al menú sobre la izquierda bajo el titulo de Ordenes de trabajo se encuentra un sub ítem <%= link_to "Lista", work_orders_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'wo_list_menu.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Ingresar a ver la Orden </h3>
+  <p>Al ingresar a la lista de Ordenes, se desplegara una tabla con los datos y las acciones:
+  <div class="col-lg-12">
+    <%= image_tag 'wo_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Identifique la orden o búsquelo mediante el campo de situado arriba a la derecha.</p>
+    <p>En la última columna de la tabla aparecerán dos iconos <%= image_tag 'show.png', :class => "small-icon" %> y <%= image_tag 'edit.png', :class => "small-icon" %></p>
+    <p> Presionando el botón Ver <%= image_tag 'show.png', :class => "small-icon" %> se mostrarán los  datos de la orden.</p>
+    <%= image_tag 'show_wo.png', class: "image-help-23" %>
+  </div>
+
+  <h3>Paso 3 - Acceder al presupuesto</h3>
+  <p> Abajo del los datos de la orden se puede observar dos acciones. Atrás, Editar, Imprimir, Presupuesto y Entregar </p>
+  <%= image_tag 'show_accion_wo.png', class: "image-help-14" %>
+  <p>Al presionar el botón Presupuesto se desplegara un formulario con los datos del presupuesto o de lo contrario si no lo tiene estará vacío.</p>
+  <%= image_tag 'budget_form.png', class: "image-help-23" %>
+
+  <h3>Paso 4 - Completar/editar Presupuesto</h3>
+  <div>
+    <p>
+      Primero aparecera el cabezal con los datos ya conocidos de la orden.
+    </p>
+    <p>
+      Luego una lista con los Trabajos Realizados, donde se seleccionara el tipo de moneda y se le ingresara el costo. A medida que se ingresan los costos se van sumando según tipo de moneda en en los campos Sub Total Mano de Obra.
+    </p>
+    <p>
+      Lo mismo para la lista de los repuestos.
+    </p>
+    <p>
+      Los campos siguientes son los totales según la moneda. Suma de los trabajos realizado mas los repuestos ya con el IVA calculado.
+    </p>
+    <p>
+      Luego aparecera una tabla con los adelantos( movimientos de caja tipo entrada al centro de costo Taller o Chapa y Pintura, asociado a la orden de trabajo  en cuestión) siempre y cuando estos existan
+    </p>
+    <p>
+      Descuentos aplicados, es el porcentaje que de descuento que se le aplica o aplicó
+    </p>
+    <p>
+      Al final se encuentran los totales a pagar que son los totales menos los adelantos ya con el descuento calculado y el IVA.
+    </p>
+  </div>
+  <h3>Paso 5 - Acciones </h3>
+  <p> Abajo del los datos de la orden se puede observar dos acciones. Atrás, Guardar e Imprimir </p>
+  <%= image_tag 'budget-accions.png', class: "image-help-14" %>
+  <p>Atrás: Retrocede a la vista de la orden (léase: <%= link_to help_show_work_order_path() do %> <i>Ver </i> <% end -%>)</p>
+  <p>Guardar: Presionando el botón guardar se guardara el presupuesto </p>
+  <p>Imprimir: Imprimir el presupuesto (léase: <%= link_to help_print_budget_work_order_path() do %> <i>Imprimir </i> <% end -%>)</p>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

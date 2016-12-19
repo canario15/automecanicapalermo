@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Nueva Marca
+    </h1>
+  </div>
+</div>
+
+<div class="help-container">
+  <h3>Paso 1 - Ingresar al formulario </h3>
+  <p>Para dar de alta una Marca se puede ingresar por dos lugres.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'new_brand_menu.png', class: "image-help-1" %>
+    </div>
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'new-bra-btn.png', class: "image-help-16" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <p>diríjase al menú sobre la izquierda bajo el titulo de Configuración / Marca se encuentra un sub ítem <%= link_to "+ Nuevo", new_car_brand_path() %></p>
+    </div>
+    <div class="col-lg-4 center-text">
+      <p>diríjase a la lista de Marcas (léase: <%= link_to help_index_car_brands_path() do %><i> Listar Marcas</i><% end -%>) eh ingrese apretando el botón Nueva Marca</p>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Completar los datos </h3>
+  <p>Al ingresar al formulario de alta de Marca, necesita completar los siguientes datos:
+  <div class="col-lg-12">
+    <%= image_tag 'brand-form.png', class: "image-help-19" %>
+    <ul class="list-customer-fields">
+      <li>
+        <strong>(*)Nombre</strong>
+        Será el nombre de la Marca.
+      </li>
+      (*) Campos Obligatorios
+    </ul>
+  </div>
+
+  <h3>Paso 3 - Guardar </h3>
+  <p>Luego de completar los datos de la Marca se procede a guardar haciendo clic en el botón Guardar situado abajo del formulario. Si no desea guardar la Marca puede cancelar la operación haciendo clic en el botón Cancelar.</p>
+  <%= image_tag 'cancel_save_buttons.png', class: "image-help-6" %>
+  <div class="col-lg-12">
+    <p>Se presiona el botón guardar y se realizarán las validaciones correspondiente. En caso de que faltara algún dato obligatorio se marcara con rojo y se mostrara una breve explicación del problema sobre el campo en cuestión.</p>
+    <%= image_tag 'fail_form_brand.png', class: "image-help-20" %>
+    <p>Se procede a corregir el error y se presiona nuevamente Guardar.</p>
+  </div>
+  <div style="text-align: center; margin-top: 20px;" class="col-lg-12">
+    <p>Si esta todo correctamente ingresado se guardara la Marca y se mostrara los datos en pantalla con un aviso que fue guardado con éxito</p>
+    <%= image_tag 'brand_form_saved.png', class: "image-help-17" %>
+  </div>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

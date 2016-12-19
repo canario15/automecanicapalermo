@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213232307) do
+ActiveRecord::Schema.define(version: 20161219183748) do
 
   create_table "box_movements", force: :cascade do |t|
     t.datetime "date"
@@ -27,12 +27,16 @@ ActiveRecord::Schema.define(version: 20161213232307) do
   create_table "budgets", force: :cascade do |t|
     t.integer  "work_order_id"
     t.integer  "total"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "subtotal_rep"
     t.integer  "subtotal_work_does"
     t.integer  "subtotal_rep_dol"
     t.integer  "total_dol"
+    t.integer  "subtotal_work_does_dol"
+    t.integer  "discount"
+    t.integer  "total_budget_pay"
+    t.integer  "total_budget_pay_dol"
   end
 
   add_index "budgets", ["work_order_id"], name: "index_budgets_on_work_order_id"
@@ -54,6 +58,10 @@ ActiveRecord::Schema.define(version: 20161213232307) do
     t.string "phone"
     t.string "address"
     t.string "email"
+  end
+
+  create_table "ivas", force: :cascade do |t|
+    t.integer "value"
   end
 
   create_table "replacements", force: :cascade do |t|
@@ -93,6 +101,7 @@ ActiveRecord::Schema.define(version: 20161213232307) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "price"
+    t.string   "currency"
   end
 
   add_index "work_dones", ["work_order_id"], name: "index_work_dones_on_work_order_id"

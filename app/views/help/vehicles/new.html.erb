@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Alta Vehículo
+    </h1>
+  </div>
+</div>
+
+<div class="help-container">
+  <p> Los vehículos solo se pueden dar de alta para un cliente existente. Por lo tanto los vehículos se dan de alta en los datos del cliente. (léase: <%= link_to help_edit_customer_path() do %> <i>Editar cliente</i> <% end -%>, <%= link_to help_new_customer_path() do %> <i>Nuevo Cliente </i> <% end -%>) </p>
+  <h3>Paso 1 - Ingresar a la Lista de clientes </h3>
+  <p>Para ver la lista de clientes diríjase al menú sobre la izquierda bajo el titulo de Cliente se encuentra un sub ítem <%= link_to "Lista", customers_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'client_list_menu.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Ingresar a editar el cliente </h3>
+  <p>Al ingresar a la lista de Cliente, se desplegara una tabla con los datos:
+  <div class="col-lg-12">
+    <%= image_tag 'client_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Identifique el cliente o búsquelo mediante el campo de situado arriba a la derecha.</p>
+    <p>En la última columna de la tabla paraceran dos iconos <%= image_tag 'show.png', :class => "small-icon" %> y <%= image_tag 'edit.png', :class => "small-icon" %></p>
+    <p> Presionando el botón Editar <%= image_tag 'edit.png', :class => "small-icon" %> se desplegara el formulario del cliente con sus datos cargados</p>
+    <%= image_tag 'edit_client.png', class: "image-help-12" %>
+  </div>
+
+  <h3>Paso 3 - Dar de alta el Vehículo</h3>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Haciendo clic en link <span style="color:#04b404">Agregar Vehículo</span> se desplegara la lista de campos a completar sobre el vehículo.</p>
+    <%= image_tag 'vehicle_form.png', class: "image-help-5" %>
+    <ul class="list-veh-fields">
+      <li>
+        <strong>(*)Marca</strong>
+        Sera la marca del vehículo que se selecciona de una lista previamente cargada.
+      </li>
+      <li>
+        <strong>(*)Modelo</strong>
+        Modelo del vehículo.
+      </li>
+      <li>
+        <strong>Cilindrada</strong>
+        Centímetros Cúbicos del vehículo.
+      </li>
+      <li>
+        <strong>(*)Año</strong>
+        Año de fabricación del vehículo.
+      </li>
+      <li>
+        <strong>(*)Matrícula</strong>
+        Matrícula del vehículo
+      </li>
+      <li>
+        <strong>(*)Color:</strong>
+        Color del vehículo.
+      </li>
+      <li>
+        <strong>Nº chasis:</strong>
+        Número de chasis del vehículo.
+      </li>
+      (*) Campos Obligatorios
+    </ul>
+  </div>
+  <h3>Paso 3 - Guardar </h3>
+    <p>Luego de completar los datos del Vehículo se procede a guardar haciendo clic en el botón Guardar situado abajo del formulario. Si no desea guardar el vehículo puede cancelar la operación haciendo clic en el botón Cancelar.</p>
+    <%= image_tag 'cancel_save_buttons.png', class: "image-help-6" %>
+    <div class="col-lg-12">
+      <p>Se presiona el botón guardar y se realizarán las validaciones correspondiente. En caso de que faltara algún dato obligatorio se marcara con rojo y se mostrara una breve explicación del problema sobre el campo en cuestión.</p>
+      <%= image_tag 'faile_vehicle_form_client.png', class: "image-help-7" %>
+      <p>Se procede a corregir el error y se presiona nuevamente Guardar.</p>
+    </div>
+    <div style="text-align: center; margin-top: 20px;" class="col-lg-12">
+      <p>Si esta todo correctamente ingresado se guardara el cliente y se mostrara los datos en pantalla con un aviso que fue guardado con éxito</p>
+      <%= image_tag 'client_saved.png', class: "image-help-8" %>
+    </div>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

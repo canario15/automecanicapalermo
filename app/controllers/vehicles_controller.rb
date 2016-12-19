@@ -16,11 +16,13 @@ class VehiclesController < ApplicationController
   def new
     @vehicle = Vehicle.new
     @car_brands = CarBrand.all
+    @customers = Customer.all
   end
 
   # GET /vehicles/1/edit
   def edit
     @car_brands = CarBrand.all
+    @customers = Customer.all
   end
 
   # POST /vehicles
@@ -28,6 +30,7 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     @car_brands = CarBrand.all
+    @customers = Customer.all
     respond_to do |format|
       if @vehicle.save
         format.html { redirect_to @vehicle, notice: 'Vehículo creado con éxito.' }
@@ -43,6 +46,7 @@ class VehiclesController < ApplicationController
   # PATCH/PUT /vehicles/1.json
   def update
     @car_brands = CarBrand.all
+    @customers = Customer.all
     respond_to do |format|
       if @vehicle.update(vehicle_params)
         format.html { redirect_to @vehicle, notice: 'El vehículo se ha actualizado correctamente.' }
@@ -84,6 +88,6 @@ class VehiclesController < ApplicationController
 
     # Never trust parameters from the svehicley internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:car_brand_id, :model, :displacement, :year, :plate, :color, :chassis_number)
+      params.require(:vehicle).permit(:car_brand_id, :model, :displacement, :year, :plate, :color, :chassis_number, :customer_id)
     end
 end

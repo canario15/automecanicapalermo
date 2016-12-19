@@ -153,6 +153,11 @@ es:
               not_a_number: " no es un número"
             subtotal_work_does:
               not_a_number: " no es un número"
+        iva:
+          attributes:
+            value:
+              not_a_number: " no es un número"
+              blank: " no puede ser vacío."
 
     attributes:
       customer:
@@ -187,6 +192,7 @@ es:
         status: "Estado"
         observation: "Observaciones"
         deliver_date: "Fecha Entrega"
+        number: "Número"
       work_in:
         work: "Trabajo"
       work_done:
@@ -210,3 +216,5 @@ es:
         box_movement_type: "Tipo de Movimiento"
         currency: "Moneda"
         work_order: "Orden de Trabajo"
+      iva:
+        value: "Valor"

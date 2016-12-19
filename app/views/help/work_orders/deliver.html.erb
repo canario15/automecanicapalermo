@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Entregar una Orden de Trabajo
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+   <h3>Paso 1 - Ingresar a la Lista de Ordenes </h3>
+  <p>Para ver la lista de ordenes diríjase al menú sobre la izquierda bajo el titulo de Ordenes de trabajo se encuentra un sub ítem <%= link_to "Lista", work_orders_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'wo_list_menu.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Ingresar a ver la Orden </h3>
+  <p>Al ingresar a la lista de Ordenes, se desplegara una tabla con los datos y las acciones:
+  <div class="col-lg-12">
+    <%= image_tag 'wo_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Identifique la orden o búsquelo mediante el campo de situado arriba a la derecha.</p>
+    <p>En la última columna de la tabla aparecerán dos iconos <%= image_tag 'show.png', :class => "small-icon" %> y <%= image_tag 'edit.png', :class => "small-icon" %></p>
+    <p> Presionando el botón Ver <%= image_tag 'show.png', :class => "small-icon" %> se mostrarán los  datos de la orden.</p>
+    <%= image_tag 'show_wo.png', class: "image-help-23" %>
+  </div>
+
+  <h3>Paso 3 - Entregar la Orden de Trabajo</h3>
+  <p> Abajo del los datos de la orden se puede observar dos acciones. Atrás, Editar, Imprimir, Presupuesto y Entregar </p>
+  <%= image_tag 'show_accion_wo.png', class: "image-help-14" %>
+  <p>Al presionar el botón Entregar se desplegara una Ventana para seleccionar el empleado que va a entregar la orden</p>
+  <%= image_tag 'deliver-buget-modal.png', class: "image-help-24" %>
+  <p>
+    Se selecciona el empleado y se presiona guardar.
+  </p>
+  <p> En caso de que exista algún tipo de error se mostrara un mensaje </p>
+  <p> Errores:</p>
+  <p>1) Si la orden no esta finalizada aun ( No tiene los trabajos realizados ni el presupuesto)</p>
+  <%= image_tag 'deliver-wo-error-1.png', class: "image-help-14" %>
+  <p>2) La orden no tiene presupuesto por lo tanto no se puede entregar: </p>
+  <%= image_tag 'deliver-wo-error-2.png', class: "image-help-14" %>
+  <p>3) No se selecciona el campo Entregado por: </p>
+  <%= image_tag 'deliver-wo-error-3.png', class: "image-help-14" %>
+  <p>Si esta todo ok se cerrará la venta y se mostrara el un aviso de que fue entregada con éxito</p>
+  <%= image_tag 'deliver-wo-ok.png', class: "image-help-14" %>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

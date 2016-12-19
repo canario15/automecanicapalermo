@@ -1,7 +1,7 @@
   $(document).ready(function () {
 
   $("#work_order_customer_id").chosen({
-    width: "90%"
+    width: "88%"
   });
   $("#work_order_vehicle_id").chosen({
     width: "100%"
@@ -94,7 +94,7 @@
     sum_totals_bugets();
   });
 
-  $('.work-dones-field, .rep-field').blur(function () {
+  $('.work-dones-field, .rep-field , .discount-budget').blur(function () {
     sum_totals_bugets();
   });
 
@@ -122,6 +122,24 @@
     window.open(url,'_blank');
   });
 
+
+  $('#deliver_wo').click(function (e) {
+    $.ajax({
+      type    : 'POST',
+      url     : '/work_orders/'+ $('#work_order_id').val() +'/deliver',
+      data    : $('.deli-form').serialize(),
+      dataType  : 'json'
+    }).done(function(data) {
+      if ( data.status == 'OK') {
+        noty_alert(data.message, "success");
+        $('#deliver_modal').modal('hide');
+      }else{
+        noty_alert(data.message, "error");
+      }
+    }).fail(function(data) {
+      noty_alert("No se pudo finalizar la orden", "error");
+    });
+  });
 
   $('#save_wo_customer').click(function (e) {
     $('#customer_owner').parent().parent().removeClass('has-error');
@@ -188,12 +206,25 @@
 
 
 function sum_totals_bugets(){
+
+  var IVA = Number($('#iva').val());
+
   /*SUM WORK DOES SUB TOTAL*/
   var sum_work_dones = 0;
+  var sum_work_dones_dol = 0;
   $('.work-dones-field').each(function() {
-    sum_work_dones += Number($(this).val());
+    if (($($($($(this)).prev()).children()[0]).val()) == "$" ) {
+      sum_work_dones += Number($(this).val());
+    }else{
+      if (($($($($(this)).prev()).children()[0]).val()) == "U$S" ) {
+        sum_work_dones_dol += Number($(this).val());
+      }
+    }
   });
+
   $('.subtot-wor-do').val(sum_work_dones);
+  $('.subtot-wor-do-dol').val(sum_work_dones_dol);
+
 
   /*SUM REPLACEMENT SUB TOTAL*/
   var sum_rep_subtotal = 0;
@@ -210,6 +241,7 @@ function sum_totals_bugets(){
   $('.sub-tot-rep').val(sum_rep_subtotal);
   $('.sub-tot-rep-dol').val(sum_rep_subtotal_dol);
 
+
   /* SUM BOX MOVEMENTS BY CURRENCY*/
   var sum_adl_pes = 0;
   var sum_adl_dol = 0;
@@ -223,9 +255,27 @@ function sum_totals_bugets(){
     }
   });
 
+  /*SET IVA*/
+  var total_pay_without_iva = (sum_work_dones + sum_rep_subtotal);
+  var total_dol_pay_without_iva = (sum_rep_subtotal_dol + sum_work_dones_dol);
+
+  var total_pay_with_iva = Math.round(total_pay_without_iva + (total_pay_without_iva * (IVA/100)));
+  var total_dol_pay_with_iva = Math.round(total_dol_pay_without_iva + (total_dol_pay_without_iva  * (IVA/100)));
+
+
   /*SET ALL TOTALS*/
-  $('.total-budget-dol').val(sum_rep_subtotal_dol - sum_adl_dol);
-  $('.total-budget').val(sum_work_dones + sum_rep_subtotal - sum_adl_pes);
+  $('.total-budget').val(total_pay_with_iva );
+  $('.total-budget-dol').val(total_dol_pay_with_iva);
+
+
+  var discount_factor = ( (100 - Number($('#work_order_budget_attributes_discount').val()) ) / 100 );
+
+  var total_pay_with_discount = Math.round(total_pay_with_iva * discount_factor);
+  var total_dol_pay_with_discount = Math.round( total_dol_pay_with_iva * discount_factor);
+
+  /*SET ALL TOTALS TO PAY */
+  $('.total-budget-pay').val( total_pay_with_discount - sum_adl_pes );
+  $('.total-budget-dol-pay').val( total_dol_pay_with_discount  - sum_adl_dol );
 
 }
 

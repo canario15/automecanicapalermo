@@ -12,6 +12,7 @@
         <%= image_tag 'logo_blanco.png', :class => "logo-menu" %>
       <% end -%>
     </div>
+    <!--<div class="marquee"> <i style="color: #d9534f" class="fa fa-exclamation-triangle fa-fw"></i> Hay 2 ordenes de trabajo <b>pendientes de pago</b> </div> -->
 <% if current_user %>
     <ul class="nav navbar-top-links navbar-right">
       <li class="dropdown">
@@ -90,12 +91,6 @@
               </li>
             </ul>
           </li>
-          <!--<li>
-            <%= link_to "#" do %>
-              <i class="fa fa-bars fa-fw"></i> Insumos
-              <span class="fa arrow"></span>
-            <% end -%>
-          </li> -->
           <li>
             <%= link_to "#" do %>
               <i class="fa fa-money fa-fw"></i> Contaduría
@@ -114,6 +109,13 @@
               <i class="fa fa-cogs fa-fw"></i> Configuración
               <span class="fa arrow"></span>
             <% end -%>
+            <ul class="nav nav-second-level">
+              <li>
+                <%= link_to iva_path(1) do %>
+                  <i class="fa fa-percent fa-fw"></i> IVA
+                <% end -%>
+              </li>
+            </ul>
             <ul class="nav nav-second-level">
               <li>
                 <%= link_to "#" do %>
@@ -151,6 +153,244 @@
                       <i class="fa fa-list fa-fw"></i> Lista
                     <% end -%>
                   </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to "#" do %>
+              <i class="fa fa-info-circle fa-fw"></i> Ayuda
+              <span class="fa arrow"></span>
+            <% end -%>
+            <ul class="nav nav-second-level">
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-users fa-fw"></i> Clientes
+                  <span class="fa arrow"></span>
+                <% end -%>
+                <ul class="nav nav-third-level">
+                  <li>
+                    <%= link_to help_index_customers_path() do %>
+                      <i class="fa fa-list fa-fw"></i> Listar
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_new_customer_path() do %>
+                      <i class="fa fa-plus fa-fw"></i> Nuevo
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_edit_customer_path() do %>
+                      <i class="fa fa-pencil fa-fw"></i> Editar
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_show_customer_path() do %>
+                      <i class="fa fa-search fa-fw"></i> Consultar
+                    <% end -%>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav nav-second-level">
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-car fa-fw"></i> Vehículos
+                  <span class="fa arrow"></span>
+                <% end -%>
+                <ul class="nav nav-third-level">
+                  <li>
+                    <%= link_to help_index_vehicles_path() do %>
+                      <i class="fa fa-list fa-fw"></i> Listar
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_new_vehicle_path() do %>
+                      <i class="fa fa-plus fa-fw"></i> Nuevo
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_edit_vehicle_path() do %>
+                      <i class="fa fa-pencil fa-fw"></i> Editar
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_show_vehicle_path() do %>
+                      <i class="fa fa-search fa-fw"></i> Consultar
+                    <% end -%>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav nav-second-level">
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-edit fa-fw"></i> Orden de Trabajo
+                  <span class="fa arrow"></span>
+                <% end -%>
+                <ul class="nav nav-third-level">
+                  <li>
+                    <%= link_to help_index_work_orders_path() do %>
+                      <i class="fa fa-list fa-fw"></i> Listar
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_new_work_order_path() do %>
+                      <i class="fa fa-plus fa-fw"></i> Nueva
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_edit_work_order_path() do %>
+                      <i class="fa fa-pencil fa-fw"></i> Editar
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_show_work_order_path() do %>
+                      <i class="fa fa-search fa-fw"></i> Consultar
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_print_work_order_path() do %>
+                      <i class="fa fa-print fa-fw"></i> Imprimir
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_budget_work_order_path() do %>
+                      <i class="fa fa-calculator fa-fw"></i> Presupuesto
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_print_budget_work_order_path() do %>
+                      <i class="fa fa-calculator fa-fw"></i> Imprimir Presupuesto
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_deliver_work_order_path() do %>
+                      <i class="fa fa-repeat fa-fw"></i> Entregar
+                    <% end -%>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav nav-second-level">
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-money fa-fw"></i> Movimientos de Caja
+                  <span class="fa arrow"></span>
+                <% end -%>
+                <ul class="nav nav-third-level">
+                  <li>
+                    <%= link_to help_index_box_movements_path() do %>
+                      <i class="fa fa-list fa-fw"></i> Listar
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_new_box_movement_path() do %>
+                      <i class="fa fa-plus fa-fw"></i> Nuevo
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_edit_box_movement_path() do %>
+                      <i class="fa fa-pencil fa-fw"></i> Editar
+                    <% end -%>
+                  </li>
+                  <li>
+                    <%= link_to help_show_box_movement_path() do %>
+                      <i class="fa fa-search fa-fw"></i> Consultar
+                    <% end -%>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav nav-second-level">
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-cogs fa-fw"></i> Configuración
+                  <span class="fa arrow"></span>
+                <% end -%>
+                <ul class="nav nav-third-level">
+                  <ul class="nav nav-second-level">
+                    <li>
+                      <%= link_to "#" do %>
+                        <i class="fa fa-percent fa-fw"></i> IVA
+                        <span class="fa arrow"></span>
+                      <% end -%>
+                      <ul class="nav nav-third-level">
+                        <li>
+                          <%= link_to help_show_iva_path() do %>
+                            <i class="fa fa-search fa-fw"></i> Ver
+                          <% end -%>
+                        </li>
+                        <li>
+                          <%= link_to help_edit_iva_path() do %>
+                            <i class="fa fa-pencil fa-fw"></i> Editar
+                          <% end -%>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+
+                <ul class="nav nav-third-level">
+                  <ul class="nav nav-second-level">
+                    <li>
+                      <%= link_to "#" do %>
+                        <i class="fa fa-users fa-fw"></i> Usuarios
+                        <span class="fa arrow"></span>
+                      <% end -%>
+                      <ul class="nav nav-third-level">
+                        <li>
+                          <%= link_to help_index_users_path() do %>
+                            <i class="fa fa-list fa-fw"></i> Listar
+                          <% end -%>
+                        </li>
+                        <li>
+                          <%= link_to help_new_user_path() do %>
+                            <i class="fa fa-plus fa-fw"></i> Nuevo
+                          <% end -%>
+                        </li>
+                        <li>
+                          <%= link_to help_edit_user_path() do %>
+                            <i class="fa fa-pencil fa-fw"></i> Editar
+                          <% end -%>
+                        </li>
+                        <li>
+                          <%= link_to help_show_user_path() do %>
+                            <i class="fa fa-search fa-fw"></i> Consultar
+                          <% end -%>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="nav nav-second-level">
+                    <li>
+                      <%= link_to "#" do %>
+                        <i class="fa fa-tags fa-fw"></i> Marcas de Vehículos
+                        <span class="fa arrow"></span>
+                      <% end -%>
+                      <ul class="nav nav-third-level">
+                        <li>
+                          <%= link_to help_index_car_brands_path() do %>
+                            <i class="fa fa-list fa-fw"></i> Listar
+                          <% end -%>
+                        </li>
+                        <li>
+                          <%= link_to help_new_car_brand_path() do %>
+                            <i class="fa fa-plus fa-fw"></i> Nuevo
+                          <% end -%>
+                        </li>
+                        <li>
+                          <%= link_to help_edit_car_brand_path() do %>
+                            <i class="fa fa-pencil fa-fw"></i> Editar
+                          <% end -%>
+                        </li>
+                        <li>
+                          <%= link_to help_show_car_brand_path() do %>
+                            <i class="fa fa-search fa-fw"></i> Consultar
+                          <% end -%>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
                 </ul>
               </li>
             </ul>

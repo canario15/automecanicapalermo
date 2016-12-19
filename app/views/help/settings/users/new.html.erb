@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Alta Usuarios
+    </h1>
+  </div>
+</div>
+
+<div class="help-container">
+  <h3>Paso 1 - Ingresar al formulario</h3>
+  <p>Para dar de alta un Usuario se puede ingresar por dos lugres.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'new_user_menu.png', class: "image-help-1" %>
+    </div>
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'new-us.btn.png', class: "image-help-16" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <p>diríjase al menú sobre la izquierda bajo el titulo de Configuración / Usuario se encuentra un sub ítem <%= link_to "+ Nuevo", new_user_path() %></p>
+    </div>
+    <div class="col-lg-4 center-text">
+      <p>diríjase a la lista de Usuarios (léase: <%= link_to help_index_users_path() do %><i> Listar Usuarios</i><% end -%>) eh ingrese apretando el botón Nuevo Usuario</p>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Completar los datos </h3>
+  <p>Al ingresar al formulario de alta de Usuario, necesita completar los siguientes datos:
+  <div class="col-lg-12">
+    <%= image_tag 'user-form.png', class: "image-help-4" %>
+    <ul class="list-customer-fields">
+      <li>
+        <strong>(*)Nombre</strong>
+        Será el nombre del empleado.
+      </li>
+      <li>
+        <strong>(*)Tipo</strong>
+        Lista del cargo de empleado que es.
+      </li>
+      <li>
+        <strong>Usuario</strong>
+        Usuario para logearse al sistema.
+      </li>
+      <li>
+        <strong>Contraseña</strong>
+        Contraseña para logearse al sistema.
+      </li>
+      (*) Campos Obligatorios
+    </ul>
+  </div>
+
+  <h3>Paso 3 - Guardar </h3>
+  <p>Luego de completar los datos del Usuario se procede a guardar haciendo clic en el botón Guardar situado abajo del formulario. Si no desea guardar el Usuario puede cancelar la operación haciendo clic en el botón Cancelar.</p>
+  <%= image_tag 'cancel_save_buttons.png', class: "image-help-6" %>
+  <div class="col-lg-12">
+    <p>Se presiona el botón guardar y se realizarán las validaciones correspondiente. En caso de que faltara algún dato obligatorio se marcara con rojo y se mostrara una breve explicación del problema sobre el campo en cuestión.</p>
+    <%= image_tag 'fail_form_user.png', class: "image-help-7" %>
+    <p>Se procede a corregir el error y se presiona nuevamente Guardar.</p>
+  </div>
+  <div style="text-align: center; margin-top: 20px;" class="col-lg-12">
+    <p>Si esta todo correctamente ingresado se guardara el Usuario y se mostrara los datos en pantalla con un aviso que fue guardado con éxito</p>
+    <%= image_tag 'user_saved.png', class: "image-help-17" %>
+  </div>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

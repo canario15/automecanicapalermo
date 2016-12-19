@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Alta Movimiento de Caja
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+  <h3>Paso 1 - Ingresar al formulario </h3>
+  <p>Para dar de alta un movimiento se puede ingresar por dos lugres.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'new_bxm_btn.png', class: "image-help-1" %>
+    </div>
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'new_bxm_icon.png', class: "image-help-2" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <p>diríjase a la lista de Movimientos (léase: <%= link_to help_index_box_movements_path() do %><i> Listar Movimientos</i><% end -%>) eh ingrese apretando el botón Nuevo Movimientos</p>
+    </div>
+    <div class="col-lg-4 center-text">
+      <p>En el escritorio localizara el icono Nuevo Movimiento</p>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Completar los datos </h3>
+  <p>Al ingresar al formulario de alta, necesita completar los siguientes datos:
+  <div class="col-lg-12">
+    <%= image_tag 'bxm_new_form.png', class: "image-help-4" %>
+    <ul class="list-customer-fields">
+      <li>
+        <strong>(*)Fecha</strong>
+        Fecha de ingreso del movimiento. Por defecto estará cargada con la fecha hora actual.
+      </li>
+      <li>
+        <strong>(*)Centro de costo</strong>
+        Es una lista con el tipo de costos que existen.
+      </li>
+      <li>
+        <strong>Orden de Trabajo</strong>
+        En caso de que el centro de costo sea Taller o Chapa y Pintura, se podrá asociar una orden de trabajo.
+      </li>
+      <li>
+        <strong>(*)Detalle</strong>
+        Detalle del movimiento.
+      </li>
+      <li>
+        <strong>(*)Monto</strong>
+        Monto del movimiento.
+      </li>
+      <li>
+        <strong>(*)Moneda</strong>
+        Lista con los tipos de moneda.
+      </li>
+      <li>
+        <strong>(*)Tipo de Movimiento:</strong>
+        Entrada o Salida
+      </li>
+      <li>
+        <strong>(*)Empleado:</strong>
+        Empleado que realiza el movimiento.
+      </li>
+      (*) Campos Obligatorios
+    </ul>
+  </div>
+
+  <h3>Paso 3 - Guardar </h3>
+  <p>Luego de completar los datos del Movimiento, se procede a guardar haciendo clic en el botón Guardar situado abajo del formulario. Si no desea guardar el Movimiento puede cancelar la operación haciendo clic en el botón Cancelar.</p>
+  <%= image_tag 'cancel_save_buttons.png', class: "image-help-6" %>
+  <div class="col-lg-12">
+    <p>Se presiona el botón guardar y se realizarán las validaciones correspondiente. En caso de que faltara algún dato obligatorio se marcara con rojo y se mostrara una breve explicación del problema sobre el campo en cuestión.</p>
+    <%= image_tag 'fail_form_bxm.png', class: "image-help-21" %>
+    <p>Se procede a corregir el error y se presiona nuevamente Guardar.</p>
+  </div>
+  <div style="text-align: center; margin-top: 20px;" class="col-lg-12">
+    <p>Si esta todo correctamente ingresado se guardara el movimiento y se mostrara los datos en pantalla con un aviso que fue guardado con éxito</p>
+    <%= image_tag 'bxm_saved.png', class: "image-help-17" %>
+  </div>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

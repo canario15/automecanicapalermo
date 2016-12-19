@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Buscar y Ver una Marca
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+  <h3>Paso 1 - Ingresar a la Lista de Marcas </h3>
+  <p>Para ver la lista de marcas diríjase al menú sobre la izquierda bajo el titulo Configuración Marcas se encuentra un sub ítem <%= link_to "Lista", car_brands_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'brand_list_menu.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+
+  <h3>Paso 2 - Ingresar a ver la Marca </h3>
+  <p>Al ingresar a la lista de marcas, se desplegara una tabla con los datos y acciones:
+  <div class="col-lg-12">
+    <%= image_tag 'brand_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Identifique la marca o búsquela mediante el campo de situado arriba a la derecha.</p>
+    <p>En la última columna de la tabla aparecerán dos iconos <%= image_tag 'show.png', :class => "small-icon" %> y <%= image_tag 'edit.png', :class => "small-icon" %></p>
+    <p> Presionando el botón Ver <%= image_tag 'show.png', :class => "small-icon" %> se mostrarán los  datos de la marca.</p>
+    <%= image_tag 'show_brand.png', class: "image-help-18" %>
+  </div>
+
+  <h3>Paso 3 - Acciones </h3>
+  <p> Abajo del los datos de la Marca se puede observar dos acciones. Atrás y Editar</p>
+  <%= image_tag 'show_accion_client.png', class: "image-help-14" %>
+  <p>Atrás: Retrocede a la lista de marcas</p>
+  <p>Editar: Ingresa al formulario para editar la marca. (léase: <%= link_to help_edit_car_brand_path() do %> <i>Editar Marca</i> <% end -%>) </p>
+
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

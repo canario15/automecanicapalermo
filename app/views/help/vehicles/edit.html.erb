@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Editar un Vehículo
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+  <h3>Paso 1 - Ingresar a la Lista de vehículos </h3>
+  <p>Para ver la lista de vehículos diríjase al menú sobre la izquierda bajo el titulo de Vehículos se encuentra un sub ítem <%= link_to "Lista", vehicles_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'menu-vehicle-list.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Ingresar a editar el vehículo </h3>
+  <p>Al ingresar a la lista de Vehículos, se desplegara una tabla con los datos:
+  <div class="col-lg-12">
+    <%= image_tag 'vehi_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Identifique el vehículo o búsquelo mediante el campo de situado arriba a la derecha.</p>
+    <p>En la última columna de la tabla paraceran dos iconos <%= image_tag 'show.png', :class => "small-icon" %> y <%= image_tag 'edit.png', :class => "small-icon" %></p>
+    <p> Presionando el botón Editar <%= image_tag 'edit.png', :class => "small-icon" %> se desplegara el formulario del vehículo con sus datos cargados</p>
+    <%= image_tag 'vehicle_edit_from.png', class: "image-help-12" %>
+  </div>
+
+  <h3>Paso 3 - Editar los datos</h3>
+  <p>Se podrá editar cualquier dato del vehículosiempre respetando los campos obligatorios.</p>
+  Marca, Modelo, Año, Matricula y Color </p>
+
+  <h3>Paso 4 - Guardar </h3>
+  <p>Luego de modificar los datos del Vehículo se procede a guardar haciendo clic en el botón Guardar situado abajo del formulario. Si no desea guardar los cambios realizados puede cancelar la operación haciendo clic en el botón Cancelar.</p>
+  <%= image_tag 'cancel_save_buttons.png', class: "image-help-6" %>
+  <div class="col-lg-12">
+    <p>Se presiona el botón guardar y se realizarán las validaciones correspondiente. En caso de que faltara algún dato obligatorio se marcara con rojo y se mostrara una breve explicación del problema sobre el campo en cuestión.</p>
+    <%= image_tag 'fail_form_vehicle.png', class: "image-help-7" %>
+    <p>Se procede a corregir el error y se presiona nuevamente Guardar.</p>
+  </div>
+  <div style="text-align: center; margin-top: 20px;" class="col-lg-12">
+    <p>Si esta todo correctamente ingresado se guardara el vehículo  y se mostrara los datos en pantalla con un aviso que fue guardado con éxito.</p>
+    <%= image_tag 'edited_vehicle_message.png', class: "image-help-13" %>
+  </div>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

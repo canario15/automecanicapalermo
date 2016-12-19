@@ -4,6 +4,10 @@ $(document).ready(function () {
     width: "100%"
   });
 
+  $("#vehicle_customer_id").chosen({
+    width: "100%"
+  });
+
   $('#vehicles_table').dataTable({
     "aoColumnDefs": [{ "bSortable": false, "aTargets": [ 9,10 ] }],
     "bLengthChange": false,
@@ -30,6 +34,8 @@ $(document).ready(function () {
                                    "sLast":     "Último" }
                   }
   });
+
+
 
 });
 

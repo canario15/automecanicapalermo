@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Listar Marcas
+    </h1>
+  </div>
+</div>
+
+<div class="help-container">
+  <h3>Paso 1 - Ingresar a la Lista de Marcas </h3>
+  <p>Para ver la lista de marcas diríjase al menú sobre la izquierda bajo el titulo Configuración Marcas se encuentra un sub ítem <%= link_to "Lista", car_brands_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'brand_list_menu.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Información sobre la Lista de Marcas </h3>
+  <p>Al ingresar a la lista de Marcas, se desplegara una tabla con los datos y las acciones:
+  <div class="col-lg-12">
+    <%= image_tag 'brand_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Descripción de las acciones:</p>
+    <ul class="list-acc-fields">
+      <li>
+        <%= image_tag 'srh-field.png', class: "image-help-11" %>
+        En este campo se podrá filtrar los marcas por cualquier campo, teniendo que ingresar al menos 3 caracteres.
+      </li>
+      <li>
+        <%= image_tag 'hed-tabl-order-us.png', class: "image-help-11" %>
+        Mediante las flechas hacia arriba o hacia abajo se podrán ordenar los datos ascendente o descendente según el campo a la izquierda.
+      </li>
+      <li>
+        <%= image_tag 'accion-row.png', class: "image-help-11" %>
+        Por cada registro existen dos acciones: Ver <%= image_tag 'show.png', :class => "small-icon" %> <%= link_to help_show_car_brand_path() do %><i>(léase: Ver)</i><% end -%>, Editar<%= image_tag 'edit.png', :class => "small-icon" %>  <%= link_to help_edit_car_brand_path() do %> <i>(léase: Editar)</i> <% end -%>
+      </li>
+      <li>
+        <%= image_tag 'des-reg-rable.png', class: "image-help-11" %>
+        En este campo se mostrara información sobre la cantidad de registros mostrados sobre la cantidad total.
+      </li>
+      <li>
+        <%= image_tag 'pagination-table.png', class: "image-help-11" %>
+        Con los botones Anterior o Siguiente puede avanzar o retroceder de página, así como también puede ir directamente a la página haciendo clic en el número.
+      </li>
+      <li>
+        <%= image_tag 'new-bra-btn.png', class: "image-help-11" %>
+        Con ese botón se puede ingresar al formulario de Alta de Marca. (léase: <%= link_to help_new_car_brand_path() do %> <i>Alta Marca</i> <% end -%>)
+      </li>
+    </ul>
+  </div>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

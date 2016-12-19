@@ -27,6 +27,6 @@ class WorkOrder < ActiveRecord::Base
   private
 
   def build_budget
-    self.budget = Budget.new(total: 0, subtotal_rep: 0, subtotal_work_does: 0, subtotal_rep_dol: 0, total_dol: 0 )
+    #self.budget = Budget.new( subtotal_rep: 0, subtotal_rep_dol: 0, subtotal_work_does: 0, subtotal_work_does_dol: 0, total: 0, total_dol: 0 )
   end
 end

@@ -3,109 +3,114 @@
     <h1 class="page-header">
       <%= image_tag 'show.png', :class => "icon-title" %>
       <%= @vehicle.car_brand %> <%= @vehicle.model %>
+      <%= image_tag 'show.png', :class => "icon-title", :style =>"float:right" %>
     </h1>
   </div>
 </div>
-<div>
-  <div class="row">
-    <div class="col-md-2">
-      <h4 class="show-label">Propietario:</h4>
-    </div>
-    <div class="col-md-2 show-info">
-      <h4><%= @vehicle.customer %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <h4 class="show-label">Marca:</h4>
-    </div>
-    <div class="col-md-2 show-info">
-      <h4><%= @vehicle.car_brand %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <h4 class="show-label">Modelo:</h4>
-    </div>
-    <div class="col-md-2 show-info">
-      <h4><%= @vehicle.model %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <h4 class="show-label">Cilindrada:</h4>
-    </div>
-    <div class="col-md-2 show-info">
-      <h4><%= @vehicle.displacement %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <h4 class="show-label">Año:</h4>
-    </div>
-    <div class="col-md-2 show-info">
-      <h4><%= @vehicle.year %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <h4 class="show-label">Matricula:</h4>
-    </div>
-    <div class="col-md-2 show-info">
-      <h4><%= @vehicle.plate %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <h4 class="show-label">Color:</h4>
-    </div>
-    <div class="col-md-2 show-info">
-      <h4><%= @vehicle.color %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <h4 class="show-label">Nº Chasis:</h4>
-    </div>
-    <div class="col-md-2 show-info">
-      <h4><%= @vehicle.chassis_number %></h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <h4 class="show-label">Ordenes de Trabajo:</h4>
-    </div>
-    <div class="col-md-8 show-info">
-      <table class="table table-hover" >
-        <thead>
-          <tr>
-            <th><%= link_to 'Número', '#'    %></th>
-            <th><%= link_to 'Fecha', '#'     %></th>
-            <th><%= link_to 'Cliente', '#'   %></th>
-            <th><%= link_to 'Estado','#'     %></th>
-            <th><%= link_to 'Acciones', '#' %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @vehicle.work_orders.each do |work_order|%>
-            <tr>
-              <td><%= work_order.id %></td>
-              <td><%= work_order.date_in %></td>
-              <td><%= work_order.customer %></td>
-              <td><%= work_order.status %></td>
-              <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), work_order_path(work_order) %></td>
-            </tr>
-          <% end -%>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-<div class="row  row-links">
-  <%= link_to (image_tag 'back.png', :class => "medium-icon", :title => "Editar"), vehicles_path %>
-  <%= link_to 'Atrás', vehicles_path %> |
-  <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Editar"), edit_vehicle_path(@vehicle)%>
-  <%= link_to 'Editar', edit_vehicle_path(@vehicle) %>
-</div>
 <div class="row">
+  <div class="col-lg-12" >
+    <div class="show-container">
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="show-label">Propietario:</h4>
+        </div>
+        <div class="col-md-2 show-info">
+          <h4><%= @vehicle.customer %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="show-label">Marca:</h4>
+        </div>
+        <div class="col-md-2 show-info">
+          <h4><%= @vehicle.car_brand %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="show-label">Modelo:</h4>
+        </div>
+        <div class="col-md-2 show-info">
+          <h4><%= @vehicle.model %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="show-label">Cilindrada:</h4>
+        </div>
+        <div class="col-md-2 show-info">
+          <h4><%= @vehicle.displacement %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="show-label">Año:</h4>
+        </div>
+        <div class="col-md-2 show-info">
+          <h4><%= @vehicle.year %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="show-label">Matricula:</h4>
+        </div>
+        <div class="col-md-2 show-info">
+          <h4><%= @vehicle.plate %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="show-label">Color:</h4>
+        </div>
+        <div class="col-md-2 show-info">
+          <h4><%= @vehicle.color %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="show-label">Nº Chasis:</h4>
+        </div>
+        <div class="col-md-2 show-info">
+          <h4><%= @vehicle.chassis_number %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="show-label">Ordenes de Trabajo:</h4>
+        </div>
+        <div class="col-md-8 show-info">
+          <table class="table table-hover" >
+            <thead>
+              <tr>
+                <th><%= link_to 'Número',   '#' %></th>
+                <th><%= link_to 'Fecha',    '#' %></th>
+                <th><%= link_to 'Trabajo',  '#' %></th>
+                <th><%= link_to 'Monto',    '#' %></th>
+                <th><%= link_to 'Estado',    '#' %></th>
+                <th><%= link_to '', '#' %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @vehicle.work_orders.each do |work_order|%>
+                <tr>
+                  <td><%= work_order.id %></td>
+                  <td><%= work_order.date_in %></td>
+                  <td><%= work_order.work_ins.first.work %></td>
+                  <td><%= work_order.budget.any_total %></td>
+                  <td><%= work_order.status %></td>
+                  <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), work_order_path(work_order) %></td>
+                </tr>
+              <% end -%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row  row-links">
+        <%= link_to (image_tag 'back.png', :class => "medium-icon", :title => "Editar"), vehicles_path %>
+        <%= link_to 'Atrás', vehicles_path %> |
+        <%= link_to (image_tag 'edit.png', :class => "medium-icon", :title => "Editar"), edit_vehicle_path(@vehicle)%>
+        <%= link_to 'Editar', edit_vehicle_path(@vehicle) %>
+      </div>
+    </div>
+  </div>
 </div>

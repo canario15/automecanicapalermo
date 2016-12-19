@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Buscar y Ver un Movimiento de Caja
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+  <h3>Paso 1 - Ingresar a la Lista de Movimientos </h3>
+  <p>Para ver la lista de movimientos diríjase al menú sobre la izquierda bajo el titulo de Contaduría se encuentra un sub ítem <%= link_to "Lista", box_movements_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'bxm_list_menu.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+
+  <h3>Paso 2 - Ingresar a ver el Movimiento </h3>
+  <p>Al ingresar a la lista de Movimientos, se desplegara una tabla con los datos y acciones:
+  <div class="col-lg-12">
+    <%= image_tag 'bxm_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Identifique el Movimiento o búsquela mediante el campo de situado arriba a la derecha.</p>
+    <p>En la última columna de la tabla aparecerán dos iconos <%= image_tag 'show.png', :class => "small-icon" %> y <%= image_tag 'edit.png', :class => "small-icon" %></p>
+    <p> Presionando el botón Ver <%= image_tag 'show.png', :class => "small-icon" %> se mostrarán los  datos del Movimiento.</p>
+    <%= image_tag 'show_bxm.png', class: "image-help-22" %>
+  </div>
+
+  <h3>Paso 3 - Acciones </h3>
+  <p> Abajo del los datos del Movimiento se puede observar dos acciones. Atrás y Editar</p>
+  <%= image_tag 'show_accion_client.png', class: "image-help-14" %>
+  <p>Atrás: Retrocede a la lista de movimientos</p>
+  <p>Editar: Ingresa al formulario para editar el Movimiento. (léase: <%= link_to help_edit_box_movement_path() do %> <i>Editar</i> <% end -%>) </p>
+
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

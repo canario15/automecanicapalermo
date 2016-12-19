@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-lg-3 col-md-6">
     <%= link_to new_work_order_path() do %>
-      <div class="panel panel-primary">
+      <div class="my-panel panel-primary">
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
@@ -20,10 +20,8 @@
         </div>
       </div>
     <% end -%>
-  </div>
-  <div class="col-lg-3 col-md-6">
     <%= link_to new_customer_path()  do %>
-      <div class="panel panel-green">
+      <div class="my-panel panel-green">
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
@@ -36,10 +34,8 @@
         </div>
       </div>
     <% end -%>
-  </div>
-  <div class="col-lg-3 col-md-6">
     <%= link_to new_box_movement_path()  do %>
-      <div class="panel panel-info">
+      <div class="my-panel panel-info">
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
@@ -54,39 +50,71 @@
     <% end -%>
   </div>
   <div class="col-lg-3 col-md-6">
-    <% if @work_order_asigned.count > 0 %>
-      <%= link_to work_orders_path() do %>
-        <div class="panel panel-yellow">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-xs-3">
-                <i class="fa fa-edit fa-5x"></i>
-              </div>
-              <div class="col-xs-9 text-right">
-                <div class="huge"><%= @work_order_asigned.count%></div>
-                <div>En taller</div>
-              </div>
+
+  </div>
+  <div class="col-lg-3 col-md-6">
+
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <%= link_to work_orders_path(status: 0) do %>
+      <div class="my-panel panel-info">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-3">
+              <i class="fa fa-car fa-5x"></i>
+            </div>
+            <div class="col-xs-9 text-right">
+              <div class="huge"><%= @work_order_in_work.count%></div>
+              <div><%= WORK_ORDER_STATUS[0] %></div>
             </div>
           </div>
         </div>
-      <% end -%>
+      </div>
     <% end -%>
-    <% if @work_order_undeliver.count > 0 %>
-      <%= link_to work_orders_path() do %>
-        <div class="panel panel-red">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-xs-3">
-                <i class="fa fa-exclamation-triangle fa-5x"></i>
-              </div>
-              <div class="col-xs-9 text-right">
-                <div class="huge"><%= @work_order_undeliver.count%></div>
-                <div style="font-size:15px ">Sin entregar</div>
-              </div>
+    <%= link_to work_orders_path(status: 1) do %>
+      <div class="my-panel panel-yellow">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-3">
+              <i class="fa fa-reply-all fa-5x"></i>
+            </div>
+            <div class="col-xs-9 text-right">
+              <div class="huge"><%= @work_order_for_deliver.count%></div>
+              <div><%= WORK_ORDER_STATUS[1] %></div>
             </div>
           </div>
         </div>
-      <% end -%>
+      </div>
+    <% end -%>
+    <%= link_to work_orders_path(status: 2) do %>
+      <div class="my-panel panel-red">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-3">
+              <i class="fa fa-exclamation-triangle fa-5x"></i>
+            </div>
+            <div class="col-xs-9 text-right">
+              <div class="huge"><%= @work_order_payment_pendient.count%></div>
+              <div style="font-size:15px "><%= WORK_ORDER_STATUS[2] %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end -%>
+    <%= link_to work_orders_path(status: 3) do %>
+      <div class="my-panel panel-green">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-3">
+              <i class="fa fa-check-square-o fa-5x"></i>
+            </div>
+            <div class="col-xs-9 text-right">
+              <div class="huge"><%= @work_order_finished.count%></div>
+              <div style="font-size:15px "><%= WORK_ORDER_STATUS[3] %></div>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end -%>
   </div>
 </div>

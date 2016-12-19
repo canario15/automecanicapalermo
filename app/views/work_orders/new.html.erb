@@ -146,42 +146,6 @@
             </div>
           </div>
         </div>
-        <div class="form-group border-sep">
-          <div class="col-xs-6" >
-            <div class="form-group">
-              <%= f.label :replacements, :class => "col-sm-4 control-label" %>
-              <div class="col-xs-8">
-                <div class="">
-                  <%= f.simple_fields_for :replacements do |replacement| %>
-                    <%= render 'replacement_fields', :f => replacement %>
-                  <% end %>
-                  <%= link_to_add_association 'Agregar repuesto', f, :replacements %>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <%= f.label :observation, :class => "col-sm-4 control-label" %>
-              <div class="col-xs-8">
-                <%= f.text_area :observation, :class => "form-control" %>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-5" >
-            <div class="form-group">
-              <%= f.label :work_dones, :class => "col-sm-4 control-label" %>
-              <div class="col-xs-8">
-                <div class="">
-                  <%= f.simple_fields_for :work_dones do |work_done| %>
-                    <%= render 'work_done_fields', :f => work_done %>
-                  <% end %>
-                  <%= link_to_add_association f, :work_dones, data: {}, class: '' do %>
-                    Agregar trabajo
-                  <% end -%>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <%= link_to "Cancelar", work_orders_path(), class: "btn btn-outline btn-danger" %>

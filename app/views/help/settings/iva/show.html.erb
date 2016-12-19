@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Mostrar IVA
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+  <h3>Paso 1 - Ingresar a ver el IVA </h3>
+  <p>Para ver el valor del IVA diríjase al menú sobre la izquierda bajo el titulo Configuración se encuentra un sub ítem <%= link_to "IVA", iva_path(1) %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'iva_menu.png', class: "image-help-25" %>
+    </div>
+  </div>
+
+  <p>Al ingresar al IVA, se desplegara los datos y acciones:
+  <div class="col-lg-12">
+    <%= image_tag 'show_iva.png', class: "image-help-25" %>
+  </div>
+
+  <h3>Paso 3 - Acciones </h3>
+  <p> Abajo del los datos del IVA se puede observar una acciones. Editar </p>
+  <%= image_tag 'show_iva_actions.png', class: "image-help-14" %>
+  <p>Editar: Ingresa al formulario para editar el IVA. (léase: <%= link_to help_edit_iva_path(1) do %> <i>Editar IVA</i> <% end -%>) </p>
+
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>
+
+
+

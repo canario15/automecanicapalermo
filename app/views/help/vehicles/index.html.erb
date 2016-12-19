@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Listar Vehículos
+    </h1>
+  </div>
+</div>
+
+<div class="help-container">
+  <h3>Paso 1 - Ingresar a la Lista de vehículos </h3>
+  <p>Para ver la lista de vehículos diríjase al menú sobre la izquierda bajo el titulo de Vehículos se encuentra un sub ítem <%= link_to "Lista", vehicles_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'menu-vehicle-list.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+  <h3>Paso 2 - Información sobre la Lista de vehículos </h3>
+  <p>Al ingresar a la lista de vehículos, se desplegara una tabla con los datos y las acciones:
+  <div class="col-lg-12">
+    <%= image_tag 'vehi_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Descripción de las acciones:</p>
+    <ul class="list-acc-fields">
+      <li>
+        <%= image_tag 'srh-field.png', class: "image-help-11" %>
+        En este campo se podrá filtrar los vehículos por cualquier campo, teniendo que ingresar al menos 3 caracteres.
+      </li>
+      <li>
+        <%= image_tag 'hed-tabl-order.png', class: "image-help-11" %>
+        Mediante las flechas hacia arriba o hacia abajo se podrán ordenar los datos ascendente o descendente según el campo a la izquierda.
+      </li>
+      <li>
+        <%= image_tag 'accion-row.png', class: "image-help-11" %>
+        Por cada registro existen dos acciones: Ver <%= image_tag 'show.png', :class => "small-icon" %> <%= link_to help_show_vehicle_path() do %><i>(léase: Ver cliente)</i><% end -%>, Editar<%= image_tag 'edit.png', :class => "small-icon" %>  <%= link_to help_edit_vehicle_path() do %> <i>(léase: Editar cliente)</i> <% end -%>
+      </li>
+      <li>
+        <%= image_tag 'des-reg-rable.png', class: "image-help-11" %>
+        En este campo se mostrara información sobre la cantidad de registros mostrados sobre la cantidad total.
+      </li>
+      <li>
+        <%= image_tag 'pagination-table.png', class: "image-help-11" %>
+        Con los botones Anterior o Siguiente puede avanzar o retroceder de página, así como también puede ir directamente a la página haciendo clic en el número.
+      </li>
+    </ul>
+  </div>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>

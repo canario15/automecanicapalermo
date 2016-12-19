@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Ayuda - Editar un Usuario
+    </h1>
+  </div>
+</div>
+<div class="help-container">
+  <h3>Paso 1 - Ingresar a la Lista de usuarios </h3>
+  <p>Para ver la lista de usuarios diríjase al menú sobre la izquierda bajo el titulo Configuración Usuario se encuentra un sub ítem <%= link_to "Lista", users_path() %>.</p>
+  <div class="row">
+    <div class="col-lg-4 center-text">
+      <%= image_tag 'user_list_menu.png', class: "image-help-9" %>
+    </div>
+  </div>
+
+
+  <h3>Paso 2 - Ingresar a editar el usuario </h3>
+  <p>Al ingresar a la lista de Usuarios, se desplegara una tabla con los datos y acciones:
+  <div class="col-lg-12">
+    <%= image_tag 'user_index.png', class: "image-help-10" %>
+  </div>
+  <div style="margin-top: 12px; " class="col-lg-12">
+    <p>Identifique el usuario o búsquelo mediante el campo de situado arriba a la derecha.</p>
+    <p>En la última columna de la tabla aparecerán dos iconos <%= image_tag 'show.png', :class => "small-icon" %> y <%= image_tag 'edit.png', :class => "small-icon" %></p>
+    <p> Presionando el botón Editar <%= image_tag 'edit.png', :class => "small-icon" %> se desplegara el formulario del usuario con sus datos cargados</p>
+    <%= image_tag 'edit_user.png', class: "image-help-12" %>
+  </div>
+
+  <h3>Paso 3 - Editar los datos</h3>
+  <p>Se podrá editar cualquier dato del usuario Siempre respetando los campos obligatorios.</p>
+  <p>Nombre y Tipo</p>
+
+  <h3>Paso 4 - Guardar </h3>
+  <p>Luego de modificar los datos del Usuario haciendo clic en el botón Guardar situado abajo del formulario se guardará los datos. Si no desea guardar el usuario puede cancelar la operación haciendo clic en el botón Cancelar.</p>
+  <%= image_tag 'cancel_save_buttons.png', class: "image-help-6" %>
+  <div class="col-lg-12">
+    <p>Se presiona el botón guardar y se realizarán las validaciones correspondiente. En caso de que faltara algún dato obligatorio se marcara con rojo y se mostrara una breve explicación del problema sobre el campo en cuestión.</p>
+    <%= image_tag 'fail_form_user.png', class: "image-help-7" %>
+    <p>Se procede a corregir el error y se presiona nuevamente Guardar.</p>
+  </div>
+  <div style="text-align: center; margin-top: 20px;" class="col-lg-12">
+    <p>Si esta todo correctamente ingresado se guardara el empleado y se mostrara los datos en pantalla con un aviso que fue guardado con éxito</p>
+    <%= image_tag 'edited_user_message.png', class: "image-help-13" %>
+  </div>
+  <div class="row"></div>
+</div>
+<div style="height: 20px"></div>
