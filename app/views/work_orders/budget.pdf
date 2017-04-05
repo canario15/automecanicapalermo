@@ -126,48 +126,71 @@
         <tbody>
           <% if @work_order.budget.total != 0 %>
             <tr style="">
+              <th width="70%">SUB TOTAL:</th>
+              <th width="5%" style="text-align: right;">$</th>
+              <th width="15%"><%= @work_order.budget.subtotal_work_does +  @work_order.budget.subtotal_rep %></th>
+            </tr>
+            <tr style="">
+              <th width="70%">IVA:</th>
+              <th width="5%" style="text-align: right;">%</th>
+              <th width="15%"><%= @iva.value %></th>
+            </tr>
+            <tr style="border-bottom: 1px solid;">
               <th width="70%">TOTAL:</th>
               <th width="5%" style="text-align: right;">$</th>
               <th width="15%"><%= @work_order.budget.total %></th>
-              <th width="10%"> IVA incl.</th>
+              <th width="10%"></th>
             </tr>
           <% end %>
           <% if @work_order.budget.total_dol != 0 %>
             <tr style="">
+              <th width="70%">SUB TOTAL:</th>
+              <th width="5%" style="text-align: right;">U$S</th>
+              <th width="15%"><%= @work_order.budget.subtotal_work_does_dol +  @work_order.budget.subtotal_rep_dol %></th>
+            </tr>
+             <tr style="">
+              <th width="70%">IVA:</th>
+              <th width="5%" style="text-align: right;">%</th>
+              <th width="15%"><%= @iva.value %></th>
+            </tr>
+            <tr style="border-bottom: 1px solid;">
               <th width="70%">TOTAL:</th>
               <th width="5%" style="text-align: right;">U$S</th>
               <th width="15%"><%= @work_order.budget.total_dol %></th>
-              <th width="10%"> IVA incl. </th>
+              <th width="10%"></th>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-
-    <div>
-      <strong>PAGOS PREVIOS:</strong>
-      <table class="table table-striped" >
-        <thead>
-          <tr>
-          </tr>
-        </thead>
-        <tbody>
-          <% @box_movements.each do |box_movement| %>
-            <tr style="border-bottom: 1px solid #ddd;">
-              <th style="font-weight: normal" width="75%"><%= box_movement.date %></th>
-              <th width="5%" style="text-align: right;"> - <%= box_movement.currency %></th>
-              <th width="20%"><%= box_movement.value %></th>
+    <% unless @box_movements.blank? %>
+      <div>
+        <strong>PAGOS PREVIOS:</strong>
+        <table class="table table-striped" >
+          <thead>
+            <tr>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            <% @box_movements.each do |box_movement| %>
+              <tr style="border-bottom: 1px solid #ddd;">
+                <th style="font-weight: normal" width="75%"><%= box_movement.date %></th>
+                <th width="5%" style="text-align: right;"> - <%= box_movement.currency %></th>
+                <th width="20%"><%= box_movement.value %></th>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
 
-     <div>
-      <strong>DESCUENTOS APLICADOS:</strong>
-      <%= @work_order.budget.discount %> %
-      <p></p>
-    </div>
+    <% if @work_order.budget.discount != 0 %>
+      <div>
+        <strong>DESCUENTOS APLICADOS:</strong>
+        <%= @work_order.budget.discount %> %
+        <p></p>
+      </div>
+    <% end %>
 
     <div>
       <table class="table table-hover" >

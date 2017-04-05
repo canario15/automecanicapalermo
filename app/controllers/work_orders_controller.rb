@@ -133,6 +133,7 @@ class WorkOrdersController < ApplicationController
   def budget
     @users = User.all
     @box_movements = @work_order.box_movements
+    @iva = Iva.last
     if @work_order.budget.blank?
       @work_order.budget =  Budget.new( subtotal_rep: 0, discount: 0, total_budget_pay: 0, total_budget_pay_dol: 0,subtotal_rep_dol: 0, subtotal_work_does: 0, subtotal_work_does_dol: 0, total: 0, total_dol: 0 )
     end
