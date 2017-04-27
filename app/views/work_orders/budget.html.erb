@@ -194,29 +194,92 @@
             </div>
           </div>
 
-          <div class="row row-top">
-            <div class="col-md-2">
+
+          <div style="width: 50%;float: left;" class="row row-top">
+            <div class="col-md-4">
+              <h4 class="show-label">SubTotal $:</h4>
+            </div>
+            <div style="padding-left: 13px" class="col-md-6 form-group input-group">
+              <span style="width: 64px;" class="input-group-addon in-gr-ad-tot"> $ </span>
+              <%= f.simple_fields_for :budget do |budget| %>
+                <%= budget.text_field :subtotal, :class => "totals-style sub-total-bud-noiva form-control", :readonly => true  %>
+              <% end -%>
+              <span class="input-group-addon in-gr-ad-tot"></span>
+            </div>
+
+            <div class="col-md-4">
+              <h4 class="show-label">Descuentos:</h4>
+            </div>
+            <div class="col-md-6 form-group input-group" style="padding-left: 13px">
+              <span style="width: 64px;" class="input-group-addon in-gr-ad-tot">%</span>
+              <%= f.simple_fields_for :budget do |budget| %>
+               <%= budget.text_field :discount, :class => "discount-budget form-control" %>
+              <% end -%>
+              <span class="input-group-addon in-gr-ad-tot"></span>
+            </div>
+
+            <div class="col-md-4">
+              <h4 class="show-label">Iva:</h4>
+            </div>
+            <div class="col-md-6 form-group input-group" style="padding-left: 13px">
+              <span style="width: 64px;" class="input-group-addon in-gr-ad-tot"><%= Iva.value %>%</span>
+                <%= f.simple_fields_for :budget do |budget| %>
+                  <%= budget.text_field :iva, :id => "iva_amount", :class => "totals-style form-control", :readonly => true %>
+                <span class="input-group-addon in-gr-ad-tot"></span>
+                <% end -%>
+            </div>
+
+            <div class="col-md-4">
               <h4 class="show-label">Total $:</h4>
             </div>
-            <div style="padding-left: 13px" class="col-md-3 form-group input-group">
-              <span class="input-group-addon in-gr-ad-tot"> $ </span>
+            <div style="padding-left: 13px" class="col-md-6 form-group input-group">
+              <span style="width: 64px;" class="input-group-addon in-gr-ad-tot"> $ </span>
               <%= f.simple_fields_for :budget do |budget| %>
                 <%= budget.text_field :total, :class => "total-budget form-control", :readonly => true  %>
               <% end -%>
               <span class="input-group-addon in-gr-ad-tot"> IVA incl.</span>
             </div>
-            <div class="col-md-2">
+          </div>
+          <div style="width: 50%; float: left;" class="row row-top">
+            <div class="col-md-4">
+              <h4 class="show-label">SubTotal U$S:</h4>
+            </div>
+            <div style="padding-left: 13px" class="col-md-6 form-group input-group">
+              <span style="width: 64px;" class="input-group-addon in-gr-ad-tot"> U$S </span>
+              <%= f.simple_fields_for :budget do |budget| %>
+                <%= budget.text_field :subtotal_dol, :class => "totals-style sub-total-bud-noiva-dol form-control", :readonly => true  %>
+              <% end -%>
+              <span class="input-group-addon in-gr-ad-tot"></span>
+            </div>
+
+            <div class="col-md-4">
+              <h4 class="show-label"></h4>
+            </div>
+            <div class="col-md-6 form-group input-group" style="padding-left: 13px; height: 41px;">
+            </div>
+
+            <div class="col-md-4">
+              <h4 class="show-label">Iva:</h4>
+            </div>
+            <div class="col-md-6 form-group input-group" style="padding-left: 13px">
+              <span style="width: 64px;" class="input-group-addon in-gr-ad-tot"><%= Iva.value %>%</span>
+              <%= f.simple_fields_for :budget do |budget| %>
+                <%= budget.text_field :iva_dol, :id => "iva_amount_dol", :class => "totals-style form-control", :readonly => true %>
+                <span class="input-group-addon in-gr-ad-tot"></span>
+              <% end -%>
+            </div>
+            <div class="col-md-4">
               <h4 class="show-label">Total U$S:</h4>
             </div>
-            <div style="padding-left: 13px" class="col-md-3 form-group input-group">
+            <div style="padding-left: 13px" class="col-md-6 form-group input-group">
               <span class="input-group-addon in-gr-ad-tot">U$S</span>
               <%= f.simple_fields_for :budget do |budget| %>
                 <%= budget.text_field :total_dol, :class => "total-budget-dol form-control", :readonly => true  %>
               <% end -%>
-              <span class="input-group-addon in-gr-ad-tot"> IVA incl</span>
+              <span class="input-group-addon in-gr-ad-tot"> IVA incl.</span>
             </div>
           </div>
-
+          <div class="row"></div>
           <div class="row row-top">
             <div class="col-md-2">
               <h4 class="show-label">Adelantos/Pagos:</h4>
@@ -246,18 +309,6 @@
                   <% end -%>
                 </tbody>
               </table>
-            </div>
-          </div>
-
-          <div class="row row-top">
-            <div class="col-md-2">
-              <h4 class="show-label">Descuentos aplicados:</h4>
-            </div>
-            <div class="col-md-3 form-group input-group" style="padding-left: 13px">
-              <%= f.simple_fields_for :budget do |budget| %>
-               <%= budget.text_field :discount, :class => "discount-budget form-control" %>
-              <% end -%>
-              <span class="input-group-addon in-gr-ad-tot">%</span>
             </div>
           </div>
 

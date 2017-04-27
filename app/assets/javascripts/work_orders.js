@@ -38,7 +38,6 @@
   });
 
   $('#work_order_table').dataTable({
-    "aoColumnDefs": [{ "bSortable": false, "aTargets": [ 8,9 ] }],
     "bLengthChange": false,
     "bProcessing": true,
     "fnInitComplete": function(oSettings, json) {
@@ -225,7 +224,6 @@ function sum_totals_bugets(){
   $('.subtot-wor-do').val(sum_work_dones);
   $('.subtot-wor-do-dol').val(sum_work_dones_dol);
 
-
   /*SUM REPLACEMENT SUB TOTAL*/
   var sum_rep_subtotal = 0;
   var sum_rep_subtotal_dol = 0;
@@ -241,8 +239,32 @@ function sum_totals_bugets(){
   $('.sub-tot-rep').val(sum_rep_subtotal);
   $('.sub-tot-rep-dol').val(sum_rep_subtotal_dol);
 
+  /*SUB TOTAL WITHOUT IVA*/
+  var sub_total_bud_noiva = sum_work_dones + sum_rep_subtotal
+  var sub_total_bud_noiva_dol = sum_work_dones_dol + sum_rep_subtotal_dol
+  $('.sub-total-bud-noiva').val(sub_total_bud_noiva);
+  $('.sub-total-bud-noiva-dol').val(sub_total_bud_noiva_dol);
 
-  /* SUM BOX MOVEMENTS BY CURRENCY*/
+  /*CALCULATE IVA AMOUNT*/
+  var iva_amount = Math.round( sub_total_bud_noiva * (IVA/100))
+  var iva_amount_dol = Math.round(sub_total_bud_noiva_dol * (IVA/100))
+  $('#iva_amount').val(iva_amount);
+  $('#iva_amount_dol').val(iva_amount_dol);
+
+  /*TOTAL WITHOUT ADVANCE*/
+  var total_budget_with_iva = sub_total_bud_noiva + iva_amount
+  var total_budget_with_iva_dol = sub_total_bud_noiva_dol + iva_amount_dol
+
+  /*DISCOUNT FACTOR*/
+  var discount_factor = ( (100 - Number($('#work_order_budget_attributes_discount').val()) ) / 100 );
+  total_budget_with_iva = Math.round(total_budget_with_iva * discount_factor)
+  total_budget_with_iva_dol = Math.round(total_budget_with_iva_dol * discount_factor)
+
+  /*SET TOTAL*/
+  $('.total-budget').val(total_budget_with_iva );
+  $('.total-budget-dol').val(total_budget_with_iva_dol);
+
+  /*SUM BOX MOVEMENTS BY CURRENCY*/
   var sum_adl_pes = 0;
   var sum_adl_dol = 0;
   $('.curr-type').each(function() {
@@ -255,27 +277,9 @@ function sum_totals_bugets(){
     }
   });
 
-  /*SET IVA*/
-  var total_pay_without_iva = (sum_work_dones + sum_rep_subtotal);
-  var total_dol_pay_without_iva = (sum_rep_subtotal_dol + sum_work_dones_dol);
-
-  var total_pay_with_iva = Math.round(total_pay_without_iva + (total_pay_without_iva * (IVA/100)));
-  var total_dol_pay_with_iva = Math.round(total_dol_pay_without_iva + (total_dol_pay_without_iva  * (IVA/100)));
-
-
-  /*SET ALL TOTALS*/
-  $('.total-budget').val(total_pay_with_iva );
-  $('.total-budget-dol').val(total_dol_pay_with_iva);
-
-
-  var discount_factor = ( (100 - Number($('#work_order_budget_attributes_discount').val()) ) / 100 );
-
-  var total_pay_with_discount = Math.round(total_pay_with_iva * discount_factor);
-  var total_dol_pay_with_discount = Math.round( total_dol_pay_with_iva * discount_factor);
-
   /*SET ALL TOTALS TO PAY */
-  $('.total-budget-pay').val( total_pay_with_discount - sum_adl_pes );
-  $('.total-budget-dol-pay').val( total_dol_pay_with_discount  - sum_adl_dol );
+  $('.total-budget-pay').val(total_budget_with_iva - sum_adl_pes);
+  $('.total-budget-dol-pay').val(total_budget_with_iva_dol  - sum_adl_dol);
 
 }
 

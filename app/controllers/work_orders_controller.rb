@@ -151,7 +151,7 @@ class WorkOrdersController < ApplicationController
 
     # Never trust parameters from the swork_ordery internet, only allow the white list through.
     def work_order_params
-      params.require(:work_order).permit(:date_in, :deliver_date, :status, :number, :km, :fuel, :coments, :observation, :delivered_by_id, :worked_by_id, :received_by_id, :customer_id, :vehicle_id, budget_attributes: [:id, :discount, :subtotal_rep_dol, :total_dol, :subtotal_work_does, :subtotal_work_does_dol, :subtotal_rep, :total, :total_budget_pay, :total_budget_pay_dol ], work_ins_attributes: [:id, :work, :_destroy ], work_dones_attributes: [:id, :work, :price, :currency, :_destroy ], replacements_attributes: [:id, :name, :price, :currency, :_destroy])
+      params.require(:work_order).permit(:date_in, :deliver_date, :status, :number, :km, :fuel, :coments, :observation, :delivered_by_id, :worked_by_id, :received_by_id, :customer_id, :vehicle_id, budget_attributes: [:id, :discount, :subtotal_rep_dol, :total_dol, :subtotal_work_does, :subtotal_work_does_dol, :subtotal_rep, :total, :total_budget_pay, :total_budget_pay_dol, :subtotal, :subtotal_dol, :iva_dol, :iva ], work_ins_attributes: [:id, :work, :_destroy ], work_dones_attributes: [:id, :work, :price, :currency, :_destroy ], replacements_attributes: [:id, :name, :price, :currency, :_destroy])
     end
 end
 

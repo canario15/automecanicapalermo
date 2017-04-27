@@ -128,12 +128,19 @@
             <tr style="">
               <th width="70%">SUB TOTAL:</th>
               <th width="5%" style="text-align: right;">$</th>
-              <th width="15%"><%= @work_order.budget.subtotal_work_does +  @work_order.budget.subtotal_rep %></th>
+              <th width="15%"><%= @work_order.budget.subtotal %></th>
             </tr>
+            <% if @work_order.budget.discount != 0 %>
+              <tr style="">
+                <th width="70%">DESCUENTOS:</th>
+                <th width="5%" style="text-align: right;">%</th>
+                <th width="15%"><%= @work_order.budget.discount %></th>
+              </tr>
+            <% end %>
             <tr style="">
-              <th width="70%">IVA:</th>
-              <th width="5%" style="text-align: right;">%</th>
-              <th width="15%"><%= @iva.value %></th>
+              <th width="70%">IVA %<%= @iva.value %>:</th>
+              <th width="5%" style="text-align: right;">$</th>
+              <th width="15%"><%= @work_order.budget.iva %></th>
             </tr>
             <tr style="border-bottom: 1px solid;">
               <th width="70%">TOTAL:</th>
@@ -146,12 +153,19 @@
             <tr style="">
               <th width="70%">SUB TOTAL:</th>
               <th width="5%" style="text-align: right;">U$S</th>
-              <th width="15%"><%= @work_order.budget.subtotal_work_does_dol +  @work_order.budget.subtotal_rep_dol %></th>
+              <th width="15%"><%= @work_order.budget.subtotal_dol %></th>
             </tr>
-             <tr style="">
-              <th width="70%">IVA:</th>
-              <th width="5%" style="text-align: right;">%</th>
-              <th width="15%"><%= @iva.value %></th>
+            <% if @work_order.budget.discount != 0 %>
+              <tr style="">
+                <th width="70%">DESCUENTOS:</th>
+                <th width="5%" style="text-align: right;">%</th>
+                <th width="15%"><%= @work_order.budget.discount %></th>
+              </tr>
+            <% end %>
+            <tr style="">
+              <th width="70%">IVA%<%= @iva.value %>:</th>
+              <th width="5%" style="text-align: right;">U$S</th>
+              <th width="15%"><%= @work_order.budget.iva_dol  %></th>
             </tr>
             <tr style="border-bottom: 1px solid;">
               <th width="70%">TOTAL:</th>
@@ -184,13 +198,6 @@
       </div>
     <% end %>
 
-    <% if @work_order.budget.discount != 0 %>
-      <div>
-        <strong>DESCUENTOS APLICADOS:</strong>
-        <%= @work_order.budget.discount %> %
-        <p></p>
-      </div>
-    <% end %>
 
     <div>
       <table class="table table-hover" >

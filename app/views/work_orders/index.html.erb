@@ -11,16 +11,14 @@
 <table id="work_order_table" class="table table-hover table-index">
   <thead>
     <tr>
-      <th><%= link_to 'Nº', '#'          %></th>
+      <th><%= link_to 'Nº', '#'            %></th>
       <th><%= link_to 'Fecha Recibido','#' %></th>
-      <th><%= link_to 'Fecha Entrega','#' %></th>
-      <th><%= link_to 'Clinete', '#'   %></th>
-      <th><%= link_to 'Vehículo', '#'  %></th>
-      <th><%= link_to 'Recibido', '#'  %></th>
-      <th><%= link_to 'Entregada', '#' %></th>
-      <th><%= link_to 'Estado','#'     %></th>
-      <th></th>
-      <th></th>
+      <th><%= link_to 'Fecha Entrega','#'  %></th>
+      <th><%= link_to 'Clinete', '#'       %></th>
+      <th><%= link_to 'Vehículo', '#'      %></th>
+      <th><%= link_to 'Estado','#'         %></th>
+      <th><%= link_to 'Trabajos','#'       %></th>
+      <th><%= link_to 'Monto','#'          %></th>
     </tr>
   </thead>
   <tbody>
@@ -31,11 +29,9 @@
         <td><%= work_order.deliver_date %></td>
         <td><%= work_order.customer %></td>
         <td><%= work_order.vehicle %></td>
-        <td><%= work_order.received_by %></td>
-        <td><%= work_order.delivered_by %></td>
         <td><%= work_order.status %></td>
-        <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), work_order_path(work_order) %></td>
-        <td><%= link_to (image_tag 'edit.png', :class => "small-icon", :title => "Editar"), edit_work_order_path(work_order) %></td>
+        <td><%= work_order.work_dones.first %> </td>
+        <td><%= work_order.budget.try(:any_total) %></td>
       </tr>
     <% end -%>
   </tbody>

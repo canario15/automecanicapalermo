@@ -96,7 +96,7 @@
                   <td><%= work_order.id %></td>
                   <td><%= work_order.date_in %></td>
                   <td><%= work_order.work_ins.first.work %></td>
-                  <td><%= work_order.budget.any_total %></td>
+                  <td><%= work_order.budget.try(:any_total) %></td>
                   <td><%= work_order.status %></td>
                   <td><%= link_to (image_tag 'show.png', :class => "small-icon", :title => "Ver"), work_order_path(work_order) %></td>
                 </tr>

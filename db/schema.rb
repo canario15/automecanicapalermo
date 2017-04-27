@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219183748) do
+ActiveRecord::Schema.define(version: 20170427184406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,10 @@ ActiveRecord::Schema.define(version: 20161219183748) do
     t.integer  "discount"
     t.integer  "total_budget_pay"
     t.integer  "total_budget_pay_dol"
+    t.integer  "subtotal"
+    t.integer  "subtotal_dol"
+    t.integer  "iva"
+    t.integer  "iva_dol"
   end
 
   add_index "budgets", ["work_order_id"], name: "index_budgets_on_work_order_id", using: :btree
