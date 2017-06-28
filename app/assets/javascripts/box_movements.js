@@ -82,7 +82,7 @@ function filterMovement() {
 
 function setDataTable(){
   $('#box_movement_table').dataTable({
-    "aoColumnDefs": [{ "bSortable": false, "aTargets": [ 7,8 ] }],
+    "aoColumnDefs": [{ "bSortable": false, "aTargets": [ 6,7 ] }],
     "pageLength": 50,
     "bLengthChange": false,
     "bProcessing": true,

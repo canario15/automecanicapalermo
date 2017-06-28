@@ -8,6 +8,7 @@ class WorkOrdersController < ApplicationController
     if params[:status]
       @work_orders = WorkOrder.where(status: WORK_ORDER_STATUS[params[:status].to_i])
       @title = "Ordenes de Trabajo '#{WORK_ORDER_STATUS[params[:status].to_i]}'"
+      @status = params[:status]
     else
       @work_orders = WorkOrder.all
       @title = "Ordenes de Trabajo"
@@ -110,6 +111,7 @@ class WorkOrdersController < ApplicationController
         if !params[:work_order][:delivered_by_id].blank?
           @work_order.delivered_by_id = params[:work_order][:delivered_by_id]
           @work_order.status = WORK_ORDER_STATUS[2]
+          @work_order.deliver_date = Time.now
           @work_order.save
         else
           err = "Campo Entregado por es obligatorio"

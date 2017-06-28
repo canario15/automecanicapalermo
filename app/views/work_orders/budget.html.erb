@@ -341,6 +341,10 @@
               <%= image_tag 'back.png', :class => "medium-icon", :title => "Editar" %>
               Atrás
             <% end -%> |
+            <%= link_to edit_work_order_path do %>
+              <%= image_tag 'edit.png', :class => "medium-icon", :title => "Editar" %>
+              Editar
+            <% end -%> |
             <%= image_tag 'new.png', :class => "medium-icon", :title => "Guardar" %>
             <%= f.submit "Guardar ", :class =>  "btn-save-bud" %> |
             <%= link_to "/work_orders/#{@work_order.id}/budget.pdf", :id=> "print_budget", target: "_blank" do %>

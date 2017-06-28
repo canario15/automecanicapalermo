@@ -31,7 +31,11 @@
         <td><%= work_order.vehicle %></td>
         <td><%= work_order.status %></td>
         <td><%= work_order.work_dones.first %> </td>
-        <td><%= work_order.budget.try(:any_total) %></td>
+        <% if @status == "3" || @status.blank? %>
+          <td><%= work_order.budget.try(:done_total) %></td>
+        <% else %>
+          <td><%= work_order.budget.try(:any_total) %></td>
+        <% end -%>
       </tr>
     <% end -%>
   </tbody>

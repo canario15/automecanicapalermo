@@ -1,7 +1,6 @@
 <table id="box_movement_table" class="table table-hover table-index">
   <thead>
     <tr>
-      <th><%= link_to 'Id'              %></th>
       <th><%= link_to 'Fecha'           %></th>
       <th><%= link_to 'Centro de Costo' %></th>
       <th><%= link_to 'Detalle'         %></th>
@@ -15,7 +14,6 @@
   <tbody>
     <% @box_movements.each do |box_movement| %>
       <tr class="<%= COST_CENTER_CODE.key(box_movement.cost_center).to_s %> <%=box_movement.box_movement_type == BOX_MOVEMENT_TYPES[0] ? 'success' : "danger" %>">
-        <td><%= box_movement.id %></td>
         <td><%= box_movement.date %></td>
         <td><%= box_movement.cost_center %></td>
         <td><%= box_movement.desc %></td>

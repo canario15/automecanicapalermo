@@ -39,8 +39,12 @@ class BoxMovement < ActiveRecord::Base
           end
         end
       end
-      total_debit_dol = work_order.budget.total_budget_pay - tot_pes
-      total_debit_pes = work_order.budget.total_budget_pay_dol - tot_dol
+      total_debit_pes = work_order.budget.total - tot_pes
+      total_debit_dol = work_order.budget.total_dol - tot_dol
+
+      work_order.budget.total_budget_pay = total_debit_pes
+      work_order.budget.total_budget_pay_dol = total_debit_dol
+      work_order.budget.save
 
       if total_debit_dol <= 0 && total_debit_pes <= 0
         work_order.status = WORK_ORDER_STATUS[3]
